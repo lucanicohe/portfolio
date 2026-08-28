@@ -6,2271 +6,1215 @@
 
 <title>Luca Helgert — Game Programmer</title>
 
-<meta
-  name="description"
-  content="Luca Helgert — Game Programmer and Technical Artist specializing in Unity, Unreal Engine, C#, C++, Blender and procedural environments."
->
-
-<link
-  rel="icon"
-  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23f5f5f2%22/><text x=%2250%22 y=%2268%22 font-size=%2255%22 fill=%22%23111111%22 text-anchor=%22middle%22 font-family=%22Arial%22>L</text></svg>"
->
+<meta name="description" content="Luca Helgert — Game Programmer and Technical Artist">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
-  rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   FOUNDATION
-========================================================= */
-
 :root {
-  --white: #ffffff;
-  --paper: #f5f5f2;
-  --paper-dark: #eeeeeb;
-
-  --black: #111111;
-  --graphite: #272727;
-  --gray: #6e6e6b;
-  --light-gray: #9a9a96;
-
-  --line: #dcdcd7;
-
-  --max-width: 1440px;
-  --side-padding: clamp(24px, 5vw, 80px);
+    --bg: #f5f5f2;
+    --text: #111111;
+    --muted: #73736e;
+    --line: rgba(17,17,17,.12);
+    --max: 1500px;
+    --padding: clamp(28px, 5vw, 80px);
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--black);
-
-  font-family:
-    "Inter",
-    "Noto Sans JP",
-    sans-serif;
-
-  font-weight: 400;
-  line-height: 1.5;
-
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 img {
-  display: block;
-  max-width: 100%;
+    display: block;
+    max-width: 100%;
 }
 
 a {
-  color: inherit;
+    color: inherit;
 }
 
-button {
-  font: inherit;
-}
-
-::selection {
-  background: #111111;
-  color: white;
-}
-
-.jp {
-  font-family:
-    "Noto Sans JP",
-    "Inter",
-    sans-serif;
-}
-
-.container {
-  width: min(
-    calc(100% - var(--side-padding) * 2),
-    var(--max-width)
-  );
-
-  margin: 0 auto;
-}
-
-
-/* =========================================================
+/* =========================
    NAVIGATION
-========================================================= */
+========================= */
 
-.nav {
-  position: fixed;
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
 
-  top: 0;
-  left: 0;
-  right: 0;
+    height: 76px;
 
-  z-index: 100;
+    background: rgba(245,245,242,.88);
+    backdrop-filter: blur(18px);
 
-  height: 72px;
+    border-bottom: 1px solid transparent;
 
-  background: rgba(245, 245, 242, 0.88);
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  border-bottom: 1px solid transparent;
-
-  transition:
-    border-color .35s ease,
-    background .35s ease;
+    transition: border-color .3s ease;
 }
 
-.nav.scrolled {
-  border-color: rgba(17,17,17,.08);
+nav.scrolled {
+    border-color: var(--line);
 }
 
 .nav-inner {
-  height: 100%;
+    width: min(calc(100% - var(--padding) * 2), var(--max));
+    height: 100%;
+    margin: auto;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
-  text-decoration: none;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  letter-spacing: -.02em;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -.035em;
+    text-decoration: none;
 }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 34px;
+.nav-links {
+    display: flex;
+    gap: 38px;
 }
 
-.nav-link {
-  position: relative;
-
-  text-decoration: none;
-
-  font-size: 13px;
-  color: var(--gray);
-
-  transition: color .25s ease;
+.nav-links a {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s ease;
 }
 
-.nav-link::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: -5px;
-
-  width: 0;
-  height: 1px;
-
-  background: var(--black);
-
-  transition: width .25s ease;
+.nav-links a:hover {
+    color: var(--text);
 }
 
-.nav-link:hover {
-  color: var(--black);
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero {
-  min-height: 100vh;
+    width: min(calc(100% - var(--padding) * 2), var(--max));
+    min-height: 100vh;
+    margin: auto;
 
-  padding-top: 72px;
+    padding-top: 76px;
 
-  display: flex;
-  align-items: center;
-
-  background: var(--paper);
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: clamp(60px, 9vw, 150px);
 }
 
-.hero-grid {
-  width: min(
-    calc(100% - var(--side-padding) * 2),
-    var(--max-width)
-  );
-
-  margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 1.15fr)
-    minmax(360px, .85fr);
-
-  gap: clamp(60px, 9vw, 150px);
-
-  align-items: center;
+.hero-content {
+    padding: 70px 0;
 }
 
-.hero-copy {
-  padding: 60px 0;
-}
+.eyebrow {
+    margin-bottom: 32px;
 
-.hero-kicker {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
 
-  margin-bottom: 32px;
-
-  color: var(--gray);
-
-  font-size: 11px;
-  font-weight: 500;
-
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-
-.hero-kicker::before {
-  content: "";
-
-  width: 34px;
-  height: 1px;
-
-  background: var(--black);
+    color: var(--muted);
 }
 
 .hero h1 {
-  margin: 0;
+    margin: 0;
 
-  font-size: clamp(
-    4.2rem,
-    9vw,
-    9rem
-  );
+    font-size: clamp(5rem, 10vw, 10rem);
+    line-height: .82;
 
-  line-height: .88;
+    letter-spacing: -.09em;
 
-  letter-spacing: -.075em;
-
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .hero-description {
-  max-width: 520px;
+    max-width: 620px;
 
-  margin: 42px 0 0;
+    margin: 55px 0 0;
 
-  font-size: clamp(
-    1rem,
-    1.5vw,
-    1.2rem
-  );
+    font-size: clamp(18px, 2vw, 25px);
+    line-height: 1.45;
 
-  line-height: 1.65;
+    color: var(--muted);
 
-  color: var(--graphite);
-
-  font-weight: 400;
+    letter-spacing: -.025em;
 }
 
-.hero-description-jp {
-  max-width: 500px;
+.hero-actions {
+    margin-top: 42px;
 
-  margin: 14px 0 0;
-
-  font-size: 13px;
-
-  line-height: 1.9;
-
-  color: var(--light-gray);
+    display: flex;
+    gap: 30px;
 }
 
-.hero-links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
+.hero-actions a {
+    text-decoration: none;
 
-  margin-top: 42px;
+    font-size: 14px;
+
+    padding-bottom: 7px;
+
+    border-bottom: 1px solid var(--text);
+
+    transition: opacity .2s ease;
 }
 
-.hero-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  text-decoration: none;
-
-  font-size: 13px;
-  font-weight: 500;
-
-  border-bottom: 1px solid var(--black);
-
-  padding-bottom: 5px;
-
-  transition:
-    gap .25s ease,
-    opacity .25s ease;
+.hero-actions a:hover {
+    opacity: .45;
 }
 
-.hero-link:hover {
-  gap: 15px;
-  opacity: .6;
+.hero-image {
+    width: 100%;
+    max-width: 600px;
+    justify-self: end;
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
 }
 
-.hero-link svg {
-  width: 14px;
-  height: 14px;
+.hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 1s cubic-bezier(.2,.7,.2,1);
 }
 
-
-/* =========================================================
-   PORTRAIT
-========================================================= */
-
-.hero-visual {
-  display: flex;
-
-  justify-content: flex-end;
-
-  padding: 40px 0;
+.hero-image:hover img {
+    transform: scale(1.025);
 }
 
-.portrait-frame {
-  position: relative;
-
-  width: min(
-    100%,
-    420px
-  );
-
-  aspect-ratio: 4 / 5;
-
-  overflow: hidden;
-
-  background: #deded9;
-}
-
-.portrait-frame img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  object-position: center;
-
-  filter:
-    saturate(.92)
-    contrast(1.02);
-
-  transition:
-    transform 1.2s cubic-bezier(.16,.8,.24,1);
-}
-
-.portrait-frame:hover img {
-  transform: scale(1.025);
-}
-
-.portrait-label {
-  position: absolute;
-
-  left: 22px;
-  bottom: 20px;
-
-  padding: 8px 11px;
-
-  background: rgba(255,255,255,.82);
-
-  backdrop-filter: blur(10px);
-
-  font-size: 10px;
-
-  letter-spacing: .12em;
-
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.intro {
-  padding: clamp(130px, 15vw, 240px) 0;
-
-  background: var(--white);
-}
-
-.intro-grid {
-  display: grid;
-
-  grid-template-columns:
-    1fr
-    2fr;
-
-  gap: 40px;
-}
-
-.section-label {
-  font-size: 11px;
-
-  letter-spacing: .17em;
-
-  text-transform: uppercase;
-
-  color: var(--gray);
-
-  font-weight: 500;
-}
-
-.intro-title {
-  max-width: 900px;
-
-  margin: 0;
-
-  font-size: clamp(
-    2.5rem,
-    5.3vw,
-    5.5rem
-  );
-
-  line-height: 1.02;
-
-  letter-spacing: -.055em;
-
-  font-weight: 450;
-}
-
-.intro-title span {
-  color: var(--gray);
-}
-
-.intro-bottom {
-  display: grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
-  gap: 80px;
-
-  margin-top: 100px;
-}
-
-.intro-text {
-  max-width: 470px;
-
-  margin: 0;
-
-  font-size: 16px;
-
-  line-height: 1.75;
-
-  color: var(--graphite);
-}
-
-.intro-text-jp {
-  max-width: 470px;
-
-  margin: 16px 0 0;
-
-  font-size: 13px;
-
-  line-height: 1.9;
-
-  color: var(--light-gray);
-}
-
-.skills {
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, 1fr);
-
-  border-top: 1px solid var(--line);
-}
-
-.skill {
-  padding: 18px 0;
-
-  border-bottom: 1px solid var(--line);
-
-  font-size: 13px;
-
-  color: var(--graphite);
-}
-
-.skill:nth-child(odd) {
-  margin-right: 25px;
-}
-
-
-/* =========================================================
-   WORK HEADER
-========================================================= */
-
-.work {
-  padding: clamp(130px, 14vw, 220px) 0;
-
-  background: var(--paper);
-}
-
-.work-header {
-  display: flex;
-
-  align-items: flex-end;
-
-  justify-content: space-between;
-
-  margin-bottom: 80px;
-}
-
-.work-title {
-  margin: 14px 0 0;
-
-  font-size: clamp(
-    3rem,
-    6vw,
-    6.5rem
-  );
-
-  line-height: .9;
-
-  letter-spacing: -.065em;
-
-  font-weight: 500;
-}
-
-.work-count {
-  color: var(--gray);
-
-  font-size: 12px;
-
-  letter-spacing: .08em;
-}
-
-
-/* =========================================================
-   PROJECT GRID
-========================================================= */
-
-.projects {
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  column-gap: 42px;
-
-  row-gap: 120px;
-}
-
-.project {
-  opacity: 0;
-
-  transform: translateY(35px);
-
-  transition:
-    opacity .8s ease,
-    transform .8s cubic-bezier(.16,.8,.24,1);
-}
-
-.project.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.project:nth-child(2n) {
-  margin-top: 120px;
-}
-
-
-/* =========================================================
-   PROJECT VISUAL
-========================================================= */
-
-.project-image {
-  position: relative;
-
-  width: 100%;
-
-  aspect-ratio: 16 / 10;
-
-  overflow: hidden;
-
-  background: #d9d9d5;
-
-  margin-bottom: 25px;
-}
-
-.project-image::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent 60%,
-      rgba(0,0,0,.12)
-    );
-
-  pointer-events: none;
-}
-
-.project-art {
-  width: 100%;
-  height: 100%;
-
-  position: relative;
-
-  display: flex;
-
-  align-items: flex-end;
-
-  padding: 30px;
-
-  overflow: hidden;
-
-  transition:
-    transform .9s cubic-bezier(.16,.8,.24,1);
-}
-
-.project:hover .project-art {
-  transform: scale(1.025);
-}
-
-
-/* Project visual treatments */
-
-.art-1 {
-  background:
-    linear-gradient(
-      135deg,
-      #9b6a3e,
-      #2d2118
-    );
-}
-
-.art-2 {
-  background:
-    linear-gradient(
-      135deg,
-      #667d8c,
-      #172128
-    );
-}
-
-.art-3 {
-  background:
-    linear-gradient(
-      135deg,
-      #707c62,
-      #252b20
-    );
-}
-
-.art-4 {
-  background:
-    linear-gradient(
-      135deg,
-      #687680,
-      #20272b
-    );
-}
-
-.art-5 {
-  background:
-    linear-gradient(
-      135deg,
-      #8a6743,
-      #251a10
-    );
-}
-
-.art-6 {
-  background:
-    linear-gradient(
-      135deg,
-      #557c82,
-      #142327
-    );
-}
-
-.art-7 {
-  background:
-    linear-gradient(
-      135deg,
-      #515e7c,
-      #171a27
-    );
-}
-
-.art-8 {
-  background:
-    linear-gradient(
-      135deg,
-      #86533f,
-      #251512
-    );
-}
-
-.project-number {
-  position: absolute;
-
-  top: 22px;
-  left: 24px;
-
-  color: rgba(255,255,255,.65);
-
-  font-size: 10px;
-
-  letter-spacing: .16em;
-}
-
-.project-word {
-  color: rgba(255,255,255,.9);
-
-  font-size: clamp(
-    2rem,
-    4vw,
-    4.6rem
-  );
-
-  font-weight: 500;
-
-  letter-spacing: -.06em;
-
-  line-height: .9;
-}
-
-.project-meta {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: flex-start;
-
-  gap: 30px;
-}
-
-.project-name {
-  margin: 0;
-
-  font-size: 20px;
-
-  line-height: 1.15;
-
-  letter-spacing: -.025em;
-
-  font-weight: 600;
-}
-
-.project-jp {
-  margin: 6px 0 0;
-
-  font-size: 12px;
-
-  color: var(--gray);
-}
-
-.project-description {
-  max-width: 330px;
-
-  margin: 0;
-
-  color: var(--gray);
-
-  font-size: 13px;
-
-  line-height: 1.65;
-}
-
-.project-footer {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  margin-top: 20px;
-
-  padding-top: 16px;
-
-  border-top: 1px solid var(--line);
-}
-
-.project-type {
-  font-size: 10px;
-
-  color: var(--gray);
-
-  letter-spacing: .13em;
-
-  text-transform: uppercase;
-}
-
-.project-link {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  text-decoration: none;
-
-  font-size: 12px;
-
-  font-weight: 500;
-
-  transition:
-    gap .25s ease,
-    opacity .25s ease;
-}
-
-.project-link:hover {
-  gap: 13px;
-  opacity: .55;
-}
-
-.project-link svg {
-  width: 13px;
-  height: 13px;
-}
-
-
-/* =========================================================
+/* =========================
    STATEMENT
-========================================================= */
+========================= */
 
 .statement {
-  background: var(--black);
+    width: min(calc(100% - var(--padding) * 2), var(--max));
+    margin: auto;
 
-  color: white;
+    padding: clamp(140px, 16vw, 260px) 0;
 
-  padding:
-    clamp(120px, 15vw, 230px)
-    0;
-}
-
-.statement-grid {
-  display: grid;
-
-  grid-template-columns:
-    1fr
-    2fr;
-
-  gap: 40px;
-}
-
-.statement-label {
-  color: #8c8c89;
+    border-top: 1px solid var(--line);
 }
 
 .statement h2 {
-  max-width: 1000px;
+    max-width: 1300px;
 
-  margin: 0;
+    margin: 0;
 
-  font-size: clamp(
-    3rem,
-    6vw,
-    7rem
-  );
+    font-size: clamp(3.5rem, 7vw, 8rem);
+    line-height: .93;
 
-  line-height: .94;
+    letter-spacing: -.075em;
 
-  letter-spacing: -.065em;
-
-  font-weight: 450;
+    font-weight: 450;
 }
 
 .statement h2 span {
-  color: #777773;
+    color: var(--muted);
 }
 
-.statement-bottom {
-  display: flex;
+.statement-info {
+    margin-top: 100px;
 
-  justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-  align-items: flex-end;
-
-  gap: 40px;
-
-  margin-top: 100px;
+    gap: 80px;
 }
 
-.statement-copy {
-  max-width: 480px;
+.statement-text {
+    max-width: 620px;
 
-  margin: 0;
+    margin: 0;
 
-  color: #a3a3a0;
+    font-size: 19px;
+    line-height: 1.65;
 
-  font-size: 14px;
-
-  line-height: 1.8;
+    color: var(--muted);
 }
 
-.contact-link {
-  display: inline-flex;
+.skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-  align-items: center;
+    align-content: start;
 
-  gap: 12px;
+    gap: 16px;
 
-  color: white;
+    font-size: 15px;
 
-  text-decoration: none;
-
-  padding-bottom: 7px;
-
-  border-bottom: 1px solid rgba(255,255,255,.5);
-
-  font-size: 13px;
-
-  transition:
-    gap .25s ease,
-    border-color .25s ease;
+    color: var(--muted);
 }
 
-.contact-link:hover {
-  gap: 17px;
+/* =========================
+   WORK
+========================= */
 
-  border-color: white;
+.work {
+    width: min(calc(100% - var(--padding) * 2), var(--max));
+    margin: auto;
+
+    padding: 80px 0 180px;
 }
 
-.contact-link svg {
-  width: 14px;
-  height: 14px;
+.work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    margin-bottom: 85px;
+
+    border-top: 1px solid var(--line);
+
+    padding-top: 25px;
 }
 
+.work-header h2 {
+    margin: 0;
 
-/* =========================================================
+    font-size: clamp(4rem, 8vw, 9rem);
+    line-height: .85;
+
+    letter-spacing: -.08em;
+
+    font-weight: 500;
+}
+
+.work-header span {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.project {
+    margin-bottom: 150px;
+}
+
+.project:last-child {
+    margin-bottom: 0;
+}
+
+.project-image {
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    background: #deded9;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.project:hover .project-image img {
+    transform: scale(1.025);
+}
+
+.project-info {
+    margin-top: 28px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+}
+
+.project-name {
+    margin: 0;
+
+    font-size: clamp(2rem, 3vw, 3.2rem);
+
+    line-height: 1;
+
+    letter-spacing: -.05em;
+
+    font-weight: 500;
+}
+
+.project-type {
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+.project-description {
+    max-width: 550px;
+
+    margin: 0;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    color: var(--muted);
+}
+
+.project-link {
+    display: inline-flex;
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid var(--text);
+
+    padding-bottom: 6px;
+
+    transition: opacity .2s ease;
+}
+
+.project-link:hover {
+    opacity: .45;
+}
+
+/* =========================
+   FEATURE PROJECT
+========================= */
+
+.project.feature {
+    margin-bottom: 190px;
+}
+
+.project.feature .project-image {
+    aspect-ratio: 2 / 1;
+}
+
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer {
-  background: var(--black);
+    width: min(calc(100% - var(--padding) * 2), var(--max));
+    margin: auto;
 
-  color: white;
+    padding: 90px 0 45px;
 
-  border-top: 1px solid #292929;
-
-  padding: 35px 0;
+    border-top: 1px solid var(--line);
 }
 
-.footer-inner {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .footer-name {
-  font-size: 12px;
+    margin: 0;
 
-  font-weight: 500;
+    font-size: clamp(3rem, 6vw, 6rem);
+
+    line-height: .9;
+
+    letter-spacing: -.07em;
+
+    font-weight: 500;
 }
 
 .footer-right {
-  display: flex;
-
-  align-items: center;
-
-  gap: 28px;
+    text-align: right;
 }
 
-.footer-link {
-  color: #8d8d89;
+.footer-right a {
+    font-size: 15px;
 
-  text-decoration: none;
+    text-decoration: none;
 
-  font-size: 11px;
+    border-bottom: 1px solid var(--text);
 
-  transition: color .25s ease;
+    padding-bottom: 5px;
 }
 
-.footer-link:hover {
-  color: white;
+.footer-role {
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 14px;
 }
 
-.footer-copy {
-  color: #666662;
+.footer-bottom {
+    margin-top: 100px;
 
-  font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-size: 13px;
 }
 
-
-/* =========================================================
+/* =========================
    RESPONSIVE
-========================================================= */
+========================= */
 
 @media (max-width: 900px) {
 
-  .hero-grid {
-    grid-template-columns: 1fr;
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
 
-    gap: 40px;
+        padding-top: 130px;
+        padding-bottom: 100px;
+    }
 
-    padding-top: 70px;
-    padding-bottom: 80px;
-  }
+    .hero-image {
+        justify-self: start;
+        max-width: 650px;
+    }
 
-  .hero-copy {
-    padding: 30px 0 0;
-  }
+    .statement-info {
+        grid-template-columns: 1fr;
+    }
 
-  .hero h1 {
-    font-size: clamp(
-      4rem,
-      16vw,
-      7rem
-    );
-  }
+    .project-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 
-  .hero-visual {
-    justify-content: flex-start;
+    .project {
+        margin-bottom: 110px;
+    }
 
-    padding: 0;
-  }
+    .footer-top {
+        flex-direction: column;
+        gap: 45px;
+    }
 
-  .portrait-frame {
-    width: min(
-      100%,
-      400px
-    );
-  }
-
-  .intro-grid,
-  .statement-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .intro-bottom {
-    grid-template-columns: 1fr;
-
-    gap: 60px;
-  }
-
-  .projects {
-    grid-template-columns: 1fr;
-
-    row-gap: 80px;
-  }
-
-  .project:nth-child(2n) {
-    margin-top: 0;
-  }
-
-  .work-header {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    gap: 20px;
-  }
-
-  .statement-bottom {
-    align-items: flex-start;
-
-    flex-direction: column;
-  }
+    .footer-right {
+        text-align: left;
+    }
 }
-
 
 @media (max-width: 600px) {
 
-  :root {
-    --side-padding: 20px;
-  }
+    :root {
+        --padding: 22px;
+    }
 
-  .nav {
-    height: 62px;
-  }
+    nav {
+        height: 64px;
+    }
 
-  .nav-right {
-    gap: 20px;
-  }
+    .nav-links {
+        gap: 20px;
+    }
 
-  .nav-link {
-    font-size: 12px;
-  }
+    .nav-links a {
+        font-size: 13px;
+    }
 
-  .hero {
-    padding-top: 62px;
-  }
+    .hero {
+        padding-top: 100px;
+    }
 
-  .hero-grid {
-    padding-top: 50px;
-    padding-bottom: 70px;
-  }
+    .hero h1 {
+        font-size: clamp(4rem, 18vw, 6rem);
+    }
 
-  .hero h1 {
-    font-size: 22vw;
-  }
+    .hero-description {
+        margin-top: 40px;
+    }
 
-  .hero-description {
-    margin-top: 30px;
+    .statement {
+        padding: 110px 0;
+    }
 
-    font-size: 15px;
-  }
+    .statement h2 {
+        font-size: clamp(3rem, 13vw, 5rem);
+    }
 
-  .hero-links {
-    margin-top: 32px;
-  }
+    .statement-info {
+        margin-top: 60px;
+    }
 
-  .portrait-frame {
-    width: 100%;
+    .work {
+        padding-bottom: 100px;
+    }
 
-    aspect-ratio: 4 / 5;
-  }
+    .work-header {
+        margin-bottom: 55px;
+    }
 
-  .intro,
-  .work,
-  .statement {
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
+    .work-header h2 {
+        font-size: clamp(3.5rem, 15vw, 6rem);
+    }
 
-  .intro-title {
-    font-size: 12vw;
-  }
+    .project-image,
+    .project.feature .project-image {
+        aspect-ratio: 4 / 3;
+    }
 
-  .intro-bottom {
-    margin-top: 65px;
-  }
+    .project-name {
+        font-size: 2rem;
+    }
 
-  .work-title {
-    font-size: 15vw;
-  }
+    footer {
+        padding-top: 70px;
+    }
 
-  .projects {
-    row-gap: 70px;
-  }
+    .footer-bottom {
+        margin-top: 70px;
 
-  .project-meta {
-    display: block;
-  }
-
-  .project-description {
-    margin-top: 18px;
-  }
-
-  .statement h2 {
-    font-size: 14vw;
-  }
-
-  .statement-bottom {
-    margin-top: 70px;
-  }
-
-  .footer-inner {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    gap: 22px;
-  }
-
-  .footer-right {
-    width: 100%;
-
-    justify-content: space-between;
-  }
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
-
-/* =========================================================
-   ACCESSIBILITY / REDUCED MOTION
-========================================================= */
-
-:focus-visible {
-  outline: 2px solid var(--black);
-
-  outline-offset: 4px;
-}
+/* =========================
+   MOTION
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
+    html {
+        scroll-behavior: auto;
+    }
 
-    transition: none !important;
-
-    animation: none !important;
-  }
-
-  .project {
-    opacity: 1;
-
-    transform: none;
-  }
+    * {
+        transition: none !important;
+    }
 }
-
 </style>
 </head>
 
-
 <body>
 
+<!-- NAV -->
 
-<!-- ======================================================
-     NAV
-====================================================== -->
+<nav id="nav">
+    <div class="nav-inner">
 
-<header class="nav" id="nav">
+        <a href="#" class="logo">
+            Luca Helgert
+        </a>
 
-  <div class="container nav-inner">
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="https://github.com/lucanicohe" target="_blank" rel="noopener">
+                GitHub
+            </a>
+        </div>
 
-    <a href="#top" class="logo">
-      Luca Helgert
-    </a>
-
-    <nav class="nav-right">
-
-      <a href="#work" class="nav-link">
-        Work
-      </a>
-
-      <a
-        href="https://github.com/lucanicohe"
-        target="_blank"
-        rel="noopener"
-        class="nav-link"
-      >
-        GitHub
-      </a>
-
-    </nav>
-
-  </div>
-
-</header>
+    </div>
+</nav>
 
 
-<main id="top">
+<main>
 
-
-<!-- ======================================================
-     HERO
-====================================================== -->
+<!-- HERO -->
 
 <section class="hero">
 
-  <div class="hero-grid">
+    <div class="hero-content">
 
+        <div class="eyebrow">
+            Game Programmer / Technical Artist
+        </div>
 
-    <div class="hero-copy">
+        <h1>
+            Luca<br>
+            Helgert
+        </h1>
 
-      <div class="hero-kicker">
-        Game Programmer · Technical Artist
-      </div>
+        <p class="hero-description">
+            I build games from concept to playable experience,
+            combining programming, 3D art, systems design,
+            and procedural technology.
+        </p>
 
+        <div class="hero-actions">
 
-      <h1>
-        Luca<br>
-        Helgert
-      </h1>
+            <a href="#work">
+                View selected work
+            </a>
 
+            <a href="https://github.com/lucanicohe"
+               target="_blank"
+               rel="noopener">
+                GitHub
+            </a>
 
-      <p class="hero-description">
-        I build games from systems to worlds —
-        combining programming, technical art,
-        and interactive design.
-      </p>
-
-
-      <p class="hero-description-jp jp">
-        ゲームシステムから世界づくりまで、
-        プログラミング、テクニカルアート、
-        インタラクティブデザインを組み合わせて制作しています。
-      </p>
-
-
-      <div class="hero-links">
-
-        <a href="#work" class="hero-link">
-
-          View selected work
-
-          <svg
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-            <path d="M2 8h11"/>
-            <path d="M9 4l4 4-4 4"/>
-          </svg>
-
-        </a>
-
-
-        <a
-          href="https://github.com/lucanicohe"
-          target="_blank"
-          rel="noopener"
-          class="hero-link"
-        >
-
-          GitHub
-
-          <svg
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-            <path d="M4 12L12 4"/>
-            <path d="M6 4h6v6"/>
-          </svg>
-
-        </a>
-
-      </div>
+        </div>
 
     </div>
 
 
-    <div class="hero-visual">
-
-      <div class="portrait-frame">
+    <div class="hero-image">
 
         <img
-          src="profile.jpg"
-          alt="Luca Helgert"
+            src="profile.jpg"
+            alt="Luca Helgert"
         >
 
-        <div class="portrait-label">
-          Tokyo · Japan
-        </div>
-
-      </div>
-
     </div>
-
-
-  </div>
 
 </section>
 
 
-<!-- ======================================================
-     INTRODUCTION
-====================================================== -->
-
-<section class="intro">
-
-  <div class="container">
-
-
-    <div class="intro-grid">
-
-      <div class="section-label">
-        Profile
-      </div>
-
-
-      <h2 class="intro-title">
-        Code, art and design
-        <span>working as one.</span>
-      </h2>
-
-    </div>
-
-
-    <div class="intro-bottom">
-
-
-      <div>
-
-        <p class="intro-text">
-          I am a game development student in Tokyo
-          focused on building complete interactive
-          experiences independently — from gameplay
-          programming and tools to environments and
-          visual presentation.
-        </p>
-
-        <p class="intro-text-jp jp">
-          東京でゲーム開発を学びながら、
-          ゲームプログラミング、ツール制作、
-          環境アート、ビジュアル表現まで、
-          一つの作品を総合的に制作しています。
-        </p>
-
-      </div>
-
-
-      <div class="skills">
-
-        <div class="skill">
-          Unity
-        </div>
-
-        <div class="skill">
-          Unreal Engine
-        </div>
-
-        <div class="skill">
-          C#
-        </div>
-
-        <div class="skill">
-          C++
-        </div>
-
-        <div class="skill">
-          Blender
-        </div>
-
-        <div class="skill">
-          World Machine
-        </div>
-
-        <div class="skill">
-          Gameplay Systems
-        </div>
-
-        <div class="skill">
-          Technical Art
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     WORK
-====================================================== -->
-
-<section class="work" id="work">
-
-  <div class="container">
-
-
-    <header class="work-header">
-
-      <div>
-
-        <div class="section-label">
-          Portfolio
-        </div>
-
-        <h2 class="work-title">
-          Selected work
-        </h2>
-
-      </div>
-
-      <div class="work-count">
-        08 PROJECTS
-      </div>
-
-    </header>
-
-
-    <div class="projects">
-
-
-      <!-- PROJECT 01 -->
-
-      <article class="project">
-
-        <div class="project-image">
-
-          <div class="project-art art-1">
-
-            <span class="project-number">
-              01 / 08
-            </span>
-
-            <span class="project-word">
-              BONGO
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-meta">
-
-          <div>
-
-            <h3 class="project-name">
-              Bongo 3D
-            </h3>
-
-            <p class="project-jp jp">
-              ボンゴ3D
-            </p>
-
-          </div>
-
-          <p class="project-description">
-            A 3D clicker game built around
-            the Bongo Cat internet meme.
-          </p>
-
-        </div>
-
-
-        <div class="project-footer">
-
-          <span class="project-type">
-            3D · Unity
-          </span>
-
-          <a
-            href="https://lucanicohe.github.io/bongo3d/"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-          >
-
-            Play project
-
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <path d="M2 8h11"/>
-              <path d="M9 4l4 4-4 4"/>
-            </svg>
-
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 02 -->
-
-      <article class="project">
-
-        <div class="project-image">
-
-          <div class="project-art art-2">
-
-            <span class="project-number">
-              02 / 08
-            </span>
-
-            <span class="project-word">
-              ALIEN
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-meta">
-
-          <div>
-
-            <h3 class="project-name">
-              Alien Catchball
-            </h3>
-
-            <p class="project-jp jp">
-              エイリアン・キャッチボール
-            </p>
-
-          </div>
-
-          <p class="project-description">
-            A target-based throwing game where
-            timing and accuracy determine the outcome.
-          </p>
-
-        </div>
-
-
-        <div class="project-footer">
-
-          <span class="project-type">
-            Gameplay · Unity
-          </span>
-
-          <a
-            href="https://lucanicohe.github.io/aliensandstuff/index.html"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-          >
-
-            Play project
-
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <path d="M2 8h11"/>
-              <path d="M9 4l4 4-4 4"/>
-            </svg>
-
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 03 -->
-
-      <article class="project">
-
-        <div class="project-image">
-
-          <div class="project-art art-3">
-
-            <span class="project-number">
-              03 / 08
-            </span>
-
-            <span class="project-word">
-              KAMIZUMO
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-meta">
-
-          <div>
-
-            <h3 class="project-name">
-              Kamizumo
-            </h3>
-
-            <p class="project-jp jp">
-              紙相撲
-            </p>
-
-          </div>
-
-          <p class="project-description">
-            A traditional Japanese tabletop game
-            rebuilt as a fully three-dimensional experience.
-          </p>
-
-        </div>
-
-
-        <div class="project-footer">
-
-          <span class="project-type">
-            3D · Unity
-          </span>
-
-          <a
-            href="https://lucanicohe.github.io/kamizumo/"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-          >
-
-            Play project
-
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <path d="M2 8h11"/>
-              <path d="M9 4l4 4-4 4"/>
-            </svg>
-
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 04 -->
-
-      <article class="project">
-
-        <div class="project-image">
-
-          <div class="project-art art-4">
-
-            <span class="project-number">
-              04 / 08
-            </span>
-
-            <span class="project-word">
-              TRAIN
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-meta">
-
-          <div>
-
-            <h3 class="project-name">
-              Only Bad Guys on the Train
-            </h3>
-
-            <p class="project-jp jp">
-              電車の悪者だけ
-            </p>
-
-          </div>
-
-          <p class="project-description">
-            A first-person shooter set entirely
-            aboard a moving train.
-          </p>
-
-        </div>
-
-
-        <div class="project-footer">
-
-          <span class="project-type">
-            FPS · Unity
-          </span>
-
-          <a
-            href="https://lucanicohe.github.io/onlybadguysonthetrain/"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-          >
-
-            Play project
-
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <path d="M2 8h11"/>
-              <path d="M9 4l4 4-4 4"/>
-            </svg>
-
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 05 -->
-
-      <article class="project">
-
-        <div class="project-image">
-
-          <div class="project-art art-5">
-
-            <span class="project-number">
-              05 / 08
-            </span>
-
-            <span class="project-word">
-              BOW
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-meta">
-
-          <div>
-
-            <h3 class="project-name">
-              Bow &amp; Bones
-            </h3>
-
-            <p class="project-jp jp">
-              弓と骨
-            </p>
-
-          </div>
-
-          <p class="project-description">
-            A hand-drawn archery game against
-            a series of skeletal enemies.
-          </p>
-
-        </div>
-
-
-        <div class="project-footer">
-
-          <span class="project-type">
-            Action · Unity
-          </span>
-
-          <a
-            href="https://lucanicohe.github.io/shootinggame/"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-          >
-
-            Play project
-
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <path d="M2 8h11"/>
-              <path d="M9 4l4 4-4 4"/>
-            </svg>
-
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 06 -->
-
-      <article class="project">
-
-        <div class="project-image">
-
-          <div class="project-art art-6">
-
-            <span class="project-number">
-              06 / 08
-            </span>
-
-            <span class="project-word">
-              MAZE
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-meta">
-
-          <div>
-
-            <h3 class="project-name">
-              Small Maze Game
-            </h3>
-
-            <p class="project-jp jp">
-              小さな迷路ゲーム
-            </p>
-
-          </div>
-
-          <p class="project-description">
-            A procedural maze generated
-            each time the game is opened.
-          </p>
-
-        </div>
-
-
-        <div class="project-footer">
-
-          <span class="project-type">
-            Procedural · Unity
-          </span>
-
-          <a
-            href="https://lucanicohe.github.io/smallmazegame/index.html"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-          >
-
-            Play project
-
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <path d="M2 8h11"/>
-              <path d="M9 4l4 4-4 4"/>
-            </svg>
-
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 07 -->
-
-      <article class="project">
-
-        <div class="project-image">
-
-          <div class="project-art art-7">
-
-            <span class="project-number">
-              07 / 08
-            </span>
-
-            <span class="project-word">
-              ZERO G
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-meta">
-
-          <div>
-
-            <h3 class="project-name">
-              Zero Gravity Bowling
-            </h3>
-
-            <p class="project-jp jp">
-              無重力ボウリング
-            </p>
-
-          </div>
-
-          <p class="project-description">
-            A bowling game designed around
-            movement and physics in zero gravity.
-          </p>
-
-        </div>
-
-
-        <div class="project-footer">
-
-          <span class="project-type">
-            Physics · Unity
-          </span>
-
-          <a
-            href="https://lucanicohe.github.io/zerogravitybowling/"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-          >
-
-            Play project
-
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <path d="M2 8h11"/>
-              <path d="M9 4l4 4-4 4"/>
-            </svg>
-
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 08 -->
-
-      <article class="project">
-
-        <div class="project-image">
-
-          <div class="project-art art-8">
-
-            <span class="project-number">
-              08 / 08
-            </span>
-
-            <span class="project-word">
-              LAVA
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-meta">
-
-          <div>
-
-            <h3 class="project-name">
-              The Floor Is Lava
-            </h3>
-
-            <p class="project-jp jp">
-              床は溶岩
-            </p>
-
-          </div>
-
-          <p class="project-description">
-            A movement-based game set inside
-            a flooded classroom.
-          </p>
-
-        </div>
-
-
-        <div class="project-footer">
-
-          <span class="project-type">
-            Movement · Unity
-          </span>
-
-          <a
-            href="https://lucanicohe.github.io/thefloorislava/"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-          >
-
-            Play project
-
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <path d="M2 8h11"/>
-              <path d="M9 4l4 4-4 4"/>
-            </svg>
-
-          </a>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     STATEMENT
-====================================================== -->
+<!-- STATEMENT -->
 
 <section class="statement">
 
-  <div class="container">
+    <h2>
+        Code meets art.
+        <span>Games bring them together.</span>
+    </h2>
 
-    <div class="statement-grid">
+    <div class="statement-info">
 
-      <div class="section-label statement-label">
-        Approach
-      </div>
+        <p class="statement-text">
+            I am a game development student in Tokyo focused on
+            gameplay programming, technical art, environment
+            creation, and interactive experiences.
+            My projects are built independently from the first
+            idea through development and final playable build.
+        </p>
 
-      <h2>
-        Building things
-        <span>worth playing.</span>
-      </h2>
+        <div class="skills">
 
-    </div>
+            <div>Unity</div>
+            <div>Unreal Engine</div>
 
+            <div>C#</div>
+            <div>C++</div>
 
-    <div class="statement-bottom">
+            <div>Blender</div>
+            <div>World Machine</div>
 
-      <p class="statement-copy">
-        I am interested in the intersection between
-        technology and visual design — creating systems
-        that feel responsive, environments that feel
-        intentional, and games that are memorable.
-      </p>
+            <div>Gameplay Systems</div>
+            <div>Technical Art</div>
 
-
-      <a
-        href="https://github.com/lucanicohe"
-        target="_blank"
-        rel="noopener"
-        class="contact-link"
-      >
-
-        Explore GitHub
-
-        <svg
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-        >
-          <path d="M2 8h11"/>
-          <path d="M9 4l4 4-4 4"/>
-        </svg>
-
-      </a>
+        </div>
 
     </div>
-
-  </div>
 
 </section>
 
+
+<!-- WORK -->
+
+<section class="work" id="work">
+
+    <div class="work-header">
+
+        <h2>
+            Selected work
+        </h2>
+
+        <span>
+            08 projects
+        </span>
+
+    </div>
+
+
+    <!-- PROJECT 01 -->
+
+    <article class="project feature">
+
+        <div class="project-image">
+
+            <img
+                src="bongo3d.jpg"
+                alt="Bongo 3D"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="project-info">
+
+            <div>
+
+                <h3 class="project-name">
+                    Bongo 3D
+                </h3>
+
+                <div class="project-type">
+                    Unity / C#
+                </div>
+
+            </div>
+
+            <div>
+
+                <p class="project-description">
+                    A 3D clicker game built around the Bongo Cat
+                    internet meme, combining interactive gameplay
+                    with a playful 3D environment.
+                </p>
+
+                <a
+                    class="project-link"
+                    href="https://lucanicohe.github.io/bongo3d/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Play project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- PROJECT 02 -->
+
+    <article class="project">
+
+        <div class="project-image">
+
+            <img
+                src="aliencatchball.jpg"
+                alt="Alien Catchball"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="project-info">
+
+            <div>
+
+                <h3 class="project-name">
+                    Alien Catchball
+                </h3>
+
+                <div class="project-type">
+                    Unity / Gameplay
+                </div>
+
+            </div>
+
+            <div>
+
+                <p class="project-description">
+                    A timing and accuracy based throwing game
+                    where the player must hit moving targets
+                    and control every shot.
+                </p>
+
+                <a
+                    class="project-link"
+                    href="https://lucanicohe.github.io/aliensandstuff/index.html"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Play project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- PROJECT 03 -->
+
+    <article class="project">
+
+        <div class="project-image">
+
+            <img
+                src="kamizumo.jpg"
+                alt="Kamizumo"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="project-info">
+
+            <div>
+
+                <h3 class="project-name">
+                    Kamizumo
+                </h3>
+
+                <div class="project-type">
+                    Unity / Physics / 3D
+                </div>
+
+            </div>
+
+            <div>
+
+                <p class="project-description">
+                    A modern 3D interpretation of the traditional
+                    Japanese tabletop game paper sumo.
+                </p>
+
+                <a
+                    class="project-link"
+                    href="https://lucanicohe.github.io/kamizumo/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Play project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- PROJECT 04 -->
+
+    <article class="project">
+
+        <div class="project-image">
+
+            <img
+                src="train.jpg"
+                alt="Only Bad Guys on the Train"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="project-info">
+
+            <div>
+
+                <h3 class="project-name">
+                    Only Bad Guys on the Train
+                </h3>
+
+                <div class="project-type">
+                    Unity / FPS
+                </div>
+
+            </div>
+
+            <div>
+
+                <p class="project-description">
+                    A first-person shooter taking place entirely
+                    inside a moving train.
+                </p>
+
+                <a
+                    class="project-link"
+                    href="https://lucanicohe.github.io/onlybadguysonthetrain/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Play project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- PROJECT 05 -->
+
+    <article class="project">
+
+        <div class="project-image">
+
+            <img
+                src="bowbones.jpg"
+                alt="Bow and Bones"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="project-info">
+
+            <div>
+
+                <h3 class="project-name">
+                    Bow &amp; Bones
+                </h3>
+
+                <div class="project-type">
+                    Unity / 2D / Gameplay
+                </div>
+
+            </div>
+
+            <div>
+
+                <p class="project-description">
+                    A hand-drawn archery game where the player
+                    fights a series of skeletal enemies.
+                </p>
+
+                <a
+                    class="project-link"
+                    href="https://lucanicohe.github.io/shootinggame/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Play project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- PROJECT 06 -->
+
+    <article class="project">
+
+        <div class="project-image">
+
+            <img
+                src="maze.jpg"
+                alt="Small Maze Game"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="project-info">
+
+            <div>
+
+                <h3 class="project-name">
+                    Small Maze Game
+                </h3>
+
+                <div class="project-type">
+                    Unity / Procedural Generation
+                </div>
+
+            </div>
+
+            <div>
+
+                <p class="project-description">
+                    A procedural maze that generates a new layout
+                    every time the game is launched.
+                </p>
+
+                <a
+                    class="project-link"
+                    href="https://lucanicohe.github.io/smallmazegame/index.html"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Play project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- PROJECT 07 -->
+
+    <article class="project">
+
+        <div class="project-image">
+
+            <img
+                src="bowling.jpg"
+                alt="Zero Gravity Bowling"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="project-info">
+
+            <div>
+
+                <h3 class="project-name">
+                    Zero Gravity Bowling
+                </h3>
+
+                <div class="project-type">
+                    Unity / Physics
+                </div>
+
+            </div>
+
+            <div>
+
+                <p class="project-description">
+                    A bowling game where conventional physics
+                    disappear inside a zero gravity environment.
+                </p>
+
+                <a
+                    class="project-link"
+                    href="https://lucanicohe.github.io/zerogravitybowling/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Play project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- PROJECT 08 -->
+
+    <article class="project">
+
+        <div class="project-image">
+
+            <img
+                src="lava.jpg"
+                alt="The Floor Is Lava"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="project-info">
+
+            <div>
+
+                <h3 class="project-name">
+                    The Floor Is Lava
+                </h3>
+
+                <div class="project-type">
+                    Unity / Movement
+                </div>
+
+            </div>
+
+            <div>
+
+                <p class="project-description">
+                    A movement-focused game set inside a flooded
+                    classroom, built around the classic floor-is-lava
+                    challenge.
+                </p>
+
+                <a
+                    class="project-link"
+                    href="https://lucanicohe.github.io/thefloorislava/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Play project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
 
 </main>
 
 
-<!-- ======================================================
-     FOOTER
-====================================================== -->
+<!-- FOOTER -->
 
 <footer>
 
-  <div class="container footer-inner">
+    <div class="footer-top">
 
-    <div class="footer-name">
-      Luca Helgert
-    </div>
+        <h2 class="footer-name">
+            Luca Helgert
+        </h2>
 
+        <div class="footer-right">
 
-    <div class="footer-right">
+            <a href="https://github.com/lucanicohe"
+               target="_blank"
+               rel="noopener">
+                GitHub →
+            </a>
 
-      <a
-        href="https://github.com/lucanicohe"
-        target="_blank"
-        rel="noopener"
-        class="footer-link"
-      >
-        GitHub
-      </a>
+            <div class="footer-role">
+                Game Programmer / Technical Artist
+            </div>
 
-      <span class="footer-copy">
-        © 2026
-      </span>
+        </div>
 
     </div>
 
-  </div>
+    <div class="footer-bottom">
+
+        <span>
+            Tokyo, Japan
+        </span>
+
+        <span>
+            © 2026 Luca Helgert
+        </span>
+
+    </div>
 
 </footer>
 
 
 <script>
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
 const nav = document.getElementById("nav");
 
-function updateNavigation() {
+window.addEventListener("scroll", () => {
 
-  nav.classList.toggle(
-    "scrolled",
-    window.scrollY > 20
-  );
-
-}
-
-window.addEventListener(
-  "scroll",
-  updateNavigation,
-  { passive: true }
-);
-
-updateNavigation();
-
-
-/* =========================================================
-   PROJECT REVEALS
-========================================================= */
-
-const projects =
-  document.querySelectorAll(".project");
-
-const observer =
-  new IntersectionObserver(
-    entries => {
-
-      entries.forEach(entry => {
-
-        if (!entry.isIntersecting) {
-          return;
-        }
-
-        entry.target.classList.add("visible");
-
-        observer.unobserve(entry.target);
-
-      });
-
-    },
-    {
-      threshold: .12
+    if (window.scrollY > 20) {
+        nav.classList.add("scrolled");
+    } else {
+        nav.classList.remove("scrolled");
     }
-  );
 
-
-projects.forEach(project => {
-
-  observer.observe(project);
-
-});
+}, { passive: true });
 
 </script>
 
