@@ -5,21 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luca Helgert — Game Programmer</title>
 <meta name="description" content="Luca Helgert. Game programmer and technical artist. Unity, Unreal Engine, Blender, C#, C++, World Machine.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230B0C0D%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%23C9A227%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>L</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230A0A0B%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%23C9A227%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>L</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0B0C0D;
-    --bg-2:#141517;
-    --line: rgba(245,243,238,0.12);
-    --line-strong: rgba(245,243,238,0.22);
-    --ink:#F2EFE7;
-    --muted:#9A968D;
-    --steel:#7C93A3;
+    --bg:#0A0A0B;
+    --bg-soft:#111214;
+    --ink:#F5F4F1;
+    --muted:#96938B;
+    --muted-2:#605E58;
+    --line: rgba(245,244,241,0.08);
     --gold:#C9A227;
-    --maxw: 1240px;
   }
 
   *{ box-sizing:border-box; }
@@ -29,246 +27,273 @@
     margin:0;
     background:var(--bg);
     color:var(--ink);
-    font-family:'Zen Kaku Gothic New', sans-serif;
-    line-height:1.65;
+    font-family:'Inter','Noto Sans JP', sans-serif;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    font-weight:400;
   }
 
   ::selection{ background:var(--gold); color:var(--bg); }
   a{ color:inherit; }
+  img{ max-width:100%; display:block; }
 
-  .display{ font-family:'Space Grotesk', sans-serif; }
+  .jp{ font-family:'Noto Sans JP','Inter', sans-serif; }
 
   .eyebrow{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:0.72rem;
+    font-size:0.7rem;
     font-weight:500;
-    letter-spacing:0.32em;
-    text-transform:uppercase;
-    color:var(--muted);
-  }
-
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 40px; }
-  section{ position:relative; }
-
-  /* ---------------- nav ---------------- */
-  header.topnav{
-    position:sticky; top:0; z-index:30;
-    background:rgba(11,12,13,0.82);
-    backdrop-filter: blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .topnav .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:76px;
-  }
-  .brand{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    font-size:0.95rem;
-    letter-spacing:0.14em;
-    text-decoration:none;
-  }
-  .navlinks{ display:flex; align-items:center; gap:40px; }
-  .navlinks a{
-    text-decoration:none; color:var(--muted);
-    font-family:'Space Grotesk', sans-serif;
-    font-size:0.72rem;
-    font-weight:500;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    transition:color .25s;
-  }
-  .navlinks a:hover, .navlinks a:focus-visible{ color:var(--ink); }
-
-  /* ---------------- hero ---------------- */
-  .hero{ border-bottom:1px solid var(--line); }
-  .hero-grid{
-    display:grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    min-height:88vh;
-    align-items:stretch;
-  }
-  .hero-copy{
-    display:flex; flex-direction:column; justify-content:center;
-    padding:60px 5vw 60px 40px;
-  }
-  .hero-copy .eyebrow{ margin-bottom:26px; }
-  .hero h1{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size:clamp(3rem, 6.4vw, 6.4rem);
-    line-height:0.98;
-    letter-spacing:-0.02em;
-    text-transform:uppercase;
-    margin:0 0 6px;
-  }
-  .name-jp{
-    font-size:1rem;
-    letter-spacing:0.08em;
-    color:var(--steel);
-    margin:0 0 40px;
-    font-weight:500;
-  }
-  .role{ font-size:1.05rem; font-weight:700; margin:0 0 4px; }
-  .role-jp{ color:var(--muted); font-size:0.92rem; margin:0 0 26px; }
-  .lede{ max-width:46ch; color:var(--muted); font-size:0.98rem; margin:0 0 4px; }
-  .lede-jp{ max-width:50ch; color:var(--muted); opacity:0.75; font-size:0.86rem; margin:0 0 40px; }
-
-  .specs{
-    display:flex; flex-wrap:wrap;
-    border-top:1px solid var(--line);
-    padding-top:22px;
-  }
-  .specs span{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:0.72rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--ink);
-    padding:4px 20px 4px 0;
-    margin-right:20px;
-    border-right:1px solid var(--line);
-  }
-  .specs span:last-child{ border-right:none; }
-
-  .hero-media{ position:relative; overflow:hidden; background:var(--bg-2); }
-  .hero-media img{
-    width:100%; height:100%;
-    object-fit:cover;
-    object-position:center 18%;
-    filter: grayscale(0.55) contrast(1.06) brightness(0.92);
-    display:block;
-  }
-  .hero-media::after{
-    content:'';
-    position:absolute; inset:0;
-    background: linear-gradient(90deg, rgba(11,12,13,0.9) 0%, rgba(11,12,13,0.0) 22%),
-                linear-gradient(0deg, rgba(11,12,13,0.55) 0%, rgba(11,12,13,0) 40%);
-  }
-  .hero-media .tag{
-    position:absolute; left:24px; bottom:24px; z-index:2;
-    font-family:'Space Grotesk', sans-serif;
-    font-size:0.68rem;
     letter-spacing:0.24em;
     text-transform:uppercase;
     color:var(--muted);
   }
 
-  /* ---------------- section head ---------------- */
-  .section-head{
-    display:flex; align-items:flex-end; justify-content:space-between;
-    flex-wrap:wrap; gap:16px;
-    padding:80px 0 36px;
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+
+  /* ---------------- nav ---------------- */
+  header.topnav{
+    position:fixed; top:0; left:0; right:0; z-index:40;
+    background:transparent;
+    transition: background .4s ease, border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.topnav.scrolled{
+    background:rgba(10,10,11,0.78);
+    backdrop-filter: blur(14px);
     border-bottom:1px solid var(--line);
   }
-  .section-head h2{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:-0.01em;
-    font-size:clamp(1.7rem,3vw,2.5rem);
-    margin:10px 0 0;
+  .topnav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
   }
-  .section-head .count{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:0.75rem;
-    letter-spacing:0.18em;
-    color:var(--muted);
-    text-transform:uppercase;
-  }
-
-  /* ---------------- games grid ---------------- */
-  .games{ padding-bottom:110px; }
-  .grid{ display:grid; grid-template-columns:repeat(3, 1fr); }
-  .grid .cart{ border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .grid .cart:nth-child(3n){ border-right:none; }
-
-  .cart{
-    padding:38px 34px 34px;
-    display:flex; flex-direction:column; gap:16px;
-    opacity:0; transform:translateY(14px);
-    transition: transform .5s ease, opacity .5s ease, background .25s ease;
-  }
-  .cart.in{ opacity:1; transform:translateY(0); }
-  .cart:hover{ background:var(--bg-2); }
-
-  .cart-icon{ width:44px; height:44px; color:var(--steel); transition: color .25s ease; }
-  .cart:hover .cart-icon{ color:var(--gold); }
-  .cart-icon svg{ width:100%; height:100%; stroke:currentColor; fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
-
-  .cart-index{ font-family:'Space Grotesk', sans-serif; font-size:0.7rem; color:var(--muted); letter-spacing:0.1em; }
-
-  .cart h3{
-    font-family:'Space Grotesk', sans-serif;
+  .brand{
     font-weight:600;
-    text-transform:uppercase;
+    font-size:0.92rem;
     letter-spacing:0.01em;
-    font-size:1.02rem;
+    text-decoration:none;
+  }
+  .navlinks{ display:flex; align-items:center; gap:34px; }
+  .navlinks a{
+    text-decoration:none; color:var(--muted);
+    font-size:0.82rem;
+    font-weight:400;
+    transition:color .25s;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{ color:var(--ink); }
+
+  /* ---------------- hero ---------------- */
+  .hero{
+    position:relative;
+    height:100svh;
+    min-height:560px;
+    overflow:hidden;
+    background:var(--bg);
+  }
+  .hero-media{
+    position:absolute; inset:0;
+    will-change: transform;
+  }
+  .hero-media img{
+    width:100%; height:100%; object-fit:cover;
+    object-position:center 22%;
+    filter: saturate(1.02) contrast(1.02) brightness(0.97);
+  }
+  .hero-media::after{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      linear-gradient(0deg, rgba(10,10,11,0.95) 0%, rgba(10,10,11,0.35) 32%, rgba(10,10,11,0) 55%),
+      linear-gradient(180deg, rgba(10,10,11,0.35) 0%, rgba(10,10,11,0) 22%);
+  }
+  .hero-copy{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    padding:0 32px 64px;
+  }
+  .hero-copy .inner{ max-width:1160px; margin:0 auto; }
+  .hero-copy .eyebrow{
+    opacity:0; transform:translateY(14px);
+    animation: reveal .9s ease .15s forwards;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-weight:600;
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    line-height:1.02;
+    letter-spacing:-0.015em;
+    margin:0 0 14px;
+    opacity:0; transform:translateY(18px);
+    animation: reveal 1s ease .3s forwards;
+  }
+  .hero .role-line{
+    font-size:clamp(0.98rem,1.6vw,1.15rem);
+    color:var(--muted);
+    font-weight:400;
+    max-width:44ch;
+    margin:0 0 6px;
+    opacity:0; transform:translateY(16px);
+    animation: reveal 1s ease .48s forwards;
+  }
+  .hero .role-line-jp{
+    font-size:0.86rem;
+    color:var(--muted-2);
+    max-width:46ch;
+    margin:0;
+    opacity:0; transform:translateY(16px);
+    animation: reveal 1s ease .6s forwards;
+  }
+  @keyframes reveal{ to{ opacity:1; transform:translateY(0); } }
+
+  .scroll-cue{
+    position:absolute; left:50%; bottom:26px; transform:translateX(-50%);
+    z-index:2;
+    opacity:0.6;
+    animation: bob 2.2s ease-in-out infinite;
+  }
+  .scroll-cue svg{ width:18px; height:18px; stroke:var(--ink); fill:none; stroke-width:1.4; }
+  @keyframes bob{ 0%,100%{ transform:translateX(-50%) translateY(0);} 50%{ transform:translateX(-50%) translateY(7px);} }
+
+  /* ---------------- about ---------------- */
+  .about{
+    background:var(--bg-soft);
+    padding:150px 0 140px;
+    text-align:center;
+  }
+  .about .eyebrow{ display:block; margin-bottom:22px; }
+  .about h2{
+    font-weight:500;
+    font-size:clamp(1.7rem, 3.4vw, 2.6rem);
+    line-height:1.3;
+    letter-spacing:-0.01em;
+    max-width:18ch;
+    margin:0 auto 26px;
+  }
+  .about p.sub{
+    color:var(--muted);
+    max-width:52ch;
+    margin:0 auto 6px;
+    font-size:1rem;
+  }
+  .about p.sub-jp{
+    color:var(--muted-2);
+    max-width:52ch;
+    margin:0 auto 56px;
+    font-size:0.86rem;
+  }
+  .toolline{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:10px 0;
+    color:var(--muted);
+    font-size:0.82rem;
+    letter-spacing:0.02em;
+  }
+  .toolline span{ padding:0 16px; }
+  .toolline span:not(:last-child){ border-right:1px solid var(--line); }
+
+  /* ---------------- work ---------------- */
+  .work{ padding:150px 0 170px; }
+  .work-head{ text-align:center; margin-bottom:88px; }
+  .work-head .eyebrow{ display:block; margin-bottom:20px; }
+  .work-head h2{
+    font-weight:500;
+    font-size:clamp(2rem, 4vw, 3rem);
+    letter-spacing:-0.01em;
     margin:0;
   }
-  .cart .jp-title{ font-size:0.82rem; color:var(--steel); font-weight:500; margin:-8px 0 0; }
-  .cart p.blurb{ font-size:0.9rem; color:var(--muted); margin:0; }
-  .cart p.blurb-jp{ font-size:0.8rem; color:var(--muted); opacity:0.7; margin:-10px 0 0; }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:72px 48px;
+  }
+
+  .cart{
+    opacity:0; transform:translateY(28px);
+    transition: transform .7s cubic-bezier(.16,.8,.24,1), opacity .7s ease;
+  }
+  .cart.in{ opacity:1; transform:translateY(0); }
+
+  .poster{
+    position:relative;
+    aspect-ratio: 5 / 4;
+    border-radius:18px;
+    overflow:hidden;
+    margin-bottom:26px;
+    transition: transform .5s cubic-bezier(.16,.8,.24,1);
+  }
+  .cart:hover .poster{ transform:translateY(-6px); }
+  .poster svg{ position:absolute; inset:0; width:100%; height:100%; }
+
+  .cart h3{
+    font-weight:600;
+    font-size:1.2rem;
+    letter-spacing:-0.005em;
+    margin:0 0 2px;
+  }
+  .cart .jp-title{
+    font-size:0.82rem;
+    color:var(--muted-2);
+    margin:0 0 12px;
+  }
+  .cart p.blurb{
+    font-size:0.94rem;
+    color:var(--muted);
+    margin:0 0 4px;
+    max-width:44ch;
+  }
+  .cart p.blurb-jp{
+    font-size:0.8rem;
+    color:var(--muted-2);
+    margin:0 0 16px;
+    max-width:44ch;
+  }
 
   .play-link{
-    margin-top:auto;
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'Space Grotesk', sans-serif;
-    font-size:0.74rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:7px;
     text-decoration:none;
     color:var(--ink);
-    padding-top:16px;
-    border-top:1px solid var(--line);
-    transition: color .2s ease, gap .2s ease;
+    font-size:0.88rem;
+    font-weight:500;
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+    transition: color .2s ease, border-color .2s ease, gap .2s ease;
   }
-  .play-link svg{ width:13px; height:13px; transition:transform .2s ease; }
-  .play-link:hover, .play-link:focus-visible{ color:var(--gold); gap:12px; }
+  .play-link svg{ width:12px; height:12px; transition:transform .2s ease; }
+  .play-link:hover, .play-link:focus-visible{ color:var(--gold); border-color:var(--gold); gap:11px; }
   .play-link:hover svg{ transform:translateX(2px); }
 
   /* ---------------- footer ---------------- */
-  footer{ border-top:1px solid var(--line); padding:50px 0 44px; }
-  footer .wrap{ display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; }
-  footer .made{ font-family:'Space Grotesk', sans-serif; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); }
-  footer .made .jp{ display:block; color:var(--muted); font-size:0.78rem; font-family:'Zen Kaku Gothic New'; letter-spacing:0.02em; text-transform:none; margin-top:6px; }
+  footer{
+    border-top:1px solid var(--line);
+    padding:56px 0 60px;
+    text-align:center;
+  }
+  footer .made{ font-weight:500; font-size:0.92rem; margin-bottom:6px; }
+  footer .made-jp{ color:var(--muted); font-size:0.82rem; margin-bottom:26px; }
   footer .gh{
-    display:flex; align-items:center; gap:9px;
+    display:inline-block;
     text-decoration:none;
-    font-family:'Space Grotesk', sans-serif;
-    font-size:0.74rem;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
     color:var(--muted);
-    border:1px solid var(--line-strong);
-    padding:11px 18px;
-    transition:border-color .2s, color .2s;
+    font-size:0.84rem;
+    border-bottom:1px solid transparent;
+    transition:color .2s, border-color .2s;
   }
   footer .gh:hover, footer .gh:focus-visible{ color:var(--gold); border-color:var(--gold); }
-  footer .gh svg{ width:15px; height:15px; fill:currentColor; }
-  footer small{ display:block; color:var(--muted); opacity:0.55; margin-top:26px; font-size:0.72rem; letter-spacing:0.04em; }
+  footer small{ display:block; color:var(--muted-2); margin-top:30px; font-size:0.72rem; }
 
   /* ---------------- responsive ---------------- */
-  @media (max-width: 980px){
-    .hero-grid{ grid-template-columns:1fr; min-height:auto; }
-    .hero-media{ height:52vh; order:-1; }
-    .hero-copy{ padding:56px 24px; }
-    .grid{ grid-template-columns:repeat(2,1fr); }
-    .grid .cart:nth-child(3n){ border-right:1px solid var(--line); }
-    .grid .cart:nth-child(2n){ border-right:none; }
-    .wrap{ padding:0 24px; }
+  @media (max-width: 860px){
+    .grid{ grid-template-columns:1fr; gap:56px; }
+    .about{ padding:110px 0 100px; }
+    .work{ padding:110px 0 120px; }
   }
-  @media (max-width:560px){
-    .navlinks{ gap:22px; }
-    .grid{ grid-template-columns:1fr; }
-    .grid .cart{ border-right:none !important; }
-    .specs span{ padding-right:14px; margin-right:14px; }
+  @media (max-width:520px){
+    .wrap{ padding:0 22px; }
+    .hero-copy{ padding:0 22px 48px; }
+    .navlinks{ gap:18px; }
   }
 
   @media (prefers-reduced-motion: reduce){
-    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
-    html{ scroll-behavior:auto; }
+    *{ animation:none !important; transition:none !important; }
+    .hero-copy .eyebrow, .hero h1, .hero .role-line, .hero .role-line-jp{ opacity:1; transform:none; }
+    .cart{ opacity:1; transform:none; }
   }
 
   :focus-visible{ outline:1px solid var(--gold); outline-offset:3px; }
@@ -276,9 +301,9 @@
 </head>
 <body>
 
-<header class="topnav">
+<header class="topnav" id="topnav">
   <div class="wrap">
-    <a href="#top" class="brand">LUCA HELGERT</a>
+    <a href="#top" class="brand">Luca Helgert</a>
     <nav class="navlinks">
       <a href="#work">Work</a>
       <a href="https://github.com/lucanicohe" target="_blank" rel="noopener">GitHub</a>
@@ -289,124 +314,198 @@
 <main id="top">
 
   <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-copy">
+    <div class="hero-media" id="heroMedia">
+      <img src="profile.jpg" alt="Portrait of Luca Helgert">
+    </div>
+    <div class="hero-copy">
+      <div class="inner">
         <span class="eyebrow">Game Development Portfolio</span>
-        <h1>Luca<br>Helgert</h1>
-        <p class="name-jp">ルカ・ヘルガート</p>
-
-        <p class="role">Game Programmer &amp; Technical Artist</p>
-        <p class="role-jp">ゲームプログラマー / テクニカルアーティスト</p>
-
-        <p class="lede">Eight independent projects built end to end, covering design, programming, and visual production.</p>
-        <p class="lede-jp">企画からコード、アートまで一貫して手がけた、8つの個人開発プロジェクト。</p>
-
-        <div class="specs">
-          <span>Unity</span>
-          <span>Unreal Engine</span>
-          <span>Blender</span>
-          <span>C#</span>
-          <span>C++</span>
-          <span>World Machine</span>
-        </div>
+        <h1>Luca Helgert</h1>
+        <p class="role-line">Game programmer and technical artist working across gameplay systems, environment art, and procedural tools.</p>
+        <p class="role-line-jp jp">ゲームプログラマー / テクニカルアーティスト。ゲームシステム、環境アート、プロシージャル技術を専門としています。</p>
       </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 9l8 8 8-8"/></svg>
+    </div>
+  </section>
 
-      <div class="hero-media">
-        <img src="profile.jpg" alt="Portrait of Luca Helgert">
-        <span class="tag">Luca Helgert, 2026</span>
+  <section class="about">
+    <div class="wrap">
+      <span class="eyebrow jp">プロフィール</span>
+      <h2>Design, code, and art, handled end to end.</h2>
+      <p class="sub">Eight independent projects, each built from concept to finished build without a team.</p>
+      <p class="sub-jp jp">企画からコード、アートまで、一人で作り上げた8つの個人開発プロジェクト。</p>
+      <div class="toolline">
+        <span>Unity</span><span>Unreal Engine</span><span>Blender</span><span>C#</span><span>C++</span><span>World Machine</span>
       </div>
     </div>
   </section>
 
-  <section class="games" id="work">
+  <section class="work" id="work">
     <div class="wrap">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">ゲームライブラリ</span>
-          <h2>Selected Work</h2>
-        </div>
-        <div class="count">08 Projects</div>
+      <div class="work-head">
+        <span class="eyebrow jp">セレクテッド ワーク</span>
+        <h2>Selected work</h2>
       </div>
 
       <div class="grid" id="cartGrid">
 
         <article class="cart">
-          <span class="cart-index">01</span>
-          <div class="cart-icon"><svg viewBox="0 0 64 64"><ellipse cx="20" cy="42" rx="15" ry="10"/><ellipse cx="45" cy="34" rx="16" ry="11"/><path d="M20 32v10M45 23v11"/><path d="M12 20c4-7 12-7 16 0"/></svg></div>
+          <div class="poster">
+            <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8A5A1E"/><stop offset="1" stop-color="#191309"/></linearGradient></defs>
+              <rect width="500" height="400" fill="url(#g1)"/>
+              <g stroke="#F5EEDD" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+                <ellipse cx="185" cy="255" rx="72" ry="48"/>
+                <ellipse cx="330" cy="215" rx="80" ry="54"/>
+                <path d="M185 207v48M330 161v54"/>
+                <path d="M140 150c22-34 60-34 82 0"/>
+              </g>
+            </svg>
+          </div>
           <h3>Bongo 3D</h3>
-          <p class="jp-title">ボンゴ3D</p>
+          <p class="jp-title jp">ボンゴ3D</p>
           <p class="blurb">A 3D clicker game built around the Bongo Cat internet meme.</p>
-          <p class="blurb-jp">ボンゴキャットのミームを題材にした3Dクリッカーゲーム。</p>
+          <p class="blurb-jp jp">ボンゴキャットのミームを題材にした3Dクリッカーゲーム。</p>
           <a class="play-link" href="https://lucanicohe.github.io/bongo3d/" target="_blank" rel="noopener">Play<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </article>
 
         <article class="cart">
-          <span class="cart-index">02</span>
-          <div class="cart-icon"><svg viewBox="0 0 64 64"><circle cx="26" cy="24" r="14"/><ellipse cx="21" cy="22" rx="2.5" ry="4"/><ellipse cx="31" cy="22" rx="2.5" ry="4"/><path d="M26 10V4M20 6l2 4M32 6l-2 4"/><circle cx="50" cy="46" r="6"/><path d="M40 20c6 8 8 18 8 24" stroke-dasharray="4 4"/></svg></div>
+          <div class="poster">
+            <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2C4A5E"/><stop offset="1" stop-color="#0A1116"/></linearGradient></defs>
+              <rect width="500" height="400" fill="url(#g2)"/>
+              <g stroke="#F5EEDD" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+                <circle cx="200" cy="175" r="62"/>
+                <ellipse cx="182" cy="165" rx="9" ry="15"/>
+                <ellipse cx="218" cy="165" rx="9" ry="15"/>
+                <path d="M200 113V95M182 100l10 13M218 100l-10 13"/>
+                <circle cx="345" cy="270" r="26"/>
+                <path d="M260 145c30 34 40 78 40 105" stroke-dasharray="2 14"/>
+              </g>
+            </svg>
+          </div>
           <h3>Alien Catchball</h3>
-          <p class="jp-title">エイリアン・キャッチボール</p>
+          <p class="jp-title jp">エイリアン・キャッチボール</p>
           <p class="blurb">A target based throwing game where timing and accuracy determine the outcome.</p>
-          <p class="blurb-jp">タイミングと正確さが結果を左右する、的当て投球ゲーム。</p>
+          <p class="blurb-jp jp">タイミングと正確さが結果を左右する、的当て投球ゲーム。</p>
           <a class="play-link" href="https://lucanicohe.github.io/aliensandstuff/index.html" target="_blank" rel="noopener">Play<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </article>
 
         <article class="cart">
-          <span class="cart-index">03</span>
-          <div class="cart-icon"><svg viewBox="0 0 64 64"><circle cx="32" cy="34" r="20"/><path d="M22 30l6 10M42 30l-6 10" /><circle cx="22" cy="26" r="3"/><circle cx="42" cy="26" r="3"/><path d="M32 8v8" /></svg></div>
-          <h3>Kamizumo <span style="color:var(--muted); font-weight:400; text-transform:none;">(Paper Sumo)</span></h3>
-          <p class="jp-title">紙相撲</p>
+          <div class="poster">
+            <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B5A3A"/><stop offset="1" stop-color="#12140D"/></linearGradient></defs>
+              <rect width="500" height="400" fill="url(#g3)"/>
+              <g stroke="#F5EEDD" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+                <circle cx="250" cy="210" r="105"/>
+                <path d="M205 190l35 55M295 190l-35 55"/>
+                <circle cx="205" cy="165" r="15"/>
+                <circle cx="295" cy="165" r="15"/>
+                <path d="M250 70v40"/>
+              </g>
+            </svg>
+          </div>
+          <h3>Kamizumo <span class="jp" style="color:var(--muted-2); font-weight:400;">(Paper Sumo)</span></h3>
+          <p class="jp-title jp">紙相撲</p>
           <p class="blurb">A traditional Japanese tabletop game, rebuilt as a fully three dimensional experience.</p>
-          <p class="blurb-jp">日本の伝統的な卓上遊び、紙相撲をフル3Dで再現した作品。</p>
+          <p class="blurb-jp jp">日本の伝統的な卓上遊び、紙相撲をフル3Dで再現した作品。</p>
           <a class="play-link" href="https://lucanicohe.github.io/kamizumo/" target="_blank" rel="noopener">Play<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </article>
 
         <article class="cart">
-          <span class="cart-index">04</span>
-          <div class="cart-icon"><svg viewBox="0 0 64 64"><rect x="10" y="18" width="38" height="24" rx="4"/><path d="M10 30h38M20 18v24M34 18v24" /><circle cx="52" cy="30" r="9"/><path d="M52 24v12M46 30h12"/></svg></div>
+          <div class="poster">
+            <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3A4C58"/><stop offset="1" stop-color="#101315"/></linearGradient></defs>
+              <rect width="500" height="400" fill="url(#g4)"/>
+              <g stroke="#F5EEDD" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+                <rect x="95" y="145" width="220" height="130" rx="14"/>
+                <path d="M95 210h220M170 145v130M245 145v130"/>
+                <circle cx="375" cy="200" r="48"/>
+                <path d="M375 152v96M327 200h96"/>
+              </g>
+            </svg>
+          </div>
           <h3>Only Bad Guys on the Train</h3>
-          <p class="jp-title">電車の悪者だけ</p>
+          <p class="jp-title jp">電車の悪者だけ</p>
           <p class="blurb">A first person shooter set entirely aboard a moving train.</p>
-          <p class="blurb-jp">走行中の電車内を舞台にした一人称視点のシューティングゲーム。</p>
+          <p class="blurb-jp jp">走行中の電車内を舞台にした一人称視点のシューティングゲーム。</p>
           <a class="play-link" href="https://lucanicohe.github.io/onlybadguysonthetrain/" target="_blank" rel="noopener">Play<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </article>
 
         <article class="cart">
-          <span class="cart-index">05</span>
-          <div class="cart-icon"><svg viewBox="0 0 64 64"><path d="M16 8c10 8 10 40 0 48" /><path d="M16 8l32 24-32 24" stroke-dasharray="1 5"/><circle cx="46" cy="18" r="7"/><circle cx="43" cy="16" r="1.4" fill="currentColor" stroke="none"/><circle cx="49" cy="16" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+          <div class="poster">
+            <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B4A22"/><stop offset="1" stop-color="#150F07"/></linearGradient></defs>
+              <rect width="500" height="400" fill="url(#g5)"/>
+              <g stroke="#F5EEDD" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+                <path d="M140 80c60 55 60 185 0 240"/>
+                <path d="M140 80l220 120-220 120" stroke-dasharray="1 15"/>
+                <circle cx="352" cy="140" r="26"/>
+                <circle cx="345" cy="134" r="3" fill="#F5EEDD" stroke="none"/>
+                <circle cx="362" cy="134" r="3" fill="#F5EEDD" stroke="none"/>
+              </g>
+            </svg>
+          </div>
           <h3>Bow &amp; Bones</h3>
-          <p class="jp-title">弓と骨</p>
+          <p class="jp-title jp">弓と骨</p>
           <p class="blurb">A hand drawn archery game against a series of skeletal enemies.</p>
-          <p class="blurb-jp">手描き風のスケルトンを相手にするアーチェリーゲーム。</p>
+          <p class="blurb-jp jp">手描き風のスケルトンを相手にするアーチェリーゲーム。</p>
           <a class="play-link" href="https://lucanicohe.github.io/shootinggame/" target="_blank" rel="noopener">Play<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </article>
 
         <article class="cart">
-          <span class="cart-index">06</span>
-          <div class="cart-icon"><svg viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="48"/><path d="M8 20h20M20 20v16M20 36h24M44 36V20M44 20h12M8 44h12" /></svg></div>
+          <div class="poster">
+            <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#204048"/><stop offset="1" stop-color="#08141a"/></linearGradient></defs>
+              <rect width="500" height="400" fill="url(#g6)"/>
+              <g stroke="#F5EEDD" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+                <rect x="120" y="90" width="260" height="220"/>
+                <path d="M120 155h130M250 155v90M250 245h160M380 245V155M380 155h-60M120 245h60"/>
+              </g>
+            </svg>
+          </div>
           <h3>Small Maze Game</h3>
-          <p class="jp-title">小さな迷路ゲーム</p>
+          <p class="jp-title jp">小さな迷路ゲーム</p>
           <p class="blurb">A maze generated procedurally each time the game is opened.</p>
-          <p class="blurb-jp">起動するたびに自動生成される迷路ゲーム。</p>
+          <p class="blurb-jp jp">起動するたびに自動生成される迷路ゲーム。</p>
           <a class="play-link" href="https://lucanicohe.github.io/smallmazegame/index.html" target="_blank" rel="noopener">Play<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </article>
 
         <article class="cart">
-          <span class="cart-index">07</span>
-          <div class="cart-icon"><svg viewBox="0 0 64 64"><path d="M32 8c6 0 8 6 8 12s-3 8-3 14 4 8 4 16-4 6-9 6-9 2-9-6 4-10 4-16-3-8-3-14 2-12 8-12Z"/><path d="M14 14l3 3M50 14l-3 3M12 40l4 1M52 40l-4 1" /></svg></div>
+          <div class="poster">
+            <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="g7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26314A"/><stop offset="1" stop-color="#080A11"/></linearGradient></defs>
+              <rect width="500" height="400" fill="url(#g7)"/>
+              <g stroke="#F5EEDD" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+                <path d="M250 65c38 0 50 38 50 76s-19 50-19 88 25 50 25 100-25 38-56 38-56 12-56-38 25-62 25-100-19-50-19-88 12-76 50-76Z"/>
+                <path d="M140 110l18 18M362 110l-18 18M120 260l24 6M380 260l-24 6"/>
+              </g>
+            </svg>
+          </div>
           <h3>Zero Gravity Bowling</h3>
-          <p class="jp-title">無重力ボウリング</p>
+          <p class="jp-title jp">無重力ボウリング</p>
           <p class="blurb">A bowling game set in a zero gravity environment.</p>
-          <p class="blurb-jp">無重力空間を舞台にしたボウリングゲーム。</p>
+          <p class="blurb-jp jp">無重力空間を舞台にしたボウリングゲーム。</p>
           <a class="play-link" href="https://lucanicohe.github.io/zerogravitybowling/" target="_blank" rel="noopener">Play<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </article>
 
         <article class="cart">
-          <span class="cart-index">08</span>
-          <div class="cart-icon"><svg viewBox="0 0 64 64"><path d="M6 44h52M6 52h52" /><path d="M10 44c4-6 2-10 6-14 2 4 0 6 3 9 3-5 1-9 5-14 3 5 0 8 4 12 3-4 1-7 5-11 3 5 1 8 4 12 3-3 2-6 5-9 2 4 1 8 4 15" /></svg></div>
+          <div class="poster">
+            <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="g8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B2E18"/><stop offset="1" stop-color="#160B06"/></linearGradient></defs>
+              <rect width="500" height="400" fill="url(#g8)"/>
+              <g stroke="#F5EEDD" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+                <path d="M60 270h380M60 305h380"/>
+                <path d="M95 270c30-45 15-70 45-100 16 28 0 42 22 62 22-35 6-62 34-96 20 34 0 56 26 80 22-27 8-48 34-72 20 33 6 55 28 82 20-19 15-40 36-58 14 27 6 55 28 102" />
+              </g>
+            </svg>
+          </div>
           <h3>The Floor Is Lava</h3>
-          <p class="jp-title">床は溶岩</p>
+          <p class="jp-title jp">床は溶岩</p>
           <p class="blurb">A movement based game set in a flooded classroom, built around the classic challenge.</p>
-          <p class="blurb-jp">定番の「床は溶岩」をテーマにした、教室を舞台にするゲーム。</p>
+          <p class="blurb-jp jp">定番の「床は溶岩」をテーマにした、教室を舞台にするゲーム。</p>
           <a class="play-link" href="https://lucanicohe.github.io/thefloorislava/" target="_blank" rel="noopener">Play<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </article>
 
@@ -418,29 +517,41 @@
 
 <footer>
   <div class="wrap">
-    <div class="made">
-      Luca Helgert
-      <span class="jp">ゲームプログラマー / テクニカルアーティスト</span>
-    </div>
-    <a class="gh" href="https://github.com/lucanicohe" target="_blank" rel="noopener">
-      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-      GitHub
-    </a>
+    <div class="made">Luca Helgert</div>
+    <div class="made-jp jp">ゲームプログラマー / テクニカルアーティスト</div>
+    <a class="gh" href="https://github.com/lucanicohe" target="_blank" rel="noopener">github.com/lucanicohe</a>
     <small>© 2026 Luca Helgert</small>
   </div>
 </footer>
 
 <script>
+  // nav background on scroll
+  const nav = document.getElementById('topnav');
+  const media = document.getElementById('heroMedia');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function onScroll(){
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 8);
+    if(!reduceMotion && media){
+      const scale = 1 + Math.min(y / 3000, 0.08);
+      media.style.transform = 'scale(' + scale + ')';
+    }
+  }
+  document.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // reveal work tiles
   const cards = document.querySelectorAll('.cart');
   if('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries)=>{
       entries.forEach((e, i)=>{
         if(e.isIntersecting){
-          setTimeout(()=> e.target.classList.add('in'), i * 50);
+          setTimeout(()=> e.target.classList.add('in'), (i % 2) * 80);
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.15 });
     cards.forEach(c => io.observe(c));
   } else {
     cards.forEach(c => c.classList.add('in'));
