@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Luca Helgert — Game Programmer</title>
-
 <meta name="description" content="Luca Helgert — Game Programmer and Technical Artist">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,9 +46,10 @@ a {
     color: inherit;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+
+/* =========================================================
+   NAV
+========================================================= */
 
 nav {
     position: fixed;
@@ -105,9 +105,10 @@ nav.scrolled {
     color: var(--text);
 }
 
-/* =========================
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
     width: min(calc(100% - var(--padding) * 2), var(--max));
@@ -118,7 +119,9 @@ nav.scrolled {
 
     display: grid;
     grid-template-columns: 1.05fr .95fr;
+
     align-items: center;
+
     gap: clamp(60px, 9vw, 150px);
 }
 
@@ -183,9 +186,15 @@ nav.scrolled {
     opacity: .45;
 }
 
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
 .hero-image {
     width: 100%;
     max-width: 600px;
+
     justify-self: end;
 
     aspect-ratio: 4 / 5;
@@ -207,9 +216,10 @@ nav.scrolled {
     transform: scale(1.025);
 }
 
-/* =========================
+
+/* =========================================================
    STATEMENT
-========================= */
+========================================================= */
 
 .statement {
     width: min(calc(100% - var(--padding) * 2), var(--max));
@@ -241,6 +251,7 @@ nav.scrolled {
     margin-top: 100px;
 
     display: grid;
+
     grid-template-columns: 1fr 1fr;
 
     gap: 80px;
@@ -259,6 +270,7 @@ nav.scrolled {
 
 .skills {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
 
     align-content: start;
@@ -270,9 +282,10 @@ nav.scrolled {
     color: var(--muted);
 }
 
-/* =========================
+
+/* =========================================================
    WORK
-========================= */
+========================================================= */
 
 .work {
     width: min(calc(100% - var(--padding) * 2), var(--max));
@@ -283,10 +296,11 @@ nav.scrolled {
 
 .work-header {
     display: flex;
+
     justify-content: space-between;
     align-items: baseline;
 
-    margin-bottom: 85px;
+    margin-bottom: 95px;
 
     border-top: 1px solid var(--line);
 
@@ -306,120 +320,178 @@ nav.scrolled {
 
 .work-header span {
     color: var(--muted);
+
     font-size: 14px;
 }
 
-/* =========================
-   PROJECTS
-========================= */
 
-.project {
-    margin-bottom: 150px;
+/* =========================================================
+   GAME GRID
+========================================================= */
+
+.game-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    column-gap: 55px;
+    row-gap: 125px;
 }
 
-.project:last-child {
-    margin-bottom: 0;
+
+/* =========================================================
+   GAME
+========================================================= */
+
+.game {
+    min-width: 0;
 }
 
-.project-image {
+.game-visual {
+    position: relative;
+
     width: 100%;
 
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 5 / 4;
 
     overflow: hidden;
 
     background: #deded9;
+
+    margin-bottom: 30px;
 }
 
-.project-image img {
+.game-visual img {
     width: 100%;
     height: 100%;
 
     object-fit: cover;
 
-    transition: transform 1s cubic-bezier(.2,.7,.2,1);
+    transition:
+        transform .8s cubic-bezier(.2,.7,.2,1),
+        opacity .4s ease;
 }
 
-.project:hover .project-image img {
+.game:hover .game-visual img {
     transform: scale(1.025);
 }
 
-.project-info {
-    margin-top: 28px;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+/*
+   If no image exists, create a very subtle
+   neutral visual instead of showing broken-image icons.
+*/
 
-    gap: 50px;
+.game-visual img[src=""],
+.game-visual img:not([src]) {
+    display: none;
 }
 
-.project-name {
+
+/* =========================================================
+   GAME INFO
+========================================================= */
+
+.game-info {
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    column-gap: 30px;
+
+    align-items: end;
+}
+
+.game-title {
     margin: 0;
 
-    font-size: clamp(2rem, 3vw, 3.2rem);
+    font-size: clamp(1.65rem, 2.4vw, 2.5rem);
 
     line-height: 1;
 
-    letter-spacing: -.05em;
+    letter-spacing: -.055em;
 
     font-weight: 500;
 }
 
-.project-type {
+.game-type {
     margin-top: 10px;
 
-    color: var(--muted);
-
-    font-size: 14px;
-}
-
-.project-description {
-    max-width: 550px;
-
-    margin: 0;
-
-    font-size: 17px;
-
-    line-height: 1.6;
+    font-size: 13px;
 
     color: var(--muted);
+
+    letter-spacing: .02em;
 }
 
-.project-link {
+.game-description {
+    max-width: 500px;
+
+    margin: 18px 0 0;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   PLAY BUTTON
+========================================================= */
+
+.play-button {
     display: inline-flex;
 
-    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
 
-    font-size: 14px;
+    gap: 12px;
+
+    min-width: 125px;
+    height: 52px;
+
+    padding: 0 22px;
+
+    background: var(--text);
+    color: var(--bg);
+
+    border: 1px solid var(--text);
 
     text-decoration: none;
 
-    border-bottom: 1px solid var(--text);
+    font-size: 14px;
+    font-weight: 500;
 
-    padding-bottom: 6px;
-
-    transition: opacity .2s ease;
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
 }
 
-.project-link:hover {
-    opacity: .45;
+.play-button svg {
+    width: 15px;
+    height: 15px;
+
+    transition: transform .25s ease;
 }
 
-/* =========================
-   FEATURE PROJECT
-========================= */
+.play-button:hover {
+    background: transparent;
+    color: var(--text);
 
-.project.feature {
-    margin-bottom: 190px;
+    transform: translateY(-2px);
 }
 
-.project.feature .project-image {
-    aspect-ratio: 2 / 1;
+.play-button:hover svg {
+    transform: translateX(4px);
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
     width: min(calc(100% - var(--padding) * 2), var(--max));
@@ -432,6 +504,7 @@ footer {
 
 .footer-top {
     display: flex;
+
     justify-content: space-between;
     align-items: flex-start;
 }
@@ -474,6 +547,7 @@ footer {
     margin-top: 100px;
 
     display: flex;
+
     justify-content: space-between;
 
     color: var(--muted);
@@ -481,14 +555,16 @@ footer {
     font-size: 13px;
 }
 
-/* =========================
+
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
 @media (max-width: 900px) {
 
     .hero {
         grid-template-columns: 1fr;
+
         min-height: auto;
 
         padding-top: 130px;
@@ -497,6 +573,7 @@ footer {
 
     .hero-image {
         justify-self: start;
+
         max-width: 650px;
     }
 
@@ -504,17 +581,15 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .project-info {
+    .game-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
-    }
 
-    .project {
-        margin-bottom: 110px;
+        row-gap: 95px;
     }
 
     .footer-top {
         flex-direction: column;
+
         gap: 45px;
     }
 
@@ -522,6 +597,7 @@ footer {
         text-align: left;
     }
 }
+
 
 @media (max-width: 600px) {
 
@@ -570,20 +646,29 @@ footer {
     }
 
     .work-header {
-        margin-bottom: 55px;
+        margin-bottom: 60px;
     }
 
     .work-header h2 {
         font-size: clamp(3.5rem, 15vw, 6rem);
     }
 
-    .project-image,
-    .project.feature .project-image {
+    .game-visual {
         aspect-ratio: 4 / 3;
     }
 
-    .project-name {
+    .game-info {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .game-title {
         font-size: 2rem;
+    }
+
+    .play-button {
+        width: 100%;
     }
 
     footer {
@@ -594,13 +679,15 @@ footer {
         margin-top: 70px;
 
         flex-direction: column;
+
         gap: 10px;
     }
 }
 
-/* =========================
-   MOTION
-========================= */
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -615,11 +702,16 @@ footer {
 </style>
 </head>
 
+
 <body>
 
-<!-- NAV -->
+
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
 
 <nav id="nav">
+
     <div class="nav-inner">
 
         <a href="#" class="logo">
@@ -627,19 +719,32 @@ footer {
         </a>
 
         <div class="nav-links">
-            <a href="#work">Work</a>
-            <a href="https://github.com/lucanicohe" target="_blank" rel="noopener">
+
+            <a href="#work">
+                Work
+            </a>
+
+            <a
+                href="https://github.com/lucanicohe"
+                target="_blank"
+                rel="noopener"
+            >
                 GitHub
             </a>
+
         </div>
 
     </div>
+
 </nav>
 
 
 <main>
 
-<!-- HERO -->
+
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <section class="hero">
 
@@ -666,9 +771,11 @@ footer {
                 View selected work
             </a>
 
-            <a href="https://github.com/lucanicohe"
-               target="_blank"
-               rel="noopener">
+            <a
+                href="https://github.com/lucanicohe"
+                target="_blank"
+                rel="noopener"
+            >
                 GitHub
             </a>
 
@@ -689,7 +796,9 @@ footer {
 </section>
 
 
-<!-- STATEMENT -->
+<!-- =======================================================
+     STATEMENT
+======================================================= -->
 
 <section class="statement">
 
@@ -729,7 +838,9 @@ footer {
 </section>
 
 
-<!-- WORK -->
+<!-- =======================================================
+     WORK
+======================================================= -->
 
 <section class="work" id="work">
 
@@ -746,422 +857,459 @@ footer {
     </div>
 
 
-    <!-- PROJECT 01 -->
+    <div class="game-grid">
 
-    <article class="project feature">
 
-        <div class="project-image">
+        <!-- GAME 01 -->
 
-            <img
-                src="bongo3d.jpg"
-                alt="Bongo 3D"
-                onerror="this.style.display='none'"
-            >
+        <article class="game">
 
-        </div>
+            <div class="game-visual">
 
-        <div class="project-info">
-
-            <div>
-
-                <h3 class="project-name">
-                    Bongo 3D
-                </h3>
-
-                <div class="project-type">
-                    Unity / C#
-                </div>
+                <img
+                    src="bongo3d.jpg"
+                    alt="Bongo 3D"
+                >
 
             </div>
 
-            <div>
+            <div class="game-info">
 
-                <p class="project-description">
-                    A 3D clicker game built around the Bongo Cat
-                    internet meme, combining interactive gameplay
-                    with a playful 3D environment.
-                </p>
+                <div>
+
+                    <h3 class="game-title">
+                        Bongo 3D
+                    </h3>
+
+                    <div class="game-type">
+                        Unity / C#
+                    </div>
+
+                    <p class="game-description">
+                        A 3D clicker game built around the
+                        Bongo Cat internet meme.
+                    </p>
+
+                </div>
 
                 <a
-                    class="project-link"
+                    class="play-button"
                     href="https://lucanicohe.github.io/bongo3d/"
                     target="_blank"
                     rel="noopener"
                 >
-                    Play project →
+                    Play
+                    <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    >
+                        <path d="M3 8h9"/>
+                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                    </svg>
                 </a>
 
             </div>
 
-        </div>
-
-    </article>
+        </article>
 
 
-    <!-- PROJECT 02 -->
+        <!-- GAME 02 -->
 
-    <article class="project">
+        <article class="game">
 
-        <div class="project-image">
+            <div class="game-visual">
 
-            <img
-                src="aliencatchball.jpg"
-                alt="Alien Catchball"
-                onerror="this.style.display='none'"
-            >
-
-        </div>
-
-        <div class="project-info">
-
-            <div>
-
-                <h3 class="project-name">
-                    Alien Catchball
-                </h3>
-
-                <div class="project-type">
-                    Unity / Gameplay
-                </div>
+                <img
+                    src="aliencatchball.jpg"
+                    alt="Alien Catchball"
+                >
 
             </div>
 
-            <div>
+            <div class="game-info">
 
-                <p class="project-description">
-                    A timing and accuracy based throwing game
-                    where the player must hit moving targets
-                    and control every shot.
-                </p>
+                <div>
+
+                    <h3 class="game-title">
+                        Alien Catchball
+                    </h3>
+
+                    <div class="game-type">
+                        Unity / Gameplay
+                    </div>
+
+                    <p class="game-description">
+                        A timing and accuracy based throwing
+                        game built around moving targets.
+                    </p>
+
+                </div>
 
                 <a
-                    class="project-link"
+                    class="play-button"
                     href="https://lucanicohe.github.io/aliensandstuff/index.html"
                     target="_blank"
                     rel="noopener"
                 >
-                    Play project →
+                    Play
+                    <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    >
+                        <path d="M3 8h9"/>
+                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                    </svg>
                 </a>
 
             </div>
 
-        </div>
-
-    </article>
+        </article>
 
 
-    <!-- PROJECT 03 -->
+        <!-- GAME 03 -->
 
-    <article class="project">
+        <article class="game">
 
-        <div class="project-image">
+            <div class="game-visual">
 
-            <img
-                src="kamizumo.jpg"
-                alt="Kamizumo"
-                onerror="this.style.display='none'"
-            >
-
-        </div>
-
-        <div class="project-info">
-
-            <div>
-
-                <h3 class="project-name">
-                    Kamizumo
-                </h3>
-
-                <div class="project-type">
-                    Unity / Physics / 3D
-                </div>
+                <img
+                    src="kamizumo.jpg"
+                    alt="Kamizumo"
+                >
 
             </div>
 
-            <div>
+            <div class="game-info">
 
-                <p class="project-description">
-                    A modern 3D interpretation of the traditional
-                    Japanese tabletop game paper sumo.
-                </p>
+                <div>
+
+                    <h3 class="game-title">
+                        Kamizumo
+                    </h3>
+
+                    <div class="game-type">
+                        Unity / Physics / 3D
+                    </div>
+
+                    <p class="game-description">
+                        A modern 3D interpretation of the
+                        traditional Japanese paper sumo game.
+                    </p>
+
+                </div>
 
                 <a
-                    class="project-link"
+                    class="play-button"
                     href="https://lucanicohe.github.io/kamizumo/"
                     target="_blank"
                     rel="noopener"
                 >
-                    Play project →
+                    Play
+                    <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    >
+                        <path d="M3 8h9"/>
+                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                    </svg>
                 </a>
 
             </div>
 
-        </div>
-
-    </article>
+        </article>
 
 
-    <!-- PROJECT 04 -->
+        <!-- GAME 04 -->
 
-    <article class="project">
+        <article class="game">
 
-        <div class="project-image">
+            <div class="game-visual">
 
-            <img
-                src="train.jpg"
-                alt="Only Bad Guys on the Train"
-                onerror="this.style.display='none'"
-            >
-
-        </div>
-
-        <div class="project-info">
-
-            <div>
-
-                <h3 class="project-name">
-                    Only Bad Guys on the Train
-                </h3>
-
-                <div class="project-type">
-                    Unity / FPS
-                </div>
+                <img
+                    src="train.jpg"
+                    alt="Only Bad Guys on the Train"
+                >
 
             </div>
 
-            <div>
+            <div class="game-info">
 
-                <p class="project-description">
-                    A first-person shooter taking place entirely
-                    inside a moving train.
-                </p>
+                <div>
+
+                    <h3 class="game-title">
+                        Only Bad Guys on the Train
+                    </h3>
+
+                    <div class="game-type">
+                        Unity / FPS
+                    </div>
+
+                    <p class="game-description">
+                        A first-person shooter taking place
+                        entirely inside a moving train.
+                    </p>
+
+                </div>
 
                 <a
-                    class="project-link"
+                    class="play-button"
                     href="https://lucanicohe.github.io/onlybadguysonthetrain/"
                     target="_blank"
                     rel="noopener"
                 >
-                    Play project →
+                    Play
+                    <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    >
+                        <path d="M3 8h9"/>
+                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                    </svg>
                 </a>
 
             </div>
 
-        </div>
-
-    </article>
+        </article>
 
 
-    <!-- PROJECT 05 -->
+        <!-- GAME 05 -->
 
-    <article class="project">
+        <article class="game">
 
-        <div class="project-image">
+            <div class="game-visual">
 
-            <img
-                src="bowbones.jpg"
-                alt="Bow and Bones"
-                onerror="this.style.display='none'"
-            >
-
-        </div>
-
-        <div class="project-info">
-
-            <div>
-
-                <h3 class="project-name">
-                    Bow &amp; Bones
-                </h3>
-
-                <div class="project-type">
-                    Unity / 2D / Gameplay
-                </div>
+                <img
+                    src="bowbones.jpg"
+                    alt="Bow and Bones"
+                >
 
             </div>
 
-            <div>
+            <div class="game-info">
 
-                <p class="project-description">
-                    A hand-drawn archery game where the player
-                    fights a series of skeletal enemies.
-                </p>
+                <div>
+
+                    <h3 class="game-title">
+                        Bow &amp; Bones
+                    </h3>
+
+                    <div class="game-type">
+                        Unity / 2D / Gameplay
+                    </div>
+
+                    <p class="game-description">
+                        A hand-drawn archery game where the
+                        player fights skeletal enemies.
+                    </p>
+
+                </div>
 
                 <a
-                    class="project-link"
+                    class="play-button"
                     href="https://lucanicohe.github.io/shootinggame/"
                     target="_blank"
                     rel="noopener"
                 >
-                    Play project →
+                    Play
+                    <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    >
+                        <path d="M3 8h9"/>
+                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                    </svg>
                 </a>
 
             </div>
 
-        </div>
-
-    </article>
+        </article>
 
 
-    <!-- PROJECT 06 -->
+        <!-- GAME 06 -->
 
-    <article class="project">
+        <article class="game">
 
-        <div class="project-image">
+            <div class="game-visual">
 
-            <img
-                src="maze.jpg"
-                alt="Small Maze Game"
-                onerror="this.style.display='none'"
-            >
-
-        </div>
-
-        <div class="project-info">
-
-            <div>
-
-                <h3 class="project-name">
-                    Small Maze Game
-                </h3>
-
-                <div class="project-type">
-                    Unity / Procedural Generation
-                </div>
+                <img
+                    src="maze.jpg"
+                    alt="Small Maze Game"
+                >
 
             </div>
 
-            <div>
+            <div class="game-info">
 
-                <p class="project-description">
-                    A procedural maze that generates a new layout
-                    every time the game is launched.
-                </p>
+                <div>
+
+                    <h3 class="game-title">
+                        Small Maze Game
+                    </h3>
+
+                    <div class="game-type">
+                        Unity / Procedural Generation
+                    </div>
+
+                    <p class="game-description">
+                        A procedural maze that generates a new
+                        layout every time the game is launched.
+                    </p>
+
+                </div>
 
                 <a
-                    class="project-link"
+                    class="play-button"
                     href="https://lucanicohe.github.io/smallmazegame/index.html"
                     target="_blank"
                     rel="noopener"
                 >
-                    Play project →
+                    Play
+                    <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    >
+                        <path d="M3 8h9"/>
+                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                    </svg>
                 </a>
 
             </div>
 
-        </div>
-
-    </article>
+        </article>
 
 
-    <!-- PROJECT 07 -->
+        <!-- GAME 07 -->
 
-    <article class="project">
+        <article class="game">
 
-        <div class="project-image">
+            <div class="game-visual">
 
-            <img
-                src="bowling.jpg"
-                alt="Zero Gravity Bowling"
-                onerror="this.style.display='none'"
-            >
-
-        </div>
-
-        <div class="project-info">
-
-            <div>
-
-                <h3 class="project-name">
-                    Zero Gravity Bowling
-                </h3>
-
-                <div class="project-type">
-                    Unity / Physics
-                </div>
+                <img
+                    src="bowling.jpg"
+                    alt="Zero Gravity Bowling"
+                >
 
             </div>
 
-            <div>
+            <div class="game-info">
 
-                <p class="project-description">
-                    A bowling game where conventional physics
-                    disappear inside a zero gravity environment.
-                </p>
+                <div>
+
+                    <h3 class="game-title">
+                        Zero Gravity Bowling
+                    </h3>
+
+                    <div class="game-type">
+                        Unity / Physics
+                    </div>
+
+                    <p class="game-description">
+                        A bowling game where conventional
+                        physics disappear inside zero gravity.
+                    </p>
+
+                </div>
 
                 <a
-                    class="project-link"
+                    class="play-button"
                     href="https://lucanicohe.github.io/zerogravitybowling/"
                     target="_blank"
                     rel="noopener"
                 >
-                    Play project →
+                    Play
+                    <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    >
+                        <path d="M3 8h9"/>
+                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                    </svg>
                 </a>
 
             </div>
 
-        </div>
-
-    </article>
+        </article>
 
 
-    <!-- PROJECT 08 -->
+        <!-- GAME 08 -->
 
-    <article class="project">
+        <article class="game">
 
-        <div class="project-image">
+            <div class="game-visual">
 
-            <img
-                src="lava.jpg"
-                alt="The Floor Is Lava"
-                onerror="this.style.display='none'"
-            >
-
-        </div>
-
-        <div class="project-info">
-
-            <div>
-
-                <h3 class="project-name">
-                    The Floor Is Lava
-                </h3>
-
-                <div class="project-type">
-                    Unity / Movement
-                </div>
+                <img
+                    src="lava.jpg"
+                    alt="The Floor Is Lava"
+                >
 
             </div>
 
-            <div>
+            <div class="game-info">
 
-                <p class="project-description">
-                    A movement-focused game set inside a flooded
-                    classroom, built around the classic floor-is-lava
-                    challenge.
-                </p>
+                <div>
+
+                    <h3 class="game-title">
+                        The Floor Is Lava
+                    </h3>
+
+                    <div class="game-type">
+                        Unity / Movement
+                    </div>
+
+                    <p class="game-description">
+                        A movement-focused game set inside
+                        a flooded classroom.
+                    </p>
+
+                </div>
 
                 <a
-                    class="project-link"
+                    class="play-button"
                     href="https://lucanicohe.github.io/thefloorislava/"
                     target="_blank"
                     rel="noopener"
                 >
-                    Play project →
+                    Play
+                    <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    >
+                        <path d="M3 8h9"/>
+                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                    </svg>
                 </a>
 
             </div>
 
-        </div>
+        </article>
 
-    </article>
+
+    </div>
 
 </section>
 
 </main>
 
 
-<!-- FOOTER -->
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 
 <footer>
 
@@ -1173,9 +1321,11 @@ footer {
 
         <div class="footer-right">
 
-            <a href="https://github.com/lucanicohe"
-               target="_blank"
-               rel="noopener">
+            <a
+                href="https://github.com/lucanicohe"
+                target="_blank"
+                rel="noopener"
+            >
                 GitHub →
             </a>
 
@@ -1186,6 +1336,7 @@ footer {
         </div>
 
     </div>
+
 
     <div class="footer-bottom">
 
@@ -1208,11 +1359,10 @@ const nav = document.getElementById("nav");
 
 window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 20) {
-        nav.classList.add("scrolled");
-    } else {
-        nav.classList.remove("scrolled");
-    }
+    nav.classList.toggle(
+        "scrolled",
+        window.scrollY > 20
+    );
 
 }, { passive: true });
 
