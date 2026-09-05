@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 :root {
     --bg: #f5f5f2;
     --text: #111111;
@@ -163,29 +164,6 @@ nav.scrolled {
     letter-spacing: -.025em;
 }
 
-.hero-actions {
-    margin-top: 42px;
-
-    display: flex;
-    gap: 30px;
-}
-
-.hero-actions a {
-    text-decoration: none;
-
-    font-size: 14px;
-
-    padding-bottom: 7px;
-
-    border-bottom: 1px solid var(--text);
-
-    transition: opacity .2s ease;
-}
-
-.hero-actions a:hover {
-    opacity: .45;
-}
-
 
 /* =========================================================
    PROFILE
@@ -257,9 +235,28 @@ nav.scrolled {
     gap: 80px;
 }
 
-.statement-text {
-    max-width: 620px;
 
+/* =========================================================
+   INSTAGRAM
+========================================================= */
+
+.instagram-block {
+    max-width: 620px;
+}
+
+.small-label {
+    margin-bottom: 22px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+.instagram-text {
     margin: 0;
 
     font-size: 19px;
@@ -268,18 +265,89 @@ nav.scrolled {
     color: var(--muted);
 }
 
+.instagram-link {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 9px;
+
+    margin-top: 28px;
+
+    font-size: 24px;
+    line-height: 1.2;
+
+    font-weight: 500;
+    letter-spacing: -.035em;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid var(--text);
+
+    padding-bottom: 5px;
+
+    transition:
+        opacity .2s ease,
+        gap .2s ease;
+}
+
+.instagram-link:hover {
+    opacity: .55;
+    gap: 13px;
+}
+
+.instagram-arrow {
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
 .skills {
-    display: grid;
+    border-top: 1px solid var(--line);
+}
 
-    grid-template-columns: 1fr 1fr;
+.skills-heading {
+    padding: 18px 0;
 
-    align-content: start;
+    font-size: 12px;
+    font-weight: 500;
 
-    gap: 16px;
-
-    font-size: 15px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
 
     color: var(--muted);
+}
+
+.skill-row {
+    min-height: 62px;
+
+    display: grid;
+
+    grid-template-columns: .85fr 1.15fr;
+
+    align-items: center;
+
+    border-top: 1px solid var(--line);
+}
+
+.skill-name {
+    font-size: 17px;
+
+    font-weight: 500;
+
+    letter-spacing: -.025em;
+}
+
+.skill-details {
+    font-size: 16px;
+
+    line-height: 1.5;
+
+    color: var(--muted);
+
+    letter-spacing: -.01em;
 }
 
 
@@ -295,16 +363,11 @@ nav.scrolled {
 }
 
 .work-header {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: baseline;
-
-    margin-bottom: 95px;
-
     border-top: 1px solid var(--line);
 
     padding-top: 25px;
+
+    margin-bottom: 75px;
 }
 
 .work-header h2 {
@@ -318,10 +381,76 @@ nav.scrolled {
     font-weight: 500;
 }
 
-.work-header span {
-    color: var(--muted);
 
-    font-size: 14px;
+/* =========================================================
+   PROJECT SWITCHER
+========================================================= */
+
+.project-switcher {
+    width: min(100%, 680px);
+
+    margin: 0 auto 80px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    padding: 4px;
+
+    background: rgba(17,17,17,.065);
+
+    border-radius: 14px;
+}
+
+.project-switcher button {
+    height: 52px;
+
+    border: 0;
+    border-radius: 11px;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 500;
+
+    letter-spacing: -.015em;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+.project-switcher button:hover {
+    background: rgba(255,255,255,.65);
+}
+
+.project-switcher button.active {
+    background: #ffffff;
+
+    box-shadow:
+        0 1px 4px rgba(0,0,0,.08),
+        0 1px 1px rgba(0,0,0,.04);
+}
+
+
+/* =========================================================
+   PROJECT PANELS
+========================================================= */
+
+.project-panel {
+    display: none;
+}
+
+.project-panel.active {
+    display: block;
+}
+
+.team-empty {
+    min-height: 10px;
 }
 
 
@@ -334,8 +463,12 @@ nav.scrolled {
 
     grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    column-gap: 55px;
-    row-gap: 125px;
+    column-gap: 45px;
+    row-gap: 90px;
+
+    max-width: 1250px;
+
+    margin: auto;
 }
 
 
@@ -358,7 +491,7 @@ nav.scrolled {
 
     background: #deded9;
 
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .game-visual img {
@@ -377,17 +510,6 @@ nav.scrolled {
 }
 
 
-/*
-   If no image exists, create a very subtle
-   neutral visual instead of showing broken-image icons.
-*/
-
-.game-visual img[src=""],
-.game-visual img:not([src]) {
-    display: none;
-}
-
-
 /* =========================================================
    GAME INFO
 ========================================================= */
@@ -397,7 +519,7 @@ nav.scrolled {
 
     grid-template-columns: 1fr auto;
 
-    column-gap: 30px;
+    column-gap: 25px;
 
     align-items: end;
 }
@@ -405,35 +527,33 @@ nav.scrolled {
 .game-title {
     margin: 0;
 
-    font-size: clamp(1.65rem, 2.4vw, 2.5rem);
+    font-size: clamp(1.5rem, 2.1vw, 2.15rem);
 
-    line-height: 1;
+    line-height: 1.05;
 
     letter-spacing: -.055em;
 
     font-weight: 500;
 }
 
-.game-type {
-    margin-top: 10px;
-
-    font-size: 13px;
-
-    color: var(--muted);
-
-    letter-spacing: .02em;
-}
-
 .game-description {
     max-width: 500px;
 
-    margin: 18px 0 0;
+    margin: 14px 0 0;
 
-    font-size: 15px;
+    font-size: 16px;
 
-    line-height: 1.55;
+    line-height: 1.6;
 
     color: var(--muted);
+}
+
+.game-description a {
+    color: var(--text);
+
+    text-decoration: underline;
+
+    text-underline-offset: 3px;
 }
 
 
@@ -449,10 +569,10 @@ nav.scrolled {
 
     gap: 12px;
 
-    min-width: 125px;
-    height: 52px;
+    min-width: 115px;
+    height: 48px;
 
-    padding: 0 22px;
+    padding: 0 20px;
 
     background: var(--text);
     color: var(--bg);
@@ -490,6 +610,170 @@ nav.scrolled {
 
 
 /* =========================================================
+   SEE MORE
+========================================================= */
+
+.see-more-wrap {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 80px;
+}
+
+.see-more {
+    min-width: 150px;
+    height: 48px;
+
+    padding: 0 25px;
+
+    border: 1px solid rgba(17,17,17,.18);
+
+    border-radius: 24px;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 500;
+
+    letter-spacing: -.015em;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.see-more:hover {
+    background: var(--text);
+    color: #ffffff;
+}
+
+.extra-projects {
+    display: none;
+
+    margin-top: 90px;
+}
+
+.extra-projects.visible {
+    display: grid;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact {
+    width: min(calc(100% - var(--padding) * 2), var(--max));
+    margin: auto;
+
+    padding: 120px 0 110px;
+
+    border-top: 1px solid var(--line);
+}
+
+.contact-header {
+    display: grid;
+
+    grid-template-columns: 1.25fr .75fr;
+
+    gap: clamp(60px, 10vw, 180px);
+
+    align-items: start;
+}
+
+.contact-title {
+    max-width: 900px;
+
+    margin: 0;
+
+    font-size: clamp(48px, 7vw, 100px);
+
+    line-height: .9;
+
+    letter-spacing: -.075em;
+
+    font-weight: 400;
+}
+
+.contact-details {
+    padding-top: 8px;
+}
+
+.contact-details-label {
+    margin-bottom: 28px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+.contact-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 58px;
+
+    border-top: 1px solid var(--line);
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    letter-spacing: -.02em;
+
+    transition: opacity .2s ease;
+}
+
+.contact-item:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.contact-item:hover {
+    opacity: .5;
+}
+
+.contact-item-name {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    letter-spacing: .02em;
+}
+
+.contact-item-value {
+    font-weight: 500;
+
+    text-align: right;
+}
+
+.contact-item-arrow {
+    margin-left: 14px;
+
+    font-size: 16px;
+
+    color: var(--muted);
+
+    transition: transform .2s ease;
+}
+
+.contact-item:hover .contact-item-arrow {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
    FOOTER
 ========================================================= */
 
@@ -497,62 +781,19 @@ footer {
     width: min(calc(100% - var(--padding) * 2), var(--max));
     margin: auto;
 
-    padding: 90px 0 45px;
-
-    border-top: 1px solid var(--line);
+    padding: 28px 0 35px;
 }
 
-.footer-top {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.footer-name {
-    margin: 0;
-
-    font-size: clamp(3rem, 6vw, 6rem);
-
-    line-height: .9;
-
-    letter-spacing: -.07em;
-
-    font-weight: 500;
-}
-
-.footer-right {
-    text-align: right;
-}
-
-.footer-right a {
-    font-size: 15px;
-
-    text-decoration: none;
-
-    border-bottom: 1px solid var(--text);
-
-    padding-bottom: 5px;
-}
-
-.footer-role {
-    margin-top: 12px;
-
-    color: var(--muted);
-
-    font-size: 14px;
-}
-
-.footer-bottom {
-    margin-top: 100px;
-
+.footer-inner {
     display: flex;
 
     justify-content: space-between;
 
-    color: var(--muted);
+    align-items: center;
 
-    font-size: 13px;
+    font-size: 12px;
+
+    color: var(--muted);
 }
 
 
@@ -584,17 +825,17 @@ footer {
     .game-grid {
         grid-template-columns: 1fr;
 
-        row-gap: 95px;
+        row-gap: 80px;
     }
 
-    .footer-top {
-        flex-direction: column;
+    .contact-header {
+        grid-template-columns: 1fr;
 
-        gap: 45px;
+        gap: 55px;
     }
 
-    .footer-right {
-        text-align: left;
+    .contact-details {
+        max-width: 600px;
     }
 }
 
@@ -641,8 +882,32 @@ footer {
         margin-top: 60px;
     }
 
+    .instagram-text {
+        font-size: 17px;
+    }
+
+    .instagram-link {
+        font-size: 21px;
+    }
+
+    .skill-row {
+        grid-template-columns: 1fr;
+
+        gap: 6px;
+
+        padding: 17px 0;
+    }
+
+    .skill-name {
+        font-size: 16px;
+    }
+
+    .skill-details {
+        font-size: 15px;
+    }
+
     .work {
-        padding-bottom: 100px;
+        padding-bottom: 110px;
     }
 
     .work-header {
@@ -653,6 +918,16 @@ footer {
         font-size: clamp(3.5rem, 15vw, 6rem);
     }
 
+    .project-switcher {
+        margin-bottom: 60px;
+    }
+
+    .project-switcher button {
+        height: 50px;
+
+        font-size: 14px;
+    }
+
     .game-visual {
         aspect-ratio: 4 / 3;
     }
@@ -660,7 +935,7 @@ footer {
     .game-info {
         grid-template-columns: 1fr;
 
-        gap: 25px;
+        gap: 24px;
     }
 
     .game-title {
@@ -671,23 +946,49 @@ footer {
         width: 100%;
     }
 
-    footer {
-        padding-top: 70px;
+    .extra-projects {
+        margin-top: 65px;
     }
 
-    .footer-bottom {
-        margin-top: 70px;
+    .see-more-wrap {
+        margin-top: 65px;
+    }
 
+    .contact {
+        padding-top: 90px;
+        padding-bottom: 80px;
+    }
+
+    .contact-title {
+        font-size: clamp(46px, 14vw, 65px);
+    }
+
+    .contact-header {
+        gap: 45px;
+    }
+
+    .contact-item {
+        min-height: 68px;
+
+        font-size: 14px;
+    }
+
+    .contact-item-value {
+        max-width: 65%;
+
+        overflow-wrap: anywhere;
+    }
+
+    .footer-inner {
         flex-direction: column;
 
-        gap: 10px;
+        align-items: flex-start;
+
+        gap: 8px;
     }
+
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -698,7 +999,9 @@ footer {
     * {
         transition: none !important;
     }
+
 }
+
 </style>
 </head>
 
@@ -714,22 +1017,22 @@ footer {
 
     <div class="nav-inner">
 
-        <a href="#" class="logo">
+        <a href="#top" class="logo">
             Luca Helgert
         </a>
 
         <div class="nav-links">
 
-            <a href="#work">
-                Work
+            <a href="#top">
+                Top
             </a>
 
-            <a
-                href="https://github.com/lucanicohe"
-                target="_blank"
-                rel="noopener"
-            >
-                GitHub
+            <a href="#work">
+                Works
+            </a>
+
+            <a href="#contact">
+                Contact
             </a>
 
         </div>
@@ -739,7 +1042,7 @@ footer {
 </nav>
 
 
-<main>
+<main id="top">
 
 
 <!-- =======================================================
@@ -764,22 +1067,6 @@ footer {
             combining programming, 3D art, systems design,
             and procedural technology.
         </p>
-
-        <div class="hero-actions">
-
-            <a href="#work">
-                View selected work
-            </a>
-
-            <a
-                href="https://github.com/lucanicohe"
-                target="_blank"
-                rel="noopener"
-            >
-                GitHub
-            </a>
-
-        </div>
 
     </div>
 
@@ -807,29 +1094,95 @@ footer {
         <span>Games bring them together.</span>
     </h2>
 
+
     <div class="statement-info">
 
-        <p class="statement-text">
-            I am a game development student in Tokyo focused on
-            gameplay programming, technical art, environment
-            creation, and interactive experiences.
-            My projects are built independently from the first
-            idea through development and final playable build.
-        </p>
+
+        <!-- INSTAGRAM -->
+
+        <div class="instagram-block">
+
+            <div class="small-label">
+                Documenting the process
+            </div>
+
+            <p class="instagram-text">
+                I document what I build and create on Instagram,
+                where the account has grown rapidly. My most-viewed
+                video has reached more than 4 million views.
+            </p>
+
+            <a
+                class="instagram-link"
+                href="https://www.instagram.com/lucanicohe"
+                target="_blank"
+                rel="noopener"
+            >
+                @lucanicohe
+                <span class="instagram-arrow">↗</span>
+            </a>
+
+        </div>
+
+
+        <!-- SKILLS -->
 
         <div class="skills">
 
-            <div>Unity</div>
-            <div>Unreal Engine</div>
+            <div class="skills-heading">
+                My Skills
+            </div>
 
-            <div>C#</div>
-            <div>C++</div>
+            <div class="skill-row">
 
-            <div>Blender</div>
-            <div>World Machine</div>
+                <div class="skill-name">
+                    Programming
+                </div>
 
-            <div>Gameplay Systems</div>
-            <div>Technical Art</div>
+                <div class="skill-details">
+                    C# / C++
+                </div>
+
+            </div>
+
+
+            <div class="skill-row">
+
+                <div class="skill-name">
+                    Game Development
+                </div>
+
+                <div class="skill-details">
+                    Unity / Unreal Engine
+                </div>
+
+            </div>
+
+
+            <div class="skill-row">
+
+                <div class="skill-name">
+                    3D &amp; Technical Art
+                </div>
+
+                <div class="skill-details">
+                    Blender / World Machine
+                </div>
+
+            </div>
+
+
+            <div class="skill-row">
+
+                <div class="skill-name">
+                    Systems
+                </div>
+
+                <div class="skill-details">
+                    Gameplay Systems / Procedural Generation
+                </div>
+
+            </div>
 
         </div>
 
@@ -844,465 +1197,727 @@ footer {
 
 <section class="work" id="work">
 
+
     <div class="work-header">
 
         <h2>
             Selected work
         </h2>
 
-        <span>
-            08 projects
-        </span>
+    </div>
+
+
+    <!-- ===================================================
+         PROJECT SWITCHER
+    =================================================== -->
+
+    <div class="project-switcher">
+
+        <button
+            type="button"
+            data-target="team-projects"
+        >
+            Team Projects
+        </button>
+
+        <button
+            type="button"
+            data-target="solo-projects"
+        >
+            Solo Projects
+        </button>
 
     </div>
 
 
-    <div class="game-grid">
+    <!-- ===================================================
+         TEAM PROJECTS
+    =================================================== -->
+
+    <div
+        class="project-panel"
+        id="team-projects"
+    >
+
+        <!-- Empty for now -->
+
+    </div>
 
 
-        <!-- GAME 01 -->
+    <!-- ===================================================
+         SOLO PROJECTS
+    =================================================== -->
 
-        <article class="game">
+    <div
+        class="project-panel"
+        id="solo-projects"
+    >
 
-            <div class="game-visual">
 
-                <img
-                    src="bongo3d.jpg"
-                    alt="Bongo 3D"
-                >
+        <!--
+            FIRST FOUR:
+            Artwork Restoration
+            Lost in the Cold
+            Alien Catchball
+            Kamizumo
+        -->
 
-            </div>
+        <div class="game-grid">
 
-            <div class="game-info">
 
-                <div>
+            <!-- =============================================
+                 ARTWORK RESTORATION
+            ============================================== -->
 
-                    <h3 class="game-title">
-                        Bongo 3D
-                    </h3>
+            <article class="game">
 
-                    <div class="game-type">
-                        Unity / C#
-                    </div>
+                <div class="game-visual">
 
-                    <p class="game-description">
-                        A 3D clicker game built around the
-                        Bongo Cat internet meme.
-                    </p>
+                    <img
+                        src="art.jpg"
+                        alt="Artwork Restoration"
+                    >
 
                 </div>
 
-                <a
-                    class="play-button"
-                    href="https://lucanicohe.github.io/bongo3d/"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Play
-                    <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <path d="M3 8h9"/>
-                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                    </svg>
-                </a>
 
-            </div>
+                <div class="game-info">
 
-        </article>
+                    <div>
 
+                        <h3 class="game-title">
+                            Artwork Restoration
+                        </h3>
 
-        <!-- GAME 02 -->
+                        <p class="game-description">
+                            A collaborative interactive artwork restoration
+                            project developed with illustrator
+                            <a
+                                href="https://www.instagram.com/chip_illustrator/"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                @chip_illustrator
+                            </a>.
+                            Her illustration work was transformed into an
+                            interactive digital experience through programming,
+                            animation and technical implementation.
+                        </p>
 
-        <article class="game">
-
-            <div class="game-visual">
-
-                <img
-                    src="aliencatchball.jpg"
-                    alt="Alien Catchball"
-                >
-
-            </div>
-
-            <div class="game-info">
-
-                <div>
-
-                    <h3 class="game-title">
-                        Alien Catchball
-                    </h3>
-
-                    <div class="game-type">
-                        Unity / Gameplay
                     </div>
 
-                    <p class="game-description">
-                        A timing and accuracy based throwing
-                        game built around moving targets.
-                    </p>
+
+                    <a
+                        class="play-button"
+                        href="https://lucanicohe.github.io/chipartwork/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View
+
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path d="M3 8h9"/>
+                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                        </svg>
+
+                    </a>
 
                 </div>
 
-                <a
-                    class="play-button"
-                    href="https://lucanicohe.github.io/aliensandstuff/index.html"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Play
-                    <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
+            </article>
+
+
+            <!-- =============================================
+                 LOST IN THE COLD
+            ============================================== -->
+
+            <article class="game">
+
+                <div class="game-visual">
+
+                    <img
+                        src="maze.jpg"
+                        alt="Lost in the Cold"
                     >
-                        <path d="M3 8h9"/>
-                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                    </svg>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <!-- GAME 03 -->
-
-        <article class="game">
-
-            <div class="game-visual">
-
-                <img
-                    src="kamizumo.jpg"
-                    alt="Kamizumo"
-                >
-
-            </div>
-
-            <div class="game-info">
-
-                <div>
-
-                    <h3 class="game-title">
-                        Kamizumo
-                    </h3>
-
-                    <div class="game-type">
-                        Unity / Physics / 3D
-                    </div>
-
-                    <p class="game-description">
-                        A modern 3D interpretation of the
-                        traditional Japanese paper sumo game.
-                    </p>
 
                 </div>
 
-                <a
-                    class="play-button"
-                    href="https://lucanicohe.github.io/kamizumo/"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Play
-                    <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <path d="M3 8h9"/>
-                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                    </svg>
-                </a>
 
-            </div>
+                <div class="game-info">
 
-        </article>
+                    <div>
 
+                        <h3 class="game-title">
+                            Lost in the Cold
+                        </h3>
 
-        <!-- GAME 04 -->
+                        <p class="game-description">
+                            A procedural exploration game that constructs
+                            a new maze layout on every launch. The player
+                            must navigate an ever-changing frozen maze,
+                            demonstrating algorithmic generation and
+                            replayable level structure.
+                        </p>
 
-        <article class="game">
-
-            <div class="game-visual">
-
-                <img
-                    src="train.jpg"
-                    alt="Only Bad Guys on the Train"
-                >
-
-            </div>
-
-            <div class="game-info">
-
-                <div>
-
-                    <h3 class="game-title">
-                        Only Bad Guys on the Train
-                    </h3>
-
-                    <div class="game-type">
-                        Unity / FPS
                     </div>
 
-                    <p class="game-description">
-                        A first-person shooter taking place
-                        entirely inside a moving train.
-                    </p>
+
+                    <a
+                        class="play-button"
+                        href="https://lucanicohe.github.io/smallmazegame/index.html"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Play
+
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path d="M3 8h9"/>
+                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                        </svg>
+
+                    </a>
 
                 </div>
 
-                <a
-                    class="play-button"
-                    href="https://lucanicohe.github.io/onlybadguysonthetrain/"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Play
-                    <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
+            </article>
+
+
+            <!-- =============================================
+                 ALIEN CATCHBALL
+            ============================================== -->
+
+            <article class="game">
+
+                <div class="game-visual">
+
+                    <img
+                        src="aliencatchball.jpg"
+                        alt="Alien Catchball"
                     >
-                        <path d="M3 8h9"/>
-                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                    </svg>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <!-- GAME 05 -->
-
-        <article class="game">
-
-            <div class="game-visual">
-
-                <img
-                    src="bowbones.jpg"
-                    alt="Bow and Bones"
-                >
-
-            </div>
-
-            <div class="game-info">
-
-                <div>
-
-                    <h3 class="game-title">
-                        Bow &amp; Bones
-                    </h3>
-
-                    <div class="game-type">
-                        Unity / 2D / Gameplay
-                    </div>
-
-                    <p class="game-description">
-                        A hand-drawn archery game where the
-                        player fights skeletal enemies.
-                    </p>
 
                 </div>
 
-                <a
-                    class="play-button"
-                    href="https://lucanicohe.github.io/shootinggame/"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Play
-                    <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <path d="M3 8h9"/>
-                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                    </svg>
-                </a>
 
-            </div>
+                <div class="game-info">
 
-        </article>
+                    <div>
 
+                        <h3 class="game-title">
+                            Alien Catchball
+                        </h3>
 
-        <!-- GAME 06 -->
+                        <p class="game-description">
+                            A reactive throwing game focused on timing,
+                            precision and target tracking, with moving
+                            targets that demand controlled player input.
+                        </p>
 
-        <article class="game">
-
-            <div class="game-visual">
-
-                <img
-                    src="maze.jpg"
-                    alt="Small Maze Game"
-                >
-
-            </div>
-
-            <div class="game-info">
-
-                <div>
-
-                    <h3 class="game-title">
-                        Small Maze Game
-                    </h3>
-
-                    <div class="game-type">
-                        Unity / Procedural Generation
                     </div>
 
-                    <p class="game-description">
-                        A procedural maze that generates a new
-                        layout every time the game is launched.
-                    </p>
+
+                    <a
+                        class="play-button"
+                        href="https://lucanicohe.github.io/aliensandstuff/index.html"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Play
+
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path d="M3 8h9"/>
+                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                        </svg>
+
+                    </a>
 
                 </div>
 
-                <a
-                    class="play-button"
-                    href="https://lucanicohe.github.io/smallmazegame/index.html"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Play
-                    <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
+            </article>
+
+
+            <!-- =============================================
+                 KAMIZUMO
+            ============================================== -->
+
+            <article class="game">
+
+                <div class="game-visual">
+
+                    <img
+                        src="kamizumo.jpg"
+                        alt="Kamizumo"
                     >
-                        <path d="M3 8h9"/>
-                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                    </svg>
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <!-- GAME 07 -->
-
-        <article class="game">
-
-            <div class="game-visual">
-
-                <img
-                    src="zerogravitybowling.jpg"
-                    alt="Zero Gravity Bowling"
-                >
-
-            </div>
-
-            <div class="game-info">
-
-                <div>
-
-                    <h3 class="game-title">
-                        Zero Gravity Bowling
-                    </h3>
-
-                    <div class="game-type">
-                        Unity / Physics
-                    </div>
-
-                    <p class="game-description">
-                        A bowling game where conventional
-                        physics disappear inside zero gravity.
-                    </p>
 
                 </div>
 
-                <a
-                    class="play-button"
-                    href="https://lucanicohe.github.io/zerogravitybowling/"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Play
-                    <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <path d="M3 8h9"/>
-                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                    </svg>
-                </a>
 
-            </div>
+                <div class="game-info">
 
-        </article>
+                    <div>
 
+                        <h3 class="game-title">
+                            Kamizumo
+                        </h3>
 
-        <!-- GAME 08 -->
+                        <p class="game-description">
+                            A 3D reinterpretation of
+                            <em>kamizumo</em>, a traditional Japanese
+                            paper-sumo art form. I used my 3D skills to
+                            translate its handcrafted visual language into
+                            an interactive 3D experience.
+                        </p>
 
-        <article class="game">
-
-            <div class="game-visual">
-
-                <img
-                    src="lava.jpg"
-                    alt="The Floor Is Lava"
-                >
-
-            </div>
-
-            <div class="game-info">
-
-                <div>
-
-                    <h3 class="game-title">
-                        The Floor Is Lava
-                    </h3>
-
-                    <div class="game-type">
-                        Unity / Movement
                     </div>
 
-                    <p class="game-description">
-                        A movement-focused game set inside
-                        a flooded classroom.
-                    </p>
+
+                    <a
+                        class="play-button"
+                        href="https://lucanicohe.github.io/kamizumo/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Play
+
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path d="M3 8h9"/>
+                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                        </svg>
+
+                    </a>
 
                 </div>
 
-                <a
-                    class="play-button"
-                    href="https://lucanicohe.github.io/thefloorislava/"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Play
-                    <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
+            </article>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SEE MORE
+        ================================================== -->
+
+        <div
+            class="see-more-wrap"
+            id="seeMoreWrap"
+        >
+
+            <button
+                class="see-more"
+                id="seeMoreButton"
+                type="button"
+            >
+                See more
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             REMAINING PROJECTS
+        ================================================== -->
+
+        <div
+            class="game-grid extra-projects"
+            id="extraProjects"
+        >
+
+
+            <!-- ONLY BAD GUYS -->
+
+            <article class="game">
+
+                <div class="game-visual">
+
+                    <img
+                        src="train.jpg"
+                        alt="Only Bad Guys on the Train"
                     >
-                        <path d="M3 8h9"/>
-                        <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                    </svg>
-                </a>
 
-            </div>
+                </div>
 
-        </article>
 
+                <div class="game-info">
+
+                    <div>
+
+                        <h3 class="game-title">
+                            Only Bad Guys on the Train
+                        </h3>
+
+                        <p class="game-description">
+                            A first-person combat experience set entirely
+                            within a moving train, built around confined
+                            spaces, encounter pacing and environmental
+                            storytelling.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="play-button"
+                        href="https://lucanicohe.github.io/onlybadguysonthetrain/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Play
+
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path d="M3 8h9"/>
+                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- BONGO 3D -->
+
+            <article class="game">
+
+                <div class="game-visual">
+
+                    <img
+                        src="bongo3d.jpg"
+                        alt="Bongo 3D"
+                    >
+
+                </div>
+
+
+                <div class="game-info">
+
+                    <div>
+
+                        <h3 class="game-title">
+                            Bongo 3D
+                        </h3>
+
+                        <p class="game-description">
+                            A 3D interactive reinterpretation of the Bongo
+                            Cat internet phenomenon, combining character
+                            interaction, animation and responsive gameplay
+                            into a browser-based experience.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="play-button"
+                        href="https://lucanicohe.github.io/bongo3d/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Play
+
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path d="M3 8h9"/>
+                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- BOW & BONES -->
+
+            <article class="game">
+
+                <div class="game-visual">
+
+                    <img
+                        src="bowbones.jpg"
+                        alt="Bow and Bones"
+                    >
+
+                </div>
+
+
+                <div class="game-info">
+
+                    <div>
+
+                        <h3 class="game-title">
+                            Bow &amp; Bones
+                        </h3>
+
+                        <p class="game-description">
+                            A stylized 2D archery experience combining
+                            hand-drawn visuals with projectile mechanics,
+                            enemy encounters and responsive combat.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="play-button"
+                        href="https://lucanicohe.github.io/shootinggame/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Play
+
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path d="M3 8h9"/>
+                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- ZERO GRAVITY BOWLING -->
+
+            <article class="game">
+
+                <div class="game-visual">
+
+                    <img
+                        src="zerogravitybowling.jpg"
+                        alt="Zero Gravity Bowling"
+                    >
+
+                </div>
+
+
+                <div class="game-info">
+
+                    <div>
+
+                        <h3 class="game-title">
+                            Zero Gravity Bowling
+                        </h3>
+
+                        <p class="game-description">
+                            A physics-driven bowling experiment that removes
+                            conventional gravity, requiring the player to
+                            read momentum, trajectories and spatial movement
+                            in zero gravity.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="play-button"
+                        href="https://lucanicohe.github.io/zerogravitybowling/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Play
+
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path d="M3 8h9"/>
+                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- THE FLOOR IS LAVA -->
+
+            <article class="game">
+
+                <div class="game-visual">
+
+                    <img
+                        src="lava.jpg"
+                        alt="The Floor Is Lava"
+                    >
+
+                </div>
+
+
+                <div class="game-info">
+
+                    <div>
+
+                        <h3 class="game-title">
+                            The Floor Is Lava
+                        </h3>
+
+                        <p class="game-description">
+                            A movement-focused traversal experience set
+                            inside a flooded classroom, turning the
+                            environment itself into the central obstacle
+                            and movement system.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="play-button"
+                        href="https://lucanicohe.github.io/thefloorislava/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Play
+
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path d="M3 8h9"/>
+                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
 
     </div>
 
 </section>
+
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section
+    class="contact"
+    id="contact"
+>
+
+    <div class="contact-header">
+
+        <h2 class="contact-title">
+            Let's build<br>
+            something together.
+        </h2>
+
+
+        <div class="contact-details">
+
+            <div class="contact-details-label">
+                Contact
+            </div>
+
+
+            <a
+                class="contact-item"
+                href="mailto:luca.helgert@icloud.com"
+            >
+
+                <span class="contact-item-name">
+                    Email
+                </span>
+
+                <span class="contact-item-value">
+                    luca.helgert@icloud.com
+                    <span class="contact-item-arrow">↗</span>
+                </span>
+
+            </a>
+
+
+            <a
+                class="contact-item"
+                href="https://www.instagram.com/lucanicohe"
+                target="_blank"
+                rel="noopener"
+            >
+
+                <span class="contact-item-name">
+                    Instagram
+                </span>
+
+                <span class="contact-item-value">
+                    @lucanicohe
+                    <span class="contact-item-arrow">↗</span>
+                </span>
+
+            </a>
+
+
+            <a
+                class="contact-item"
+                href="https://github.com/lucanicohe"
+                target="_blank"
+                rel="noopener"
+            >
+
+                <span class="contact-item-name">
+                    GitHub
+                </span>
+
+                <span class="contact-item-value">
+                    /lucanicohe
+                    <span class="contact-item-arrow">↗</span>
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
 
 </main>
 
@@ -1313,39 +1928,14 @@ footer {
 
 <footer>
 
-    <div class="footer-top">
-
-        <h2 class="footer-name">
-            Luca Helgert
-        </h2>
-
-        <div class="footer-right">
-
-            <a
-                href="https://github.com/lucanicohe"
-                target="_blank"
-                rel="noopener"
-            >
-                GitHub →
-            </a>
-
-            <div class="footer-role">
-                Game Programmer / Technical Artist
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-            Tokyo, Japan
-        </span>
+    <div class="footer-inner">
 
         <span>
             © 2026 Luca Helgert
+        </span>
+
+        <span>
+            Tokyo, Japan
         </span>
 
     </div>
@@ -1354,6 +1944,10 @@ footer {
 
 
 <script>
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 const nav = document.getElementById("nav");
 
@@ -1365,6 +1959,90 @@ window.addEventListener("scroll", () => {
     );
 
 }, { passive: true });
+
+
+/* =========================================================
+   PROJECT SWITCHER
+========================================================= */
+
+const projectButtons =
+    document.querySelectorAll(".project-switcher button");
+
+const projectPanels =
+    document.querySelectorAll(".project-panel");
+
+
+projectButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const targetId =
+            button.dataset.target;
+
+        const targetPanel =
+            document.getElementById(targetId);
+
+        const isAlreadyOpen =
+            targetPanel.classList.contains("active");
+
+
+        /*
+         * If the currently open button is pressed again,
+         * close the panel completely.
+         */
+
+        if (isAlreadyOpen) {
+
+            button.classList.remove("active");
+            targetPanel.classList.remove("active");
+
+            return;
+        }
+
+
+        /*
+         * Otherwise close everything first,
+         * then open the selected panel.
+         */
+
+        projectButtons.forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        projectPanels.forEach((panel) => {
+            panel.classList.remove("active");
+        });
+
+
+        button.classList.add("active");
+        targetPanel.classList.add("active");
+
+    });
+
+});
+
+
+/* =========================================================
+   SEE MORE
+========================================================= */
+
+const seeMoreButton =
+    document.getElementById("seeMoreButton");
+
+const seeMoreWrap =
+    document.getElementById("seeMoreWrap");
+
+const extraProjects =
+    document.getElementById("extraProjects");
+
+
+seeMoreButton.addEventListener("click", () => {
+
+    extraProjects.classList.add("visible");
+
+    seeMoreWrap.style.display = "none";
+
+});
 
 </script>
 
