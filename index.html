@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -34,7 +35,7 @@ body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: "Inter", sans-serif;
+    font-family: "Inter", "Noto Sans JP", sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
@@ -42,6 +43,51 @@ body {
 img {
     display: block;
     max-width: 100%;
+}
+
+
+/* =========================================================
+   JAPANESE TYPOGRAPHY ADJUSTMENTS
+========================================================= */
+
+html.lang-ja * {
+    letter-spacing: 0 !important;
+}
+
+html.lang-ja body {
+    font-family: "Noto Sans JP", "Inter", sans-serif;
+}
+
+html.lang-ja .hero h1 {
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+html.lang-ja .statement h2 {
+    font-size: clamp(2.4rem, 5vw, 5.5rem);
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+html.lang-ja .work-header h2 {
+    font-size: clamp(2.8rem, 6vw, 6rem);
+    line-height: 1.25;
+}
+
+html.lang-ja .contact-title {
+    font-size: clamp(32px, 5vw, 68px);
+    line-height: 1.45;
+}
+
+html.lang-ja .eyebrow {
+    font-size: 12.5px;
+}
+
+html.lang-ja .hero-description,
+html.lang-ja .instagram-text,
+html.lang-ja .game-description {
+    line-height: 1.9;
 }
 
 a {
@@ -91,6 +137,12 @@ nav.scrolled {
     text-decoration: none;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
 .nav-links {
     display: flex;
     gap: 38px;
@@ -105,6 +157,36 @@ nav.scrolled {
 
 .nav-links a:hover {
     color: var(--text);
+}
+
+.lang-toggle {
+    height: 36px;
+
+    padding: 0 18px;
+
+    border: 1px solid rgba(17,17,17,.18);
+    border-radius: 18px;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+
+    letter-spacing: -.01em;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.lang-toggle:hover {
+    background: var(--text);
+    color: var(--bg);
 }
 
 
@@ -894,12 +976,24 @@ footer {
         height: 64px;
     }
 
+    .nav-right {
+        gap: 14px;
+    }
+
     .nav-links {
-        gap: 20px;
+        gap: 16px;
     }
 
     .nav-links a {
         font-size: 13px;
+    }
+
+    .lang-toggle {
+        height: 32px;
+
+        padding: 0 13px;
+
+        font-size: 12px;
     }
 
     .hero {
@@ -1056,6 +1150,10 @@ footer {
 
 @media (max-width: 380px) {
 
+    .nav-right {
+        gap: 10px;
+    }
+
     .nav-links {
         gap: 13px;
     }
@@ -1115,23 +1213,36 @@ footer {
 
     <div class="nav-inner">
 
-        <a href="#top" class="logo">
+        <a href="#top" class="logo i18n" data-en="Luca Helgert" data-ja="ルカ・ヘルゲルト">
             Luca Helgert
         </a>
 
-        <div class="nav-links">
+        <div class="nav-right">
 
-            <a href="#top">
-                Top
-            </a>
+            <div class="nav-links">
 
-            <a href="#work">
-                Works
-            </a>
+                <a href="#top" class="i18n" data-en="Top" data-ja="トップ">
+                    Top
+                </a>
 
-            <a href="#contact">
-                Contact
-            </a>
+                <a href="#work" class="i18n" data-en="Works" data-ja="作品">
+                    Works
+                </a>
+
+                <a href="#contact" class="i18n" data-en="Contact" data-ja="お問い合わせ">
+                    Contact
+                </a>
+
+            </div>
+
+            <button
+                type="button"
+                id="langToggle"
+                class="lang-toggle"
+                aria-label="Switch language"
+            >
+                日本語
+            </button>
 
         </div>
 
@@ -1151,16 +1262,24 @@ footer {
 
     <div class="hero-content">
 
-        <div class="eyebrow">
+        <div
+            class="eyebrow i18n"
+            data-en="Game Programmer / Technical Artist"
+            data-ja="ゲームプログラマー / テクニカルアーティスト"
+        >
             Game Programmer / Technical Artist
         </div>
 
-        <h1>
+        <h1 class="i18n" data-en="Luca<br>Helgert" data-ja="ルカ<br>ヘルゲルト">
             Luca<br>
             Helgert
         </h1>
 
-        <p class="hero-description">
+        <p
+            class="hero-description i18n"
+            data-en="I build games from concept to playable experience, combining programming, 3D art, systems design, and procedural technology."
+            data-ja="プログラミングと3Dアート、システムデザイン、プロシージャル技術を組み合わせながら、コンセプトから遊べる体験までゲームをつくっています。"
+        >
             I build games from concept to playable experience,
             combining programming, 3D art, systems design,
             and procedural technology.
@@ -1187,7 +1306,11 @@ footer {
 
 <section class="statement">
 
-    <h2>
+    <h2
+        class="i18n"
+        data-en='Code meets art.<span>Games bring them together.</span>'
+        data-ja='コードと、アート。<span>それをひとつにするのが、ゲーム。</span>'
+    >
         Code meets art.
         <span>Games bring them together.</span>
     </h2>
@@ -1198,11 +1321,19 @@ footer {
 
         <div class="instagram-block">
 
-            <div class="small-label">
+            <div
+                class="small-label i18n"
+                data-en="Documenting the process"
+                data-ja="制作の記録"
+            >
                 Documenting the process
             </div>
 
-            <p class="instagram-text">
+            <p
+                class="instagram-text i18n"
+                data-en="I document what I build and create on Instagram, where the account has grown rapidly. My most-viewed video has reached more than 4 million views."
+                data-ja="制作の様子はInstagramで発信しています。フォロワーは着実に伸びており、最も再生された動画は400万回を超えました。"
+            >
                 I document what I build and create on Instagram,
                 where the account has grown rapidly. My most-viewed
                 video has reached more than 4 million views.
@@ -1223,13 +1354,21 @@ footer {
 
         <div class="skills">
 
-            <div class="skills-heading">
+            <div
+                class="skills-heading i18n"
+                data-en="My Skills"
+                data-ja="スキル"
+            >
                 My Skills
             </div>
 
             <div class="skill-row">
 
-                <div class="skill-name">
+                <div
+                    class="skill-name i18n"
+                    data-en="Programming"
+                    data-ja="プログラミング"
+                >
                     Programming
                 </div>
 
@@ -1242,7 +1381,11 @@ footer {
 
             <div class="skill-row">
 
-                <div class="skill-name">
+                <div
+                    class="skill-name i18n"
+                    data-en="Game Development"
+                    data-ja="ゲーム開発"
+                >
                     Game Development
                 </div>
 
@@ -1255,7 +1398,11 @@ footer {
 
             <div class="skill-row">
 
-                <div class="skill-name">
+                <div
+                    class="skill-name i18n"
+                    data-en="3D &amp; Technical Art"
+                    data-ja="3D・テクニカルアート"
+                >
                     3D &amp; Technical Art
                 </div>
 
@@ -1268,11 +1415,19 @@ footer {
 
             <div class="skill-row">
 
-                <div class="skill-name">
+                <div
+                    class="skill-name i18n"
+                    data-en="Systems"
+                    data-ja="システム"
+                >
                     Systems
                 </div>
 
-                <div class="skill-details">
+                <div
+                    class="skill-details i18n"
+                    data-en="Gameplay Systems / Procedural Generation"
+                    data-ja="ゲームプレイシステム / プロシージャル生成"
+                >
                     Gameplay Systems / Procedural Generation
                 </div>
 
@@ -1294,7 +1449,7 @@ footer {
 
     <div class="work-header">
 
-        <h2>
+        <h2 class="i18n" data-en="Selected work" data-ja="代表作品">
             Selected work
         </h2>
 
@@ -1306,6 +1461,9 @@ footer {
         <button
             type="button"
             data-target="team-projects"
+            class="i18n"
+            data-en="Team Projects"
+            data-ja="チームプロジェクト"
         >
             Team Projects
         </button>
@@ -1313,6 +1471,9 @@ footer {
         <button
             type="button"
             data-target="solo-projects"
+            class="i18n"
+            data-en="Solo Projects"
+            data-ja="個人プロジェクト"
         >
             Solo Projects
         </button>
@@ -1369,11 +1530,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Artwork Restoration"
+                            data-ja="アートワークの復元"
+                        >
                             Artwork Restoration
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en='A collaborative interactive artwork restoration project developed with illustrator <a href="https://www.instagram.com/chip_illustrator/" target="_blank" rel="noopener">@chip_illustrator</a>. Her illustration work was transformed into an interactive digital experience through programming, animation and technical implementation.'
+                            data-ja='イラストレーター <a href="https://www.instagram.com/chip_illustrator/" target="_blank" rel="noopener">@chip_illustrator</a> と共同制作した、インタラクティブなアートワーク復元プロジェクト。彼女のイラストを、プログラミングとアニメーションによってデジタル作品として蘇らせました。'
+                        >
                             A collaborative interactive artwork restoration
                             project developed with illustrator
                             <a
@@ -1397,7 +1566,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1436,11 +1605,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Lost in the Cold"
+                            data-ja="極寒の迷路"
+                        >
                             Lost in the Cold
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A procedural exploration game that constructs a new maze layout on every launch. The player must navigate an ever-changing frozen maze, demonstrating algorithmic generation and replayable level structure."
+                            data-ja="起動するたびに新しい迷路が生成される、プロシージャル探索ゲーム。絶えず姿を変える氷の迷路を進みながら、アルゴリズム生成による高いリプレイ性を体感できます。"
+                        >
                             A procedural exploration game that constructs
                             a new maze layout on every launch. The player
                             must navigate an ever-changing frozen maze,
@@ -1457,7 +1634,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1496,11 +1673,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Earth is a Toy"
+                            data-ja="地球はおもちゃ"
+                        >
                             Earth is a Toy
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A physics-based alien catching game where animated aliens react to the player's actions. I used Inverse Kinematics (IK) to create procedural character animations, allowing the aliens' bodies and limbs to naturally react to the movement and direction of the gameplay."
+                            data-ja="プレイヤーの動きに反応するエイリアンが登場する、物理演算ベースのキャッチゲーム。逆運動学（IK）によるプロシージャルアニメーションで、エイリアンの体や手足がゲームの動きに自然に反応します。"
+                        >
                             A physics-based alien catching game where
                             animated aliens react to the player's actions.
                             I used Inverse Kinematics (IK) to create
@@ -1518,7 +1703,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1557,11 +1742,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Only Bad Guys on the Train"
+                            data-ja="電車の中の悪者たち"
+                        >
                             Only Bad Guys on the Train
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A first-person combat experience set entirely within a moving train. I modeled everything myself, including all 3D assets, 2D elements and textures. The complete visual content is 100% my own creation, from the models and environments to the textures and artwork."
+                            data-ja="走行中の電車を舞台にした、一人称視点の戦闘アクション。3Dモデルから2D素材、テクスチャに至るまで、ビジュアルはすべて自分の手で制作しました。"
+                        >
                             A first-person combat experience set entirely
                             within a moving train. I modeled everything
                             myself, including all 3D assets, 2D elements
@@ -1579,7 +1772,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1649,11 +1842,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Olympus Dodge"
+                            data-ja="オリンポス・ドッジ"
+                        >
                             Olympus Dodge
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A first-person fantasy dodgeball game inspired by the feeling of exploring a world like Skyrim. I created the environment background in World Machine and used it to build a large fantasy landscape around the gameplay."
+                            data-ja="Skyrimのような世界を旅する感覚を目指した、一人称視点のファンタジー・ドッジボール。World Machineで作り込んだ広大な背景が、ゲームプレイを包み込みます。"
+                        >
                             A first-person fantasy dodgeball game inspired
                             by the feeling of exploring a world like Skyrim.
                             I created the environment background in World
@@ -1670,7 +1871,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1707,11 +1908,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Frog Kamizumo"
+                            data-ja="カエル紙相撲"
+                        >
                             Frog Kamizumo
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A 3D reinterpretation of traditional Japanese Kamizumo, transforming the classic paper sumo game into a physical 3D experience. The main technical challenge was creating convincing physics that make the sumo characters react naturally to movement, collisions and impacts."
+                            data-ja="日本の伝統的な紙相撲を3Dで再構築した作品。動きや衝突、衝撃に自然に反応する力士たちの物理表現が、最大の技術的挑戦でした。"
+                        >
                             A 3D reinterpretation of traditional Japanese
                             Kamizumo, transforming the classic paper sumo
                             game into a physical 3D experience. The main
@@ -1729,7 +1938,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1766,11 +1975,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Underwater Pinball"
+                            data-ja="水中ピンボール"
+                        >
                             Underwater Pinball
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="An old-school pinball game set underwater, developed entirely in Unity. I modeled all of the game's 3D assets myself and programmed the complete gameplay and pinball mechanics."
+                            data-ja="水中を舞台にしたクラシックなピンボールゲーム。Unityで開発し、3Dアセットからゲームプレイ、物理挙動まですべて自分の手で制作しました。"
+                        >
                             An old-school pinball game set underwater,
                             developed entirely in Unity. I modeled all
                             of the game's 3D assets myself and programmed
@@ -1786,7 +2003,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1823,11 +2040,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Bongo 3D"
+                            data-ja="ボンゴ3D"
+                        >
                             Bongo 3D
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A 3D interactive reinterpretation of the Bongo Cat internet phenomenon, combining character interaction, animation and responsive gameplay into a browser-based experience."
+                            data-ja="インターネットで話題になった「ボンゴキャット」を3Dで再構築。キャラクターとの掛け合いやアニメーションを、ブラウザ上のインタラクティブな体験としてまとめました。"
+                        >
                             A 3D interactive reinterpretation of the Bongo
                             Cat internet phenomenon, combining character
                             interaction, animation and responsive gameplay
@@ -1843,7 +2068,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1880,11 +2105,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Bow &amp; Bones"
+                            data-ja="ボウ・アンド・ボーンズ"
+                        >
                             Bow &amp; Bones
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A stylized 2D archery experience combining hand-drawn visuals with projectile mechanics, enemy encounters and responsive combat."
+                            data-ja="手描き風のビジュアルと発射物の挙動を組み合わせた、スタイリッシュな2Dアーチェリーアクション。"
+                        >
                             A stylized 2D archery experience combining
                             hand-drawn visuals with projectile mechanics,
                             enemy encounters and responsive combat.
@@ -1899,7 +2132,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1936,11 +2169,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Zero Gravity Bowling"
+                            data-ja="無重力ボウリング"
+                        >
                             Zero Gravity Bowling
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A physics-driven bowling experiment that removes conventional gravity, requiring the player to read momentum, trajectories and spatial movement in zero gravity."
+                            data-ja="重力を取り払った、物理演算ベースのボウリング実験。無重力の中で運動量と軌道を読みながらプレイします。"
+                        >
                             A physics-driven bowling experiment that removes
                             conventional gravity, requiring the player to
                             read momentum, trajectories and spatial movement
@@ -1956,7 +2197,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -1993,11 +2234,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="The Floor Is Lava"
+                            data-ja="床は溶岩"
+                        >
                             The Floor Is Lava
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A movement-focused traversal experience set inside a flooded classroom, turning the environment itself into the central obstacle and movement system."
+                            data-ja="水没した教室を舞台にした、移動そのものを楽しむ探索体験。環境そのものが最大の障害物になります。"
+                        >
                             A movement-focused traversal experience set
                             inside a flooded classroom, turning the
                             environment itself into the central obstacle
@@ -2013,7 +2262,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -2050,11 +2299,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="Tron Rhythm"
+                            data-ja="トロン・リズム"
+                        >
                             Tron Rhythm
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A rhythm-based dodge game where obstacles are spawned in sync with the rhythm of the music. The player must follow the beat while avoiding incoming cubes, combining simple movement with music-driven gameplay."
+                            data-ja="音楽のリズムに合わせて障害物が現れる、リズムアクション。ビートに乗りながら迫りくるキューブを避ける、シンプルで心地よいゲームプレイです。"
+                        >
                             A rhythm-based dodge game where obstacles are
                             spawned in sync with the rhythm of the music.
                             The player must follow the beat while avoiding
@@ -2071,7 +2328,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -2108,11 +2365,19 @@ footer {
 
                     <div>
 
-                        <h3 class="game-title">
+                        <h3
+                            class="game-title i18n"
+                            data-en="The Universe"
+                            data-ja="宇宙"
+                        >
                             The Universe
                         </h3>
 
-                        <p class="game-description">
+                        <p
+                            class="game-description i18n"
+                            data-en="A fully hand-drawn animation piece rather than a playable game, imagining a simplified and artistic version of the universe. Meditation on scale and existence than something with rules to learn."
+                            data-ja="プレイするゲームではなく、完全手描きのアニメーション作品。シンプルで芸術的な宇宙の姿を通して、スケールと存在についてそっと問いかけます。"
+                        >
                             A fully hand-drawn animation piece rather than
                             a playable game, imagining a simplified and
                             artistic version of the universe. 
@@ -2129,7 +2394,7 @@ footer {
                         target="_blank"
                         rel="noopener"
                     >
-                        Play
+                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
 
                         <svg
                             viewBox="0 0 16 16"
@@ -2166,7 +2431,11 @@ footer {
 
     <div class="contact-header">
 
-        <h2 class="contact-title">
+        <h2
+            class="contact-title i18n"
+            data-en="Let's build<br>something together."
+            data-ja="一緒に、何かを<br>つくりましょう。"
+        >
             Let's build<br>
             something together.
         </h2>
@@ -2174,7 +2443,11 @@ footer {
 
         <div class="contact-details">
 
-            <div class="contact-details-label">
+            <div
+                class="contact-details-label i18n"
+                data-en="Contact"
+                data-ja="連絡先"
+            >
                 Contact
             </div>
 
@@ -2184,7 +2457,11 @@ footer {
                 href="mailto:luca.helgert@icloud.com"
             >
 
-                <span class="contact-item-name">
+                <span
+                    class="contact-item-name i18n"
+                    data-en="Email"
+                    data-ja="メール"
+                >
                     Email
                 </span>
 
@@ -2251,11 +2528,11 @@ footer {
 
     <div class="footer-inner">
 
-        <span>
+        <span class="i18n" data-en="© 2026 Luca Helgert" data-ja="© 2026 ルカ・ヘルゲルト">
             © 2026 Luca Helgert
         </span>
 
-        <span>
+        <span class="i18n" data-en="Tokyo, Japan" data-ja="東京、日本">
             Tokyo, Japan
         </span>
 
@@ -2344,6 +2621,25 @@ const extraProjects =
     document.getElementById("extraProjects");
 
 
+function updateSeeMoreLabel() {
+
+    const isExpanded =
+        extraProjects.classList.contains("visible");
+
+    const labels = {
+        en: { more: "See more", less: "See less" },
+        ja: { more: "もっと見る", less: "閉じる" }
+    };
+
+    const set =
+        labels[currentLang] || labels.en;
+
+    seeMoreButton.textContent =
+        isExpanded ? set.less : set.more;
+
+}
+
+
 seeMoreButton.addEventListener("click", () => {
 
     const isExpanded =
@@ -2354,7 +2650,7 @@ seeMoreButton.addEventListener("click", () => {
 
         extraProjects.classList.remove("visible");
 
-        seeMoreButton.textContent = "See more";
+        updateSeeMoreLabel();
 
 
         const soloPanel =
@@ -2387,7 +2683,60 @@ seeMoreButton.addEventListener("click", () => {
 
     extraProjects.classList.add("visible");
 
-    seeMoreButton.textContent = "See less";
+    updateSeeMoreLabel();
+
+});
+
+
+/* =========================================================
+   LANGUAGE TOGGLE
+========================================================= */
+
+const langToggle =
+    document.getElementById("langToggle");
+
+let currentLang = "en";
+
+
+function applyLanguage(lang) {
+
+    currentLang = lang;
+
+    document.documentElement.lang =
+        lang === "ja" ? "ja" : "en";
+
+    document.documentElement.classList.toggle(
+        "lang-ja",
+        lang === "ja"
+    );
+
+    document.querySelectorAll(".i18n").forEach((el) => {
+
+        const content =
+            lang === "ja" ? el.dataset.ja : el.dataset.en;
+
+        if (content !== undefined) {
+            el.innerHTML = content;
+        }
+
+    });
+
+    langToggle.textContent =
+        lang === "ja" ? "EN" : "日本語";
+
+    langToggle.setAttribute(
+        "aria-pressed",
+        lang === "ja"
+    );
+
+    updateSeeMoreLabel();
+
+}
+
+
+langToggle.addEventListener("click", () => {
+
+    applyLanguage(currentLang === "en" ? "ja" : "en");
 
 });
 
