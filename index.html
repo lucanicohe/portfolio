@@ -407,15 +407,18 @@ nav.scrolled {
 }
 
 .skill-row {
-    min-height: 62px;
-
-    display: grid;
-
-    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
-
-    align-items: center;
+    padding: 20px 0;
 
     border-top: 1px solid var(--line);
+}
+
+.skill-row-top {
+    display: flex;
+
+    align-items: baseline;
+    justify-content: space-between;
+
+    gap: 20px;
 }
 
 .skill-name {
@@ -434,6 +437,164 @@ nav.scrolled {
     color: var(--muted);
 
     letter-spacing: -.01em;
+
+    text-align: right;
+
+    flex-shrink: 0;
+}
+
+.skill-bar {
+    margin-top: 16px;
+
+    height: 4px;
+
+    border-radius: 2px;
+
+    background: rgba(17,17,17,.08);
+
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    display: block;
+
+    width: 0%;
+    height: 100%;
+
+    border-radius: 2px;
+
+    background: var(--text);
+
+    transition: width 1.3s cubic-bezier(.16,.8,.2,1);
+}
+
+.skill-bar-fill.filled {
+    width: var(--pct);
+}
+
+
+/* =========================================================
+   SKILLS INFO TOGGLE
+========================================================= */
+
+.skills-info-toggle {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 9px;
+
+    margin-top: 30px;
+
+    height: 44px;
+
+    padding: 0 20px;
+
+    border: 1px solid rgba(17,17,17,.18);
+    border-radius: 22px;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+
+    letter-spacing: -.01em;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.skills-info-toggle:hover {
+    background: var(--text);
+    color: var(--bg);
+}
+
+.skills-info-toggle svg {
+    width: 10px;
+    height: 10px;
+
+    flex-shrink: 0;
+
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
+}
+
+.skills-info-toggle.open svg {
+    transform: rotate(180deg);
+}
+
+.skills-info-panel {
+    display: grid;
+
+    grid-template-rows: 0fr;
+
+    transition: grid-template-rows .45s cubic-bezier(.2,.7,.2,1);
+}
+
+.skills-info-panel.open {
+    grid-template-rows: 1fr;
+}
+
+.skills-info-inner {
+    overflow: hidden;
+}
+
+.skills-info-text {
+    margin: 20px 0 0;
+
+    max-width: 560px;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+.skills-info-text + .skills-info-text {
+    margin-top: 14px;
+}
+
+.skills-info-list {
+    margin: 16px 0 0;
+    padding: 0;
+
+    max-width: 620px;
+
+    list-style: none;
+
+    color: var(--muted);
+}
+
+.skills-info-list li {
+    position: relative;
+
+    padding-left: 18px;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.skills-info-list li + li {
+    margin-top: 8px;
+}
+
+.skills-info-list li::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: .72em;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--text);
 }
 
 
@@ -1030,11 +1191,19 @@ footer {
     }
 
     .skill-row {
-        grid-template-columns: 1fr;
-
-        gap: 6px;
-
         padding: 17px 0;
+    }
+
+    .skill-row-top {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 4px;
+    }
+
+    .skill-details {
+        text-align: left;
     }
 
     .skill-name {
@@ -1043,6 +1212,10 @@ footer {
 
     .skill-details {
         font-size: 15px;
+    }
+
+    .skills-info-toggle {
+        width: 100%;
     }
 
     .work {
@@ -1349,6 +1522,139 @@ footer {
                 <span class="instagram-arrow">↗</span>
             </a>
 
+            <button
+                type="button"
+                id="skillsInfoToggle"
+                class="skills-info-toggle"
+                aria-expanded="false"
+                aria-controls="skillsInfoPanel"
+            >
+                <span class="i18n" data-en="By the way" data-ja="ちなみに">
+                    By the way
+                </span>
+
+                <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M1 1.5L6 6.5L11 1.5"/>
+                </svg>
+            </button>
+
+            <div class="skills-info-panel" id="skillsInfoPanel">
+
+                <div class="skills-info-inner">
+
+                    <p
+                        class="skills-info-text i18n"
+                        data-en="The skills on the right are only a selection. I also work across a much wider range of technical and creative areas, depending on what a project needs."
+                        data-ja="右に掲載しているのはスキルの一部です。プロジェクトに必要なことに合わせて、さらに幅広い技術・クリエイティブ分野に対応しています。"
+                    >
+                        The skills on the right are only a selection. I also work
+                        across a much wider range of technical and creative
+                        areas, depending on what a project needs.
+                    </p>
+
+                    <ul class="skills-info-list">
+
+                        <li
+                            class="i18n"
+                            data-en="Unity development beyond programming, with a focus on finishing and polishing games, shaders, Shader Graph, UI, interaction, and overall presentation."
+                            data-ja="プログラミングだけでなく、ゲームの完成・調整・クオリティアップを重視したUnity開発。シェーダー、Shader Graph、UI、インタラクション、全体の見せ方まで対応。"
+                        >
+                            Unity development beyond programming, with a
+                            focus on finishing and polishing games, shaders,
+                            Shader Graph, UI, interaction, and overall
+                            presentation.
+                        </li>
+
+                        <li
+                            class="i18n"
+                            data-en="Procedural 3D modeling and environment creation with World Machine."
+                            data-ja="World Machineを使ったプロシージャル3Dモデリングと環境制作。"
+                        >
+                            Procedural 3D modeling and environment creation
+                            with World Machine.
+                        </li>
+
+                        <li
+                            class="i18n"
+                            data-en="AI-assisted creative workflows, including Stable Diffusion for image generation and experimentation."
+                            data-ja="Stable Diffusionなどを活用した画像生成や実験を含む、AIを取り入れたクリエイティブワークフロー。"
+                        >
+                            AI-assisted creative workflows, including
+                            Stable Diffusion for image generation and
+                            experimentation.
+                        </li>
+
+                        <li
+                            class="i18n"
+                            data-en="Visual design and UI work, combining technical implementation with a strong focus on presentation."
+                            data-ja="技術的な実装とビジュアル表現を組み合わせた、デザインとUI制作。"
+                        >
+                            Visual design and UI work, combining technical
+                            implementation with a strong focus on
+                            presentation.
+                        </li>
+
+                        <li
+                            class="i18n"
+                            data-en="3D production across Blender, Cinema 4D, Blockbench, and other tools."
+                            data-ja="Blender、Cinema 4D、Blockbenchなど、複数の3Dツールを使った制作。"
+                        >
+                            3D production across Blender, Cinema 4D,
+                            Blockbench, and other tools.
+                        </li>
+
+                        <li
+                            class="i18n"
+                            data-en="WebGL, most of my solo projects are playable in browser using WebGL."
+                            data-ja="WebGL。個人プロジェクトの多くは、WebGLを使ってブラウザ上でプレイできます。"
+                        >
+                            WebGL, most of my solo projects are playable in
+                            browser using WebGL.
+                        </li>
+
+                        <li
+                            class="i18n"
+                            data-en="Digital drawing and painting with Clip Studio Paint, ranging from realistic illustration to anime-style artwork."
+                            data-ja="CLIP STUDIO PAINTを使ったデジタル作画・イラスト制作。リアル寄りの表現からアニメ調まで幅広く対応。"
+                        >
+                            Digital drawing and painting with Clip Studio
+                            Paint, ranging from realistic illustration to
+                            anime-style artwork.
+                        </li>
+
+                        <li
+                            class="i18n"
+                            data-en="GitHub, this portfolio exists here as well as most of my games."
+                            data-ja="GitHub。このポートフォリオも、ほとんどのゲームもここに公開しています。"
+                        >
+                            GitHub, this portfolio exists here as well as
+                            most of my games.
+                        </li>
+
+                        <li
+                            class="i18n"
+                            data-en="HTML, I wrote this portfolio in HTML without using a service."
+                            data-ja="HTML。このポートフォリオはサービスを使わず、HTMLで自分で書きました。"
+                        >
+                            HTML, I wrote this portfolio in HTML without
+                            using a service.
+                        </li>
+
+                        <li
+                            class="i18n"
+                            data-en="Development across both macOS and Windows environments."
+                            data-ja="macOSとWindowsの両方での開発環境に対応。"
+                        >
+                            Development across both macOS and Windows
+                            environments.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
         </div>
 
 
@@ -1364,33 +1670,28 @@ footer {
 
             <div class="skill-row">
 
-                <div
-                    class="skill-name i18n"
-                    data-en="Programming"
-                    data-ja="プログラミング"
-                >
-                    Programming
+                <div class="skill-row-top">
+
+                    <div
+                        class="skill-name i18n"
+                        data-en="3D"
+                        data-ja="3D"
+                    >
+                        3D
+                    </div>
+
+                    <div
+                        class="skill-details i18n"
+                        data-en="5 years+"
+                        data-ja="5年以上"
+                    >
+                        5 years+
+                    </div>
+
                 </div>
 
-                <div class="skill-details">
-                    C# / C++
-                </div>
-
-            </div>
-
-
-            <div class="skill-row">
-
-                <div
-                    class="skill-name i18n"
-                    data-en="Game Development"
-                    data-ja="ゲーム開発"
-                >
-                    Game Development
-                </div>
-
-                <div class="skill-details">
-                    Unity / Unreal Engine
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--pct: 100%;"></div>
                 </div>
 
             </div>
@@ -1398,16 +1699,28 @@ footer {
 
             <div class="skill-row">
 
-                <div
-                    class="skill-name i18n"
-                    data-en="3D &amp; Technical Art"
-                    data-ja="3D・テクニカルアート"
-                >
-                    3D &amp; Technical Art
+                <div class="skill-row-top">
+
+                    <div
+                        class="skill-name i18n"
+                        data-en="Unity"
+                        data-ja="Unity"
+                    >
+                        Unity
+                    </div>
+
+                    <div
+                        class="skill-details i18n"
+                        data-en="3 years"
+                        data-ja="3年"
+                    >
+                        3 years
+                    </div>
+
                 </div>
 
-                <div class="skill-details">
-                    Blender / World Machine
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--pct: 85%;"></div>
                 </div>
 
             </div>
@@ -1415,20 +1728,86 @@ footer {
 
             <div class="skill-row">
 
-                <div
-                    class="skill-name i18n"
-                    data-en="Systems"
-                    data-ja="システム"
-                >
-                    Systems
+                <div class="skill-row-top">
+
+                    <div
+                        class="skill-name i18n"
+                        data-en="C#"
+                        data-ja="C#"
+                    >
+                        C#
+                    </div>
+
+                    <div
+                        class="skill-details i18n"
+                        data-en="3 years"
+                        data-ja="3年"
+                    >
+                        3 years
+                    </div>
+
                 </div>
 
-                <div
-                    class="skill-details i18n"
-                    data-en="Gameplay Systems / Procedural Generation"
-                    data-ja="ゲームプレイシステム / プロシージャル生成"
-                >
-                    Gameplay Systems / Procedural Generation
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--pct: 85%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill-row">
+
+                <div class="skill-row-top">
+
+                    <div
+                        class="skill-name i18n"
+                        data-en="Unreal Engine"
+                        data-ja="Unreal Engine"
+                    >
+                        Unreal Engine
+                    </div>
+
+                    <div
+                        class="skill-details i18n"
+                        data-en="1 year"
+                        data-ja="1年"
+                    >
+                        1 year
+                    </div>
+
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--pct: 55%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill-row">
+
+                <div class="skill-row-top">
+
+                    <div
+                        class="skill-name i18n"
+                        data-en="C++"
+                        data-ja="C++"
+                    >
+                        C++
+                    </div>
+
+                    <div
+                        class="skill-details i18n"
+                        data-en="1 year"
+                        data-ja="1年"
+                    >
+                        1 year
+                    </div>
+
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--pct: 55%;"></div>
                 </div>
 
             </div>
@@ -1816,7 +2195,7 @@ footer {
 
         <!-- =================================================
              REMAINING PROJECTS
-        ================================================== -->
+        ================================================= -->
 
         <div
             class="game-grid extra-projects"
@@ -2375,13 +2754,13 @@ footer {
 
                         <p
                             class="game-description i18n"
-                            data-en="A fully hand-drawn animation piece rather than a playable game, imagining a simplified and artistic version of the universe. Meditation on scale and existence than something with rules to learn."
+                            data-en="A fully hand-drawn animation piece rather than a playable game, imagining a simplified and artistic version of the universe. Meditation on scale and existence rather than something with rules to learn."
                             data-ja="プレイするゲームではなく、完全手描きのアニメーション作品。シンプルで芸術的な宇宙の姿を通して、スケールと存在についてそっと問いかけます。"
                         >
                             A fully hand-drawn animation piece rather than
                             a playable game, imagining a simplified and
-                            artistic version of the universe. 
-                            Meditation on scale and existence than something
+                            artistic version of the universe. Meditation
+                            on scale and existence rather than something
                             with rules to learn.
                         </p>
 
@@ -2557,6 +2936,61 @@ window.addEventListener("scroll", () => {
     );
 
 }, { passive: true });
+
+
+/* =========================================================
+   SKILLS INFO DROPDOWN
+========================================================= */
+
+const skillsInfoToggle =
+    document.getElementById("skillsInfoToggle");
+
+const skillsInfoPanel =
+    document.getElementById("skillsInfoPanel");
+
+
+skillsInfoToggle.addEventListener("click", () => {
+
+    const isOpen =
+        skillsInfoPanel.classList.toggle("open");
+
+    skillsInfoToggle.classList.toggle("open", isOpen);
+
+    skillsInfoToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+});
+
+
+/* =========================================================
+   SKILL BARS
+========================================================= */
+
+const skillBarFills =
+    document.querySelectorAll(".skill-bar-fill");
+
+const skillBarObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("filled");
+
+            skillBarObserver.unobserve(entry.target);
+
+        }
+
+    });
+
+}, { threshold: .4 });
+
+
+skillBarFills.forEach((fill) => {
+    skillBarObserver.observe(fill);
+});
 
 
 /* =========================================================
