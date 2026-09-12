@@ -699,6 +699,151 @@ nav.scrolled {
 
 
 /* =========================================================
+   TEAM PROJECTS (editorial feature layout)
+========================================================= */
+
+.team-feature-list {
+    width: 100%;
+}
+
+.team-feature {
+    padding: 90px 0;
+
+    border-top: 1px solid var(--line);
+}
+
+.team-feature:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.team-feature-eyebrow {
+    margin-bottom: 20px;
+
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+.team-feature-title {
+    margin: 0 0 56px;
+
+    max-width: 1100px;
+
+    font-size: clamp(2.75rem, 5.5vw, 5.5rem);
+    line-height: .95;
+
+    letter-spacing: -.045em;
+
+    font-weight: 500;
+}
+
+.team-feature-media {
+    display: grid;
+
+    grid-template-columns: 1.7fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 60px;
+}
+
+.team-feature-media img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 22px;
+
+    background: #deded9;
+}
+
+.team-feature-media img:first-child {
+    grid-row: 1 / 3;
+
+    aspect-ratio: 4 / 3.4;
+}
+
+.team-feature-media img:not(:first-child) {
+    aspect-ratio: 16 / 9;
+}
+
+.team-feature-content {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+
+    gap: clamp(50px, 7vw, 110px);
+
+    align-items: start;
+}
+
+.team-feature-lead {
+    margin: 0 0 26px;
+
+    max-width: 620px;
+
+    font-size: clamp(21px, 2.1vw, 27px);
+    line-height: 1.4;
+
+    letter-spacing: -.02em;
+
+    font-weight: 500;
+}
+
+.team-feature-text {
+    margin: 0;
+
+    max-width: 600px;
+
+    font-size: 17px;
+    line-height: 1.75;
+
+    color: var(--muted);
+}
+
+.team-feature-highlights {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-highlight {
+    padding: 22px 0;
+
+    border-top: 1px solid var(--line);
+}
+
+.team-highlight:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.team-highlight-label {
+    margin-bottom: 9px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+.team-highlight-value {
+    font-size: 17px;
+    line-height: 1.55;
+
+    font-weight: 500;
+
+    letter-spacing: -.02em;
+}
+
+
+/* =========================================================
    GAME GRID
 ========================================================= */
 
@@ -1221,6 +1366,35 @@ footer {
     .work {
         padding-top: 50px;
         padding-bottom: 110px;
+    }
+
+    .team-feature {
+        padding: 60px 0;
+    }
+
+    .team-feature-title {
+        margin-bottom: 34px;
+    }
+
+    .team-feature-media {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+
+        gap: 12px;
+
+        margin-bottom: 40px;
+    }
+
+    .team-feature-media img:first-child {
+        grid-row: auto;
+
+        aspect-ratio: 4 / 3;
+    }
+
+    .team-feature-content {
+        grid-template-columns: 1fr;
+
+        gap: 36px;
     }
 
     .work-header {
@@ -1868,6 +2042,586 @@ footer {
         class="project-panel"
         id="team-projects"
     >
+
+        <div class="team-feature-list">
+
+
+            <!-- =============================================
+                 GUILTY LANE
+            ============================================== -->
+
+            <article class="team-feature">
+
+                <div
+                    class="team-feature-eyebrow i18n"
+                    data-en="Team project — Unity — School award winner"
+                    data-ja="チームプロジェクト — Unity — 学内アワード受賞"
+                >
+                    Team project — Unity — School award winner
+                </div>
+
+                <h3
+                    class="team-feature-title i18n"
+                    data-en="Guilty Lane"
+                    data-ja="ギルティ・レーン"
+                >
+                    Guilty Lane
+                </h3>
+
+                <div class="team-feature-media">
+                    <img src="guilty1.jpg" alt="Guilty Lane">
+                    <img src="guilty2.jpg" alt="Guilty Lane">
+                    <img src="guilty3.jpg" alt="Guilty Lane">
+                </div>
+
+                <div class="team-feature-content">
+
+                    <div>
+
+                        <p
+                            class="team-feature-lead i18n"
+                            data-en="A first-person train game built around a perspective and a UI concept I pitched myself — and it went on to win an award at school."
+                            data-ja="自分が発案した一人称視点とUIコンセプトを軸に作り上げた電車ゲーム。学内アワードを受賞しました。"
+                        >
+                            A first-person train game built around a
+                            perspective and a UI concept I pitched myself
+                            — and it went on to win an award at school.
+                        </p>
+
+                        <p
+                            class="team-feature-text i18n"
+                            data-en="I pushed for the first-person perspective early on and designed the interface to live inside the world itself, projected onto in-game screens, rather than sitting on top of it as a flat overlay — a choice that became one of the game's most memorable touches. On the technical side, I programmed the procedural system that spawns the train tracks and built the train itself, and I modeled, textured, and art-directed every 3D asset in the game from scratch."
+                            data-ja="早い段階から一人称視点を推し進め、UIをただの平面的なオーバーレイではなく、ゲーム内のスクリーンに投影される形で世界そのものに組み込むようデザインしました。この選択が、このゲームの最も印象的な特徴のひとつになっています。技術面では、線路をプロシージャルに生成するシステムと電車本体をプログラミングし、3Dアセットのモデリング・テクスチャ・アートディレクションもすべて自分ひとりでゼロから手がけました。"
+                        >
+                            I pushed for the first-person perspective
+                            early on and designed the interface to live
+                            inside the world itself, projected onto
+                            in-game screens, rather than sitting on top
+                            of it as a flat overlay — a choice that
+                            became one of the game's most memorable
+                            touches. On the technical side, I programmed
+                            the procedural system that spawns the train
+                            tracks and built the train itself, and I
+                            modeled, textured, and art-directed every 3D
+                            asset in the game from scratch.
+                        </p>
+
+                    </div>
+
+                    <div class="team-feature-highlights">
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Recognition"
+                                data-ja="受賞歴"
+                            >
+                                Recognition
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Winner, school game competition"
+                                data-ja="学内ゲームコンペティション優勝"
+                            >
+                                Winner, school game competition
+                            </div>
+                        </div>
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Concept"
+                                data-ja="コンセプト"
+                            >
+                                Concept
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="First-person perspective and in-world UI, my idea"
+                                data-ja="一人称視点とゲーム内UIは自分の発案"
+                            >
+                                First-person perspective and in-world UI,
+                                my idea
+                            </div>
+                        </div>
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Programming"
+                                data-ja="プログラミング"
+                            >
+                                Programming
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Procedural track-spawning system, train mechanics"
+                                data-ja="線路のプロシージャル生成システム、電車のメカニクス"
+                            >
+                                Procedural track-spawning system, train
+                                mechanics
+                            </div>
+                        </div>
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Art"
+                                data-ja="アート"
+                            >
+                                Art
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Every 3D model and texture in the game"
+                                data-ja="ゲーム内すべての3Dモデルとテクスチャ"
+                            >
+                                Every 3D model and texture in the game
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+                 KUMO VS. MAHOU
+            ============================================== -->
+
+            <article class="team-feature">
+
+                <div
+                    class="team-feature-eyebrow i18n"
+                    data-en="Team project — Unity — Project lead"
+                    data-ja="チームプロジェクト — Unity — プロジェクトリーダー"
+                >
+                    Team project — Unity — Project lead
+                </div>
+
+                <h3
+                    class="team-feature-title i18n"
+                    data-en="Kumo vs. Mahou"
+                    data-ja="蜘蛛 vs. 魔法"
+                >
+                    Kumo vs. Mahou
+                </h3>
+
+                <div class="team-feature-media">
+                    <img src="kumo1.jpg" alt="Kumo vs. Mahou">
+                    <img src="kumo2.jpg" alt="Kumo vs. Mahou">
+                    <img src="kumo3.jpg" alt="Kumo vs. Mahou">
+                </div>
+
+                <div class="team-feature-content">
+
+                    <div>
+
+                        <p
+                            class="team-feature-lead i18n"
+                            data-en="An open-world fantasy game I led from the very first idea through to a finished, playable build."
+                            data-ja="最初のアイデアから完成・プレイ可能なビルドまで、自分が主導したオープンワールド・ファンタジーゲーム。"
+                        >
+                            An open-world fantasy game I led from the
+                            very first idea through to a finished,
+                            playable build.
+                        </p>
+
+                        <p
+                            class="team-feature-text i18n"
+                            data-en="Kumo vs. Mahou started as my own concept — an open world where players hunt down spiders using magic — and I stayed in the driver's seat for the whole production. As project lead I set the direction and kept the team organized and on schedule, while personally writing the core gameplay scripts and modeling and texturing the 3D assets that shaped the world's look and feel."
+                            data-ja="魔法で蜘蛛を狩るオープンワールドというコンセプトは自分自身のアイデアから始まり、制作全体を通してリーダーの立場で関わり続けました。プロジェクトリーダーとして方向性を定め、チームの進行管理とスケジュール管理を行いながら、自らコアとなるゲームプレイスクリプトを執筆し、世界の見た目を形作る3Dアセットのモデリングとテクスチャ制作も担当しました。"
+                        >
+                            Kumo vs. Mahou started as my own concept — an
+                            open world where players hunt down spiders
+                            using magic — and I stayed in the driver's
+                            seat for the whole production. As project
+                            lead I set the direction and kept the team
+                            organized and on schedule, while personally
+                            writing the core gameplay scripts and
+                            modeling and texturing the 3D assets that
+                            shaped the world's look and feel.
+                        </p>
+
+                    </div>
+
+                    <div class="team-feature-highlights">
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Leadership"
+                                data-ja="リーダーシップ"
+                            >
+                                Leadership
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Led the team from concept to completion"
+                                data-ja="コンセプトから完成までチームを主導"
+                            >
+                                Led the team from concept to completion
+                            </div>
+                        </div>
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Concept"
+                                data-ja="コンセプト"
+                            >
+                                Concept
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Open-world spider-hunting fantasy, my idea"
+                                data-ja="蜘蛛狩りのオープンワールド・ファンタジーは自分の発案"
+                            >
+                                Open-world spider-hunting fantasy, my idea
+                            </div>
+                        </div>
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Programming"
+                                data-ja="プログラミング"
+                            >
+                                Programming
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Core gameplay scripts"
+                                data-ja="コアとなるゲームプレイスクリプト"
+                            >
+                                Core gameplay scripts
+                            </div>
+                        </div>
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Art"
+                                data-ja="アート"
+                            >
+                                Art
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="3D modeling and texturing across the world"
+                                data-ja="ワールド全体の3Dモデリングとテクスチャ制作"
+                            >
+                                3D modeling and texturing across the world
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+                 DEKAME NO IPPAI
+            ============================================== -->
+
+            <article class="team-feature">
+
+                <div
+                    class="team-feature-eyebrow i18n"
+                    data-en="Team project — Unity"
+                    data-ja="チームプロジェクト — Unity"
+                >
+                    Team project — Unity
+                </div>
+
+                <h3
+                    class="team-feature-title i18n"
+                    data-en="Dekame no Ippai"
+                    data-ja="でかめのいっぱい"
+                >
+                    Dekame no Ippai
+                </h3>
+
+                <div class="team-feature-media">
+                    <img src="dekame1.jpg" alt="Dekame no Ippai">
+                    <img src="dekame2.jpg" alt="Dekame no Ippai">
+                    <img src="dekame3.jpg" alt="Dekame no Ippai">
+                </div>
+
+                <div class="team-feature-content">
+
+                    <div>
+
+                        <p
+                            class="team-feature-lead i18n"
+                            data-en="A fishing simulator carried by a full 3D and gameplay pipeline I built almost entirely on my own."
+                            data-ja="3Dとゲームプレイのパイプラインをほぼひとりで作り上げた釣りシミュレーター。"
+                        >
+                            A fishing simulator carried by a full 3D and
+                            gameplay pipeline I built almost entirely on
+                            my own.
+                        </p>
+
+                        <p
+                            class="team-feature-text i18n"
+                            data-en="Produced with the same hands-on process as the projects above, I modeled and textured every 3D asset in the game and wrote the fish behavior scripts that drive the core gameplay loop, giving the simulation a feel that's distinctly my own."
+                            data-ja="上記のプロジェクトと同じ、手を動かして作り込むプロセスで制作。ゲーム内のすべての3Dアセットのモデリングとテクスチャを担当し、コアとなるゲームプレイループを支える魚の挙動スクリプトも執筆。シミュレーションならではの手触りを自分らしく仕上げました。"
+                        >
+                            Produced with the same hands-on process as
+                            the projects above, I modeled and textured
+                            every 3D asset in the game and wrote the fish
+                            behavior scripts that drive the core gameplay
+                            loop, giving the simulation a feel that's
+                            distinctly my own.
+                        </p>
+
+                    </div>
+
+                    <div class="team-feature-highlights">
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Programming"
+                                data-ja="プログラミング"
+                            >
+                                Programming
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Fish behavior scripts"
+                                data-ja="魚の挙動スクリプト"
+                            >
+                                Fish behavior scripts
+                            </div>
+                        </div>
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Art"
+                                data-ja="アート"
+                            >
+                                Art
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Full 3D modeling and texture pipeline"
+                                data-ja="3Dモデリングからテクスチャまでの一連の制作"
+                            >
+                                Full 3D modeling and texture pipeline
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+                 MYSTERY BOX
+            ============================================== -->
+
+            <article class="team-feature">
+
+                <div
+                    class="team-feature-eyebrow i18n"
+                    data-en="Team project — Unreal Engine"
+                    data-ja="チームプロジェクト — Unreal Engine"
+                >
+                    Team project — Unreal Engine
+                </div>
+
+                <h3
+                    class="team-feature-title i18n"
+                    data-en="Mystery Box"
+                    data-ja="ミステリーボックス"
+                >
+                    Mystery Box
+                </h3>
+
+                <div class="team-feature-media">
+                    <img src="mysterybox1.jpg" alt="Mystery Box">
+                    <img src="mysterybox2.jpg" alt="Mystery Box">
+                    <img src="mysterybox3.jpg" alt="Mystery Box">
+                </div>
+
+                <div class="team-feature-content">
+
+                    <div>
+
+                        <p
+                            class="team-feature-lead i18n"
+                            data-en="An Unreal Engine project whose atmosphere is built almost entirely on my environment art."
+                            data-ja="世界観のほとんどを自分の環境アートが支えるUnreal Engineプロジェクト。"
+                        >
+                            An Unreal Engine project whose atmosphere is
+                            built almost entirely on my environment art.
+                        </p>
+
+                        <p
+                            class="team-feature-text i18n"
+                            data-en="I modeled the 3D assets and built out the environment from the ground up, then developed the materials and textures that give the world its atmosphere, along with the game's menu — giving me a hand in nearly everything the player sees."
+                            data-ja="3Dアセットのモデリングと環境の構築をゼロから担当し、世界観を形づくるマテリアルとテクスチャ、そしてゲームのメニューも制作。プレイヤーが目にするもののほとんどに関わりました。"
+                        >
+                            I modeled the 3D assets and built out the
+                            environment from the ground up, then
+                            developed the materials and textures that
+                            give the world its atmosphere, along with
+                            the game's menu — giving me a hand in nearly
+                            everything the player sees.
+                        </p>
+
+                    </div>
+
+                    <div class="team-feature-highlights">
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Environment"
+                                data-ja="環境"
+                            >
+                                Environment
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Full environment art and 3D modeling"
+                                data-ja="環境アートと3Dモデリングを全面的に担当"
+                            >
+                                Full environment art and 3D modeling
+                            </div>
+                        </div>
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Materials"
+                                data-ja="マテリアル"
+                            >
+                                Materials
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Materials and textures across the game"
+                                data-ja="ゲーム全体のマテリアルとテクスチャ"
+                            >
+                                Materials and textures across the game
+                            </div>
+                        </div>
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="UI"
+                                data-ja="UI"
+                            >
+                                UI
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Game menu"
+                                data-ja="ゲームメニュー"
+                            >
+                                Game menu
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+                 TOY PAIR
+            ============================================== -->
+
+            <article class="team-feature">
+
+                <div
+                    class="team-feature-eyebrow i18n"
+                    data-en="Team project — Unity"
+                    data-ja="チームプロジェクト — Unity"
+                >
+                    Team project — Unity
+                </div>
+
+                <h3
+                    class="team-feature-title i18n"
+                    data-en="Toy Pair"
+                    data-ja="トイ・ペア"
+                >
+                    Toy Pair
+                </h3>
+
+                <div class="team-feature-media">
+                    <img src="toypair1.jpg" alt="Toy Pair">
+                    <img src="toypair2.jpg" alt="Toy Pair">
+                    <img src="toypair3.jpg" alt="Toy Pair">
+                </div>
+
+                <div class="team-feature-content">
+
+                    <div>
+
+                        <p
+                            class="team-feature-lead i18n"
+                            data-en="A playful project shaped by a steady stream of gameplay gimmicks I designed."
+                            data-ja="自分がデザインした数々のゲームプレイギミックによって形づくられた、遊び心のあるプロジェクト。"
+                        >
+                            A playful project shaped by a steady stream
+                            of gameplay gimmicks I designed.
+                        </p>
+
+                        <p
+                            class="team-feature-text i18n"
+                            data-en="I contributed a wide range of gameplay gimmicks and mechanics for this project, adding the variety and personality that keep the moment-to-moment gameplay feeling fresh."
+                            data-ja="このプロジェクトでは、さまざまなゲームプレイのギミックやメカニクスを数多く担当し、プレイの一瞬一瞬に変化と個性を加えました。"
+                        >
+                            I contributed a wide range of gameplay
+                            gimmicks and mechanics for this project,
+                            adding the variety and personality that keep
+                            the moment-to-moment gameplay feeling fresh.
+                        </p>
+
+                    </div>
+
+                    <div class="team-feature-highlights">
+
+                        <div class="team-highlight">
+                            <div
+                                class="team-highlight-label i18n"
+                                data-en="Game design"
+                                data-ja="ゲームデザイン"
+                            >
+                                Game design
+                            </div>
+                            <div
+                                class="team-highlight-value i18n"
+                                data-en="Wide range of gameplay gimmicks and mechanics"
+                                data-ja="幅広いゲームプレイギミックとメカニクス"
+                            >
+                                Wide range of gameplay gimmicks and
+                                mechanics
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
 
     </div>
 
