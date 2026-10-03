@@ -13,3608 +13,525 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-:root {
-    --bg: #f5f5f2;
-    --text: #111111;
-    --muted: #73736e;
-    --line: rgba(17,17,17,.12);
-    --max: 1500px;
-    --padding: clamp(28px, 5vw, 80px);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Inter", "Noto Sans JP", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-}
-
-
-/* =========================================================
-   JAPANESE TYPOGRAPHY ADJUSTMENTS
-========================================================= */
-
-html.lang-ja * {
-    letter-spacing: 0 !important;
-}
-
-html.lang-ja body {
-    font-family: "Noto Sans JP", "Inter", sans-serif;
-}
-
-html.lang-ja .hero h1 {
-    font-size: clamp(3.2rem, 7vw, 6.5rem);
-    line-height: 1.2;
-    font-weight: 500;
-}
-
-html.lang-ja .statement h2 {
-    font-size: clamp(2.4rem, 5vw, 5.5rem);
-    line-height: 1.4;
-    font-weight: 500;
-}
-
-html.lang-ja .work-header h2 {
-    font-size: clamp(2.8rem, 6vw, 6rem);
-    line-height: 1.25;
-}
-
-html.lang-ja .contact-title {
-    font-size: clamp(32px, 5vw, 68px);
-    line-height: 1.45;
-}
-
-html.lang-ja .eyebrow {
-    font-size: 12.5px;
-}
-
-html.lang-ja .hero-description,
-html.lang-ja .instagram-text,
-html.lang-ja .game-description {
-    line-height: 1.9;
-}
-
-a {
-    color: inherit;
-}
-
-
-/* =========================================================
-   NAV
-========================================================= */
-
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    height: 76px;
-    background: rgba(245,245,242,.88);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid transparent;
-    transition: border-color .3s ease;
-}
-
-nav.scrolled {
-    border-color: var(--line);
-}
-
-.nav-inner {
-    width: min(100% - (var(--padding) * 2), var(--max));
-    height: 100%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -.035em;
-    text-decoration: none;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 38px;
-}
-
-.nav-links a {
-    font-size: 14px;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color .2s ease;
-}
-
-.nav-links a:hover {
-    color: var(--text);
-}
-
-.lang-toggle {
-    height: 36px;
-    padding: 0 18px;
-    border: 1px solid rgba(17,17,17,.18);
-    border-radius: 18px;
-    background: transparent;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: -.01em;
-    cursor: pointer;
-    transition:
-        background .2s ease,
-        color .2s ease;
-}
-
-.lang-toggle:hover {
-    background: var(--text);
-    color: var(--bg);
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    width: min(100% - (var(--padding) * 2), var(--max));
-    min-height: 100svh;
-    margin: auto;
-    padding-top: 76px;
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-    align-items: center;
-    gap: clamp(60px, 9vw, 150px);
-}
-
-.hero-content {
-    padding: 70px 0;
-    min-width: 0;
-}
-
-.eyebrow {
-    margin-bottom: 32px;
-    font-size: 13px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--muted);
-}
-
-.hero h1 {
-    margin: 0;
-    font-size: clamp(5rem, 10vw, 10rem);
-    line-height: .82;
-    letter-spacing: -.09em;
-    font-weight: 500;
-}
-
-.hero-description {
-    max-width: 620px;
-    margin: 55px 0 0;
-    font-size: clamp(18px, 2vw, 25px);
-    line-height: 1.45;
-    color: var(--muted);
-    letter-spacing: -.025em;
-}
-
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-.hero-image {
-    width: 100%;
-    max-width: 600px;
-    justify-self: end;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 1s cubic-bezier(.2,.7,.2,1);
-}
-
-.hero-image:hover img {
-    transform: scale(1.025);
-}
-
-
-/* =========================================================
-   STATEMENT
-========================================================= */
-
-.statement {
-    width: min(100% - (var(--padding) * 2), var(--max));
-    margin: auto;
-    padding: clamp(140px, 16vw, 260px) 0;
-    border-top: 1px solid var(--line);
-}
-
-.statement h2 {
-    max-width: 1300px;
-    margin: 0;
-    font-size: clamp(3.5rem, 7vw, 8rem);
-    line-height: .93;
-    letter-spacing: -.075em;
-    font-weight: 450;
-}
-
-.statement h2 span {
-    color: var(--muted);
-}
-
-.statement-info {
-    margin-top: 100px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 80px;
-}
-
-
-/* =========================================================
-   INSTAGRAM
-========================================================= */
-
-.instagram-block {
-    max-width: 620px;
-    min-width: 0;
-}
-
-.small-label {
-    margin-bottom: 22px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--muted);
-}
-
-.instagram-text {
-    margin: 0;
-    font-size: 19px;
-    line-height: 1.65;
-    color: var(--muted);
-}
-
-.instagram-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    margin-top: 28px;
-    font-size: 24px;
-    line-height: 1.2;
-    font-weight: 500;
-    letter-spacing: -.035em;
-    text-decoration: none;
-    border-bottom: 1px solid var(--text);
-    padding-bottom: 5px;
-    transition:
-        opacity .2s ease,
-        gap .2s ease;
-}
-
-.instagram-link:hover {
-    opacity: .55;
-    gap: 13px;
-}
-
-.instagram-arrow {
-    font-size: 19px;
-}
-
-
-/* =========================================================
-   SKILLS
-========================================================= */
-
-.skills {
-    border-top: 1px solid var(--line);
-    min-width: 0;
-}
-
-.skills-heading {
-    padding: 18px 0;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--muted);
-}
-
-.skill-row {
-    padding: 20px 0;
-    border-top: 1px solid var(--line);
-}
-
-.skill-row-top {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.skill-name {
-    font-size: 17px;
-    font-weight: 500;
-    letter-spacing: -.025em;
-}
-
-.skill-details {
-    font-size: 16px;
-    line-height: 1.5;
-    color: var(--muted);
-    letter-spacing: -.01em;
-    text-align: right;
-    flex-shrink: 0;
-}
-
-.skill-bar {
-    margin-top: 16px;
-    height: 4px;
-    border-radius: 2px;
-    background: rgba(17,17,17,.08);
-    overflow: hidden;
-}
-
-.skill-bar-fill {
-    display: block;
-    width: 0%;
-    height: 100%;
-    border-radius: 2px;
-    background: var(--text);
-    transition: width 1.3s cubic-bezier(.16,.8,.2,1);
-}
-
-.skill-bar-fill.filled {
-    width: var(--pct);
-}
-
-
-/* =========================================================
-   SKILLS INFO TOGGLE
-========================================================= */
-
-.skills-info-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    margin-top: 30px;
-    height: 44px;
-    padding: 0 20px;
-    border: 1px solid rgba(17,17,17,.18);
-    border-radius: 22px;
-    background: transparent;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: -.01em;
-    cursor: pointer;
-    transition:
-        background .2s ease,
-        color .2s ease;
-}
-
-.skills-info-toggle:hover {
-    background: var(--text);
-    color: var(--bg);
-}
-
-.skills-info-toggle svg {
-    width: 10px;
-    height: 10px;
-    flex-shrink: 0;
-    transition: transform .3s cubic-bezier(.2,.7,.2,1);
-}
-
-.skills-info-toggle.open svg {
-    transform: rotate(180deg);
-}
-
-.skills-info-panel {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows .45s cubic-bezier(.2,.7,.2,1);
-}
-
-.skills-info-panel.open {
-    grid-template-rows: 1fr;
-}
-
-.skills-info-inner {
-    overflow: hidden;
-}
-
-.skills-info-text {
-    margin: 20px 0 0;
-    max-width: 560px;
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--muted);
-}
-
-.skills-info-text + .skills-info-text {
-    margin-top: 14px;
-}
-
-.skills-info-list {
-    margin: 16px 0 0;
-    padding: 0;
-    max-width: 620px;
-    list-style: none;
-    color: var(--muted);
-}
-
-.skills-info-list li {
-    position: relative;
-    padding-left: 18px;
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-.skills-info-list li + li {
-    margin-top: 8px;
-}
-
-.skills-info-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: .72em;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--text);
-}
-
-
-/* =========================================================
-   WORK
-========================================================= */
-
-.work {
-    width: min(100% - (var(--padding) * 2), var(--max));
-    margin: auto;
-    padding: 80px 0 180px;
-}
-
-.work-header {
-    border-top: 1px solid var(--line);
-    padding-top: 25px;
-    margin-bottom: 75px;
-}
-
-.work-header h2 {
-    margin: 0;
-    font-size: clamp(4rem, 8vw, 9rem);
-    line-height: .85;
-    letter-spacing: -.08em;
-    font-weight: 500;
-}
-
-
-/* =========================================================
-   PROJECT SWITCHER
-========================================================= */
-
-.project-switcher {
-    width: min(100%, 680px);
-    margin: 0 auto 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 4px;
-    background: rgba(17,17,17,.065);
-    border-radius: 14px;
-}
-
-.project-switcher button {
-    height: 52px;
-    border: 0;
-    border-radius: 11px;
-    background: transparent;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: -.015em;
-    cursor: pointer;
-    transition:
-        background .2s ease,
-        box-shadow .2s ease;
-}
-
-.project-switcher button:hover {
-    background: rgba(255,255,255,.65);
-}
-
-.project-switcher button.active {
-    background: #ffffff;
-    box-shadow:
-        0 1px 4px rgba(0,0,0,.08),
-        0 1px 1px rgba(0,0,0,.04);
-}
-
-
-/* =========================================================
-   PROJECT PANELS
-========================================================= */
-
-.project-panel {
-    display: none;
-}
-
-.project-panel.active {
-    display: block;
-}
-
-
-/* =========================================================
-   TEAM PROJECTS
-========================================================= */
-
-.team-intro {
-    max-width: 720px;
-    margin: 0 auto 110px;
-    text-align: center;
-    font-size: clamp(19px, 2vw, 24px);
-    line-height: 1.5;
-    letter-spacing: -.02em;
-    color: var(--muted);
-}
-
-.team-feature-list {
-    width: 100%;
-}
-
-.team-feature {
-    padding: 110px 0;
-    border-top: 1px solid var(--line);
-}
-
-.team-feature:first-child {
-    padding-top: 0;
-    border-top: 0;
-}
-
-.team-head {
-    max-width: 860px;
-    margin: 0 auto 56px;
-    text-align: center;
-}
-
-.team-feature-eyebrow {
-    margin-bottom: 18px;
-    font-size: 13px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--muted);
-}
-
-.team-feature-title {
-    margin: 0;
-    font-size: clamp(2.6rem, 6vw, 5rem);
-    line-height: 1.02;
-    letter-spacing: -.045em;
-    font-weight: 600;
-}
-
-.team-feature-lead {
-    max-width: 640px;
-    margin: 22px auto 0;
-    font-size: clamp(19px, 2vw, 24px);
-    line-height: 1.4;
-    letter-spacing: -.02em;
-    color: var(--muted);
-}
-
-.team-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 32px;
-}
-
-.team-body {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.team-shot {
-    position: relative;
-    aspect-ratio: 16 / 10;
-    border-radius: 22px;
-    overflow: hidden;
-    background: #deded9;
-}
-
-.team-shot img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.team-video {
-    position: relative;
-    aspect-ratio: 16 / 10;
-    border-radius: 22px;
-    overflow: hidden;
-    background: #111111;
-}
-
-.team-video iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-.team-video-play {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
-    background: #111111;
-    cursor: pointer;
-}
-
-.team-video-play img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: .9;
-    transition:
-        opacity .3s ease,
-        transform .8s cubic-bezier(.2,.7,.2,1);
-}
-
-.team-video-play:hover img {
-    opacity: 1;
-    transform: scale(1.02);
-}
-
-.team-video-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 68px;
-    height: 68px;
-    margin: -34px 0 0 -34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255,255,255,.92);
-}
-
-.team-video-icon svg {
-    width: 22px;
-    height: 22px;
-    margin-left: 3px;
-    fill: #111111;
-}
-
-.team-card {
-    min-width: 0;
-    padding: 36px 32px 40px;
-    border-radius: 28px;
-    background: #ffffff;
-}
-
-.team-card-label {
-    margin-bottom: 22px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--muted);
-}
-
-.team-card-title {
-    margin: 0 0 12px;
-    font-size: clamp(22px, 2.2vw, 28px);
-    line-height: 1.15;
-    letter-spacing: -.03em;
-    font-weight: 600;
-}
-
-.team-card-text {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--muted);
-}
-
-.team-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.team-chip {
-    padding: 9px 15px;
-    border-radius: 999px;
-    background: rgba(17,17,17,.06);
-    font-size: 15px;
-    line-height: 1.3;
-    font-weight: 500;
-    letter-spacing: -.01em;
-}
-
-.team-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.team-list li {
-    position: relative;
-    padding-left: 18px;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--muted);
-}
-
-.team-list li + li {
-    margin-top: 12px;
-}
-
-.team-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: .68em;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--text);
-}
-
-
-/* =========================================================
-   GAME GRID
-========================================================= */
-
-.game-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 45px;
-    row-gap: 90px;
-    width: 100%;
-    max-width: 1250px;
-    margin: auto;
-}
-
-
-/* =========================================================
-   GAME
-========================================================= */
-
-.game {
-    min-width: 0;
-}
-
-.game-visual {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 5 / 4;
-    overflow: hidden;
-    background: #deded9;
-    margin-bottom: 25px;
-}
-
-.game-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition:
-        transform .8s cubic-bezier(.2,.7,.2,1),
-        opacity .4s ease;
-}
-
-.game:hover .game-visual img {
-    transform: scale(1.025);
-}
-
-
-/* =========================================================
-   GAME INFO
-========================================================= */
-
-.game-info {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: 25px;
-    align-items: end;
-}
-
-.game-info > div {
-    min-width: 0;
-}
-
-.game-title {
-    margin: 0;
-    font-size: clamp(1.5rem, 2.1vw, 2.15rem);
-    line-height: 1.05;
-    letter-spacing: -.055em;
-    font-weight: 500;
-}
-
-.game-description {
-    max-width: 500px;
-    margin: 14px 0 0;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--muted);
-}
-
-.game-description a {
-    color: var(--text);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-
-
-/* =========================================================
-   PLAY BUTTON
-========================================================= */
-
-.play-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    min-width: 115px;
-    height: 48px;
-    padding: 0 20px;
-    background: var(--text);
-    color: var(--bg);
-    border: 1px solid var(--text);
-    border-radius: 24px;
-    text-decoration: none;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-    transition:
-        background .25s ease,
-        color .25s ease,
-        transform .25s ease;
-}
-
-.play-button svg {
-    width: 15px;
-    height: 15px;
-    flex-shrink: 0;
-    transition: transform .25s ease;
-}
-
-.play-button:hover {
-    background: transparent;
-    color: var(--text);
-    transform: translateY(-2px);
-}
-
-.play-button:hover svg {
-    transform: translateX(4px);
-}
-
-
-/* =========================================================
-   SEE MORE / SEE LESS
-========================================================= */
-
-.see-more-wrap {
-    display: flex;
-    justify-content: center;
-    margin-top: 80px;
-}
-
-.see-more {
-    min-width: 150px;
-    height: 48px;
-    padding: 0 25px;
-    border: 1px solid rgba(17,17,17,.18);
-    border-radius: 24px;
-    background: transparent;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: -.015em;
-    cursor: pointer;
-    transition:
-        background .2s ease,
-        color .2s ease;
-}
-
-.see-more:hover {
-    background: var(--text);
-    color: #ffffff;
-}
-
-.extra-projects {
-    display: none;
-    margin-top: 90px;
-}
-
-.extra-projects.visible {
-    display: grid;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact {
-    width: min(100% - (var(--padding) * 2), var(--max));
-    margin: auto;
-    padding: 120px 0 110px;
-    border-top: 1px solid var(--line);
-}
-
-.contact-header {
-    display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr);
-    gap: clamp(60px, 10vw, 180px);
-    align-items: start;
-}
-
-.contact-title {
-    max-width: 900px;
-    margin: 0;
-    font-size: clamp(48px, 7vw, 100px);
-    line-height: .9;
-    letter-spacing: -.075em;
-    font-weight: 400;
-}
-
-.contact-details {
-    padding-top: 8px;
-    min-width: 0;
-}
-
-.contact-details-label {
-    margin-bottom: 28px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--muted);
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 58px;
-    border-top: 1px solid var(--line);
-    text-decoration: none;
-    font-size: 16px;
-    letter-spacing: -.02em;
-    transition: opacity .2s ease;
-}
-
-.contact-item:last-child {
-    border-bottom: 1px solid var(--line);
-}
-
-.contact-item:hover {
-    opacity: .5;
-}
-
-.contact-item-name {
-    color: var(--muted);
-    font-size: 13px;
-    letter-spacing: .02em;
-    flex-shrink: 0;
-}
-
-.contact-item-value {
-    font-weight: 500;
-    text-align: right;
-    overflow-wrap: anywhere;
-}
-
-.contact-item-arrow {
-    margin-left: 14px;
-    font-size: 16px;
-    color: var(--muted);
-    transition: transform .2s ease;
-}
-
-.contact-item:hover .contact-item-arrow {
-    transform: translateX(3px);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    width: min(100% - (var(--padding) * 2), var(--max));
-    margin: auto;
-    padding: 28px 0 35px;
-}
-
-.footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    color: var(--muted);
-}
-
-
-/* =========================================================
-   RESPONSIVE — TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-
-    .hero {
-        gap: 60px;
-    }
-
-    .contact-header {
-        grid-template-columns: minmax(0, 1fr) minmax(280px, .75fr);
-        gap: 60px;
-    }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE — MOBILE / SMALL TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding-top: 130px;
-        padding-bottom: 100px;
-    }
-
-    .hero-image {
-        justify-self: start;
-        max-width: 650px;
-    }
-
-    .statement-info {
-        grid-template-columns: 1fr;
-    }
-
-    .team-body {
-        grid-template-columns: 1fr;
-        max-width: 640px;
-    }
-
-    /* picture 1, card 1, picture 2, card 2, picture 3, card 3 */
-    .team-body > :nth-child(1) { order: 1; }
-    .team-body > :nth-child(4) { order: 2; }
-    .team-body > :nth-child(2) { order: 3; }
-    .team-body > :nth-child(5) { order: 4; }
-    .team-body > :nth-child(3) { order: 5; }
-    .team-body > :nth-child(6) { order: 6; }
-
-    .game-grid {
-        grid-template-columns: 1fr;
-        row-gap: 80px;
-    }
-
-    .contact-header {
-        grid-template-columns: 1fr;
-        gap: 55px;
-    }
-
-    .contact-details {
-        width: 100%;
-        max-width: 600px;
-    }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE — PHONE
-========================================================= */
-
-@media (max-width: 600px) {
-
-    :root {
-        --padding: 22px;
-    }
-
-    nav {
-        height: 64px;
-    }
-
-    .nav-right {
-        gap: 14px;
-    }
-
-    .nav-links {
-        gap: 16px;
-    }
-
-    .nav-links a {
-        font-size: 13px;
-    }
-
-    .lang-toggle {
-        height: 32px;
-        padding: 0 13px;
-        font-size: 12px;
-    }
-
-    .hero {
-        padding-top: 100px;
-        padding-bottom: 80px;
-    }
-
-    .hero h1 {
-        font-size: clamp(4rem, 18vw, 6rem);
-    }
-
-    .hero-description {
-        margin-top: 40px;
-    }
-
-    .statement {
-        padding: 110px 0;
-    }
-
-    .statement h2 {
-        font-size: clamp(3rem, 13vw, 5rem);
-    }
-
-    .statement-info {
-        margin-top: 60px;
-    }
-
-    .instagram-text {
-        font-size: 17px;
-    }
-
-    .instagram-link {
-        font-size: 21px;
-    }
-
-    .skill-row {
-        padding: 17px 0;
-    }
-
-    .skill-row-top {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
-
-    .skill-details {
-        text-align: left;
-    }
-
-    .skill-name {
-        font-size: 16px;
-    }
-
-    .skill-details {
-        font-size: 15px;
-    }
-
-    .skills-info-toggle {
-        width: 100%;
-    }
-
-    .work {
-        padding-top: 50px;
-        padding-bottom: 110px;
-    }
-
-    .team-intro {
-        margin-bottom: 70px;
-    }
-
-    .team-feature {
-        padding: 70px 0;
-    }
-
-    .team-head {
-        margin-bottom: 36px;
-    }
-
-    .team-shot,
-    .team-video {
-        border-radius: 18px;
-    }
-
-    .team-video-icon {
-        width: 56px;
-        height: 56px;
-        margin: -28px 0 0 -28px;
-    }
-
-    .team-body {
-        gap: 12px;
-    }
-
-    .team-card {
-        padding: 28px 24px 32px;
-        border-radius: 22px;
-    }
-
-    .work-header {
-        margin-bottom: 60px;
-    }
-
-    .work-header h2 {
-        font-size: clamp(3.5rem, 15vw, 6rem);
-    }
-
-    .project-switcher {
-        margin-bottom: 60px;
-    }
-
-    .project-switcher button {
-        height: 50px;
-        font-size: 14px;
-    }
-
-    .game-visual {
-        aspect-ratio: 4 / 3;
-    }
-
-    .game-info {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .game-title {
-        font-size: 2rem;
-    }
-
-    .play-button {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .extra-projects {
-        margin-top: 65px;
-    }
-
-    .see-more-wrap {
-        margin-top: 65px;
-    }
-
-    .see-more {
-        width: 100%;
-        max-width: 220px;
-    }
-
-    .contact {
-        padding-top: 90px;
-        padding-bottom: 80px;
-    }
-
-    .contact-title {
-        font-size: clamp(46px, 14vw, 65px);
-    }
-
-    .contact-header {
-        gap: 45px;
-    }
-
-    .contact-details-label {
-        margin-bottom: 20px;
-    }
-
-    .contact-item {
-        min-height: 68px;
-        font-size: 14px;
-        gap: 15px;
-    }
-
-    .contact-item-value {
-        max-width: 70%;
-    }
-
-    .contact-item-arrow {
-        margin-left: 8px;
-    }
-
-    .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .nav-right {
-        gap: 10px;
-    }
-
-    .nav-links {
-        gap: 13px;
-    }
-
-    .nav-links a {
-        font-size: 12px;
-    }
-
-    .logo {
-        font-size: 14px;
-    }
-
-    .hero h1 {
-        font-size: 3.8rem;
-    }
-
-    .contact-item {
-        align-items: flex-start;
-        padding: 16px 0;
-    }
-
-    .contact-item-value {
-        max-width: 62%;
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    * {
-        transition: none !important;
-    }
-
+:root{--bg:#f5f5f2;--text:#111111;--muted:#73736e;--line:rgba(17,17,17,.12);--max:1500px;--padding:clamp(28px,5vw,80px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Inter","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* JAPANESE TYPOGRAPHY */
+html.lang-ja *{letter-spacing:0!important}
+html.lang-ja body{font-family:"Noto Sans JP","Inter",sans-serif}
+html.lang-ja .hero h1{font-size:clamp(3.2rem,7vw,6.5rem);line-height:1.2;font-weight:500}
+html.lang-ja .statement h2{font-size:clamp(2.4rem,5vw,5.5rem);line-height:1.4;font-weight:500}
+html.lang-ja .work-header h2{font-size:clamp(2.8rem,6vw,6rem);line-height:1.25}
+html.lang-ja .contact-title{font-size:clamp(32px,5vw,68px);line-height:1.45}
+html.lang-ja .eyebrow{font-size:12.5px}
+html.lang-ja .hero-description,html.lang-ja .instagram-text,html.lang-ja .game-description{line-height:1.9}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:76px;background:rgba(245,245,242,.88);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease}
+nav.scrolled{border-color:var(--line)}
+.nav-inner{width:min(100% - (var(--padding) * 2),var(--max));height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:16px;font-weight:600;letter-spacing:-.035em;text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:30px}
+.nav-links{display:flex;gap:38px}
+.nav-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s ease}
+.nav-links a:hover{color:var(--text)}
+.lang-toggle{height:36px;padding:0 18px;border:1px solid rgba(17,17,17,.18);border-radius:18px;background:transparent;color:var(--text);font-family:inherit;font-size:13px;font-weight:500;letter-spacing:-.01em;cursor:pointer;transition:background .2s ease,color .2s ease}
+.lang-toggle:hover{background:var(--text);color:var(--bg)}
+
+/* HERO */
+.hero{width:min(100% - (var(--padding) * 2),var(--max));min-height:100svh;margin:auto;padding-top:76px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:clamp(60px,9vw,150px)}
+.hero-content{padding:70px 0;min-width:0}
+.eyebrow{margin-bottom:32px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero h1{margin:0;font-size:clamp(5rem,10vw,10rem);line-height:.82;letter-spacing:-.09em;font-weight:500}
+.hero-description{max-width:620px;margin:55px 0 0;font-size:clamp(18px,2vw,25px);line-height:1.45;color:var(--muted);letter-spacing:-.025em}
+.more-btn{display:inline-flex;align-items:center;margin-top:40px;height:48px;padding:0 24px;border:1px solid rgba(17,17,17,.18);border-radius:24px;color:var(--text);font-size:15px;font-weight:500;letter-spacing:-.01em;text-decoration:none;transition:background .2s ease,color .2s ease}
+.more-btn:hover{background:var(--text);color:var(--bg)}
+.hero-image{width:100%;max-width:600px;justify-self:end;aspect-ratio:4/5;overflow:hidden}
+.hero-image img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.hero-image:hover img{transform:scale(1.025)}
+
+/* STATEMENT */
+.statement{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:clamp(140px,16vw,260px) 0;border-top:1px solid var(--line)}
+.statement h2{max-width:1300px;margin:0;font-size:clamp(3.5rem,7vw,8rem);line-height:.93;letter-spacing:-.075em;font-weight:450}
+.statement h2 span{color:var(--muted)}
+.statement-info{margin-top:100px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px}
+
+/* INSTAGRAM */
+.instagram-block{max-width:620px;min-width:0}
+.small-label{margin-bottom:22px;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.instagram-text{margin:0;font-size:19px;line-height:1.65;color:var(--muted)}
+.instagram-link{display:inline-flex;align-items:center;gap:9px;margin-top:28px;font-size:24px;line-height:1.2;font-weight:500;letter-spacing:-.035em;text-decoration:none;border-bottom:1px solid var(--text);padding-bottom:5px;transition:opacity .2s ease,gap .2s ease}
+.instagram-link:hover{opacity:.55;gap:13px}
+.instagram-arrow{font-size:19px}
+
+/* SKILLS */
+.skills{border-top:1px solid var(--line);min-width:0}
+.skills-heading{padding:18px 0;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.skill-row{padding:20px 0;border-top:1px solid var(--line)}
+.skill-row-top{display:flex;align-items:baseline;justify-content:space-between;gap:20px}
+.skill-name{font-size:17px;font-weight:500;letter-spacing:-.025em}
+.skill-details{font-size:16px;line-height:1.5;color:var(--muted);letter-spacing:-.01em;text-align:right;flex-shrink:0}
+.skill-bar{margin-top:16px;height:4px;border-radius:2px;background:rgba(17,17,17,.08);overflow:hidden}
+.skill-bar-fill{display:block;width:0%;height:100%;border-radius:2px;background:var(--text);transition:width 1.3s cubic-bezier(.16,.8,.2,1)}
+.skill-bar-fill.filled{width:var(--pct)}
+
+/* SKILLS INFO TOGGLE */
+.skills-info-toggle{display:inline-flex;align-items:center;gap:9px;margin-top:30px;height:44px;padding:0 20px;border:1px solid rgba(17,17,17,.18);border-radius:22px;background:transparent;color:var(--text);font-family:inherit;font-size:14px;font-weight:500;letter-spacing:-.01em;cursor:pointer;transition:background .2s ease,color .2s ease}
+.skills-info-toggle:hover{background:var(--text);color:var(--bg)}
+.skills-info-toggle svg{width:10px;height:10px;flex-shrink:0;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.skills-info-toggle.open svg{transform:rotate(180deg)}
+.skills-info-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1)}
+.skills-info-panel.open{grid-template-rows:1fr}
+.skills-info-inner{overflow:hidden}
+.skills-info-text{margin:20px 0 0;max-width:560px;font-size:16px;line-height:1.7;color:var(--muted)}
+.skills-info-text + .skills-info-text{margin-top:14px}
+.skills-info-list{margin:16px 0 0;padding:0;max-width:620px;list-style:none;color:var(--muted)}
+.skills-info-list li{position:relative;padding-left:18px;font-size:16px;line-height:1.7}
+.skills-info-list li + li{margin-top:8px}
+.skills-info-list li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--text)}
+
+/* WORK */
+.work{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:80px 0 180px}
+.work-header{border-top:1px solid var(--line);padding-top:25px;margin-bottom:75px}
+.work-header h2{margin:0;font-size:clamp(4rem,8vw,9rem);line-height:.85;letter-spacing:-.08em;font-weight:500}
+
+/* PROJECT SWITCHER */
+.project-switcher{width:min(100%,680px);margin:0 auto 80px;display:grid;grid-template-columns:1fr 1fr;padding:4px;background:rgba(17,17,17,.065);border-radius:14px}
+.project-switcher button{height:52px;border:0;border-radius:11px;background:transparent;color:var(--text);font-family:inherit;font-size:15px;font-weight:500;letter-spacing:-.015em;cursor:pointer;transition:background .2s ease,box-shadow .2s ease}
+.project-switcher button:hover{background:rgba(255,255,255,.65)}
+.project-switcher button.active{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08),0 1px 1px rgba(0,0,0,.04)}
+.project-panel{display:none}
+.project-panel.active{display:block}
+
+/* TEAM PROJECTS */
+.team-intro{max-width:720px;margin:0 auto 110px;text-align:center;font-size:clamp(19px,2vw,24px);line-height:1.5;letter-spacing:-.02em;color:var(--muted)}
+.team-feature-list{width:100%}
+.team-feature{padding:110px 0;border-top:1px solid var(--line)}
+.team-feature:first-child{padding-top:0;border-top:0}
+.team-head{max-width:860px;margin:0 auto 56px;text-align:center}
+.team-feature-eyebrow{margin-bottom:18px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.team-feature-title{margin:0;font-size:clamp(2.6rem,6vw,5rem);line-height:1.02;letter-spacing:-.045em;font-weight:600}
+.team-feature-lead{max-width:640px;margin:22px auto 0;font-size:clamp(19px,2vw,24px);line-height:1.4;letter-spacing:-.02em;color:var(--muted)}
+.team-actions{display:flex;justify-content:center;margin-top:32px}
+.team-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1100px;margin:0 auto}
+.team-shot{position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;background:#deded9}
+.team-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.team-video{position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;background:#111}
+.team-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.team-video-play{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;overflow:hidden;background:#111;cursor:pointer}
+.team-video-play img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .3s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.team-video-play:hover img{opacity:1;transform:scale(1.02)}
+.team-video-icon{position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.92)}
+.team-video-icon svg{width:22px;height:22px;margin-left:3px;fill:#111}
+.team-card{min-width:0;padding:36px 32px 40px;border-radius:28px;background:#fff}
+.team-card-label{margin-bottom:22px;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.team-card-title{margin:0 0 12px;font-size:clamp(22px,2.2vw,28px);line-height:1.15;letter-spacing:-.03em;font-weight:600}
+.team-card-text{margin:0;font-size:16px;line-height:1.6;color:var(--muted)}
+.team-chips{display:flex;flex-wrap:wrap;gap:8px}
+.team-chip{padding:9px 15px;border-radius:999px;background:rgba(17,17,17,.06);font-size:15px;line-height:1.3;font-weight:500;letter-spacing:-.01em}
+.team-list{margin:0;padding:0;list-style:none}
+.team-list li{position:relative;padding-left:18px;font-size:16px;line-height:1.6;color:var(--muted)}
+.team-list li + li{margin-top:12px}
+.team-list li::before{content:"";position:absolute;left:0;top:.68em;width:5px;height:5px;border-radius:50%;background:var(--text)}
+
+/* GAME GRID */
+.game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:45px;row-gap:90px;width:100%;max-width:1250px;margin:auto}
+.game{min-width:0}
+.game-visual{position:relative;width:100%;aspect-ratio:5/4;overflow:hidden;background:#deded9;margin-bottom:25px}
+.game-visual img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .4s ease}
+.game:hover .game-visual img{transform:scale(1.025)}
+.game-info{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:25px;align-items:end}
+.game-info > div{min-width:0}
+.game-title{margin:0;font-size:clamp(1.5rem,2.1vw,2.15rem);line-height:1.05;letter-spacing:-.055em;font-weight:500}
+.game-description{max-width:500px;margin:14px 0 0;font-size:16px;line-height:1.6;color:var(--muted)}
+.game-description a{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+
+/* PLAY BUTTON */
+.play-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:115px;height:48px;padding:0 20px;background:var(--text);color:var(--bg);border:1px solid var(--text);border-radius:24px;text-decoration:none;font-family:inherit;font-size:14px;font-weight:500;white-space:nowrap;transition:background .25s ease,color .25s ease,transform .25s ease}
+.play-button svg{width:15px;height:15px;flex-shrink:0;transition:transform .25s ease}
+.play-button:hover{background:transparent;color:var(--text);transform:translateY(-2px)}
+.play-button:hover svg{transform:translateX(4px)}
+
+/* SEE MORE */
+.see-more-wrap{display:flex;justify-content:center;margin-top:80px}
+.see-more{min-width:150px;height:48px;padding:0 25px;border:1px solid rgba(17,17,17,.18);border-radius:24px;background:transparent;color:var(--text);font-family:inherit;font-size:15px;font-weight:500;letter-spacing:-.015em;cursor:pointer;transition:background .2s ease,color .2s ease}
+.see-more:hover{background:var(--text);color:#fff}
+.extra-projects{display:none;margin-top:90px}
+.extra-projects.visible{display:grid}
+
+/* CONTACT */
+.contact{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:120px 0 110px;border-top:1px solid var(--line)}
+.contact-header{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);gap:clamp(60px,10vw,180px);align-items:start}
+.contact-title{max-width:900px;margin:0;font-size:clamp(48px,7vw,100px);line-height:.9;letter-spacing:-.075em;font-weight:400}
+.contact-details{padding-top:8px;min-width:0}
+.contact-details-label{margin-bottom:28px;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.contact-item{display:flex;align-items:center;justify-content:space-between;min-height:58px;border-top:1px solid var(--line);text-decoration:none;font-size:16px;letter-spacing:-.02em;transition:opacity .2s ease}
+.contact-item:last-child{border-bottom:1px solid var(--line)}
+.contact-item:hover{opacity:.5}
+.contact-item-name{color:var(--muted);font-size:13px;letter-spacing:.02em;flex-shrink:0}
+.contact-item-value{font-weight:500;text-align:right;overflow-wrap:anywhere}
+.contact-item-arrow{margin-left:14px;font-size:16px;color:var(--muted);transition:transform .2s ease}
+.contact-item:hover .contact-item-arrow{transform:translateX(3px)}
+
+/* FOOTER */
+footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28px 0 35px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+
+/* RESPONSIVE: TABLET */
+@media (max-width:1000px){
+.hero{gap:60px}
+.contact-header{grid-template-columns:minmax(0,1fr) minmax(280px,.75fr);gap:60px}
+}
+
+/* RESPONSIVE: MOBILE / SMALL TABLET */
+@media (max-width:900px){
+.hero{grid-template-columns:1fr;min-height:auto;padding-top:130px;padding-bottom:100px}
+.hero-image{justify-self:start;max-width:650px}
+.statement-info{grid-template-columns:1fr}
+.team-body{grid-template-columns:1fr;max-width:640px}
+.team-body > :nth-child(1){order:1}
+.team-body > :nth-child(4){order:2}
+.team-body > :nth-child(2){order:3}
+.team-body > :nth-child(5){order:4}
+.team-body > :nth-child(3){order:5}
+.team-body > :nth-child(6){order:6}
+.game-grid{grid-template-columns:1fr;row-gap:80px}
+.contact-header{grid-template-columns:1fr;gap:55px}
+.contact-details{width:100%;max-width:600px}
+}
+
+/* RESPONSIVE: PHONE */
+@media (max-width:600px){
+:root{--padding:22px}
+nav{height:64px}
+.nav-right{gap:14px}
+.nav-links{gap:16px}
+.nav-links a{font-size:13px}
+.lang-toggle{height:32px;padding:0 13px;font-size:12px}
+.hero{padding-top:100px;padding-bottom:80px}
+.hero h1{font-size:clamp(4rem,18vw,6rem)}
+.hero-description{margin-top:40px}
+.more-btn{margin-top:32px}
+.statement{padding:110px 0}
+.statement h2{font-size:clamp(3rem,13vw,5rem)}
+.statement-info{margin-top:60px}
+.instagram-text{font-size:17px}
+.instagram-link{font-size:21px}
+.skill-row{padding:17px 0}
+.skill-row-top{flex-direction:column;align-items:flex-start;gap:4px}
+.skill-details{text-align:left;font-size:15px}
+.skill-name{font-size:16px}
+.skills-info-toggle{width:100%}
+.work{padding-top:50px;padding-bottom:110px}
+.team-intro{margin-bottom:70px}
+.team-feature{padding:70px 0}
+.team-head{margin-bottom:36px}
+.team-shot,.team-video{border-radius:18px}
+.team-video-icon{width:56px;height:56px;margin:-28px 0 0 -28px}
+.team-body{gap:12px}
+.team-card{padding:28px 24px 32px;border-radius:22px}
+.work-header{margin-bottom:60px}
+.work-header h2{font-size:clamp(3.5rem,15vw,6rem)}
+.project-switcher{margin-bottom:60px}
+.project-switcher button{height:50px;font-size:14px}
+.game-visual{aspect-ratio:4/3}
+.game-info{grid-template-columns:1fr;gap:24px}
+.game-title{font-size:2rem}
+.play-button{width:100%;min-width:0}
+.extra-projects{margin-top:65px}
+.see-more-wrap{margin-top:65px}
+.see-more{width:100%;max-width:220px}
+.contact{padding-top:90px;padding-bottom:80px}
+.contact-title{font-size:clamp(46px,14vw,65px)}
+.contact-header{gap:45px}
+.contact-details-label{margin-bottom:20px}
+.contact-item{min-height:68px;font-size:14px;gap:15px}
+.contact-item-value{max-width:70%}
+.contact-item-arrow{margin-left:8px}
+.footer-inner{flex-direction:column;align-items:flex-start;gap:8px}
+}
+
+/* VERY SMALL PHONES */
+@media (max-width:380px){
+.nav-right{gap:10px}
+.nav-links{gap:13px}
+.nav-links a{font-size:12px}
+.logo{font-size:14px}
+.hero h1{font-size:3.8rem}
+.contact-item{align-items:flex-start;padding:16px 0}
+.contact-item-value{max-width:62%}
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*{transition:none!important}
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =======================================================
-     NAVIGATION
-======================================================= -->
-
+<!-- NAVIGATION -->
 <nav id="nav">
-
-    <div class="nav-inner">
-
-        <a href="#top" class="logo i18n" data-en="Luca Helgert" data-ja="ルカ・ヘルゲルト">
-            Luca Helgert
-        </a>
-
-        <div class="nav-right">
-
-            <div class="nav-links">
-
-                <a href="#top" class="i18n" data-en="Top" data-ja="トップ">
-                    Top
-                </a>
-
-                <a href="#work" class="i18n" data-en="Works" data-ja="作品">
-                    Works
-                </a>
-
-                <a href="#contact" class="i18n" data-en="Contact" data-ja="お問い合わせ">
-                    Contact
-                </a>
-
-            </div>
-
-            <button
-                type="button"
-                id="langToggle"
-                class="lang-toggle"
-                aria-label="Switch language"
-            >
-                日本語
-            </button>
-
-        </div>
-
-    </div>
-
+<div class="nav-inner">
+<a class="logo i18n" href="#top" data-en="Luca Helgert" data-ja="ルカ・ヘルゲルト">Luca Helgert</a>
+<div class="nav-right">
+<div class="nav-links">
+<a class="i18n" href="#top" data-en="Top" data-ja="トップ">Top</a>
+<a class="i18n" href="#work" data-en="Works" data-ja="作品">Works</a>
+<a class="i18n" href="about.html" data-en="More about me" data-ja="私について">More about me</a>
+<a class="i18n" href="#contact" data-en="Contact" data-ja="お問い合わせ">Contact</a>
+</div>
+<button type="button" id="langToggle" class="lang-toggle" aria-label="Switch language">日本語</button>
+</div>
+</div>
 </nav>
-
 
 <main id="top">
 
-
-<!-- =======================================================
-     HERO
-======================================================= -->
-
+<!-- HERO -->
 <section class="hero">
-
-    <div class="hero-content">
-
-        <div
-            class="eyebrow i18n"
-            data-en="Game Programmer / Technical Artist"
-            data-ja="ゲームプログラマー / テクニカルアーティスト"
-        >
-            Game Programmer / Technical Artist
-        </div>
-
-        <h1 class="i18n" data-en="Luca<br>Helgert" data-ja="ルカ<br>ヘルゲルト">
-            Luca<br>
-            Helgert
-        </h1>
-
-        <p
-            class="hero-description i18n"
-            data-en="I build games from concept to playable experience, combining programming, 3D art, systems design, and procedural technology."
-            data-ja="プログラミングと3Dアート、システムデザイン、プロシージャル技術を組み合わせながら、コンセプトから遊べる体験までゲームをつくっています。"
-        >
-            I build games from concept to playable experience,
-            combining programming, 3D art, systems design,
-            and procedural technology.
-        </p>
-
-    </div>
-
-
-    <div class="hero-image">
-
-        <img
-            src="profile.jpg"
-            alt="Luca Helgert"
-        >
-
-    </div>
-
+<div class="hero-content">
+<div class="eyebrow i18n" data-en="Game Programmer / Technical Artist" data-ja="ゲームプログラマー / テクニカルアーティスト">Game Programmer / Technical Artist</div>
+<h1 class="i18n" data-en="Luca&lt;br&gt;Helgert" data-ja="ルカ&lt;br&gt;ヘルゲルト">Luca<br>Helgert</h1>
+<p class="hero-description i18n" data-en="I build games from concept to playable experience, combining programming, 3D art, systems design, and procedural technology." data-ja="プログラミングと3Dアート、システムデザイン、プロシージャル技術を組み合わせながら、コンセプトから遊べる体験までゲームをつくっています。">I build games from concept to playable experience, combining programming, 3D art, systems design, and procedural technology.</p>
+<a class="more-btn i18n" href="about.html" data-en="More about me" data-ja="私について">More about me</a>
+</div>
+<div class="hero-image"><img src="profile.jpg" alt="Luca Helgert"></div>
 </section>
 
-
-<!-- =======================================================
-     STATEMENT
-======================================================= -->
-
+<!-- STATEMENT -->
 <section class="statement">
-
-    <h2
-        class="i18n"
-        data-en='Code meets art.<span>Games bring them together.</span>'
-        data-ja='コードと、アート。<span>それをひとつにするのが、ゲーム。</span>'
-    >
-        Code meets art.
-        <span>Games bring them together.</span>
-    </h2>
-
-
-    <div class="statement-info">
-
-
-        <div class="instagram-block">
-
-            <div
-                class="small-label i18n"
-                data-en="Documenting the process"
-                data-ja="制作の記録"
-            >
-                Documenting the process
-            </div>
-
-            <p
-                class="instagram-text i18n"
-                data-en="I document what I build and create on Instagram, where the account has grown rapidly. My most-viewed video has reached more than 4 million views."
-                data-ja="制作の様子はInstagramで発信しています。フォロワーは着実に伸びており、最も再生された動画は400万回を超えました。"
-            >
-                I document what I build and create on Instagram,
-                where the account has grown rapidly. My most-viewed
-                video has reached more than 4 million views.
-            </p>
-
-            <a
-                class="instagram-link"
-                href="https://www.instagram.com/lucanicohe"
-                target="_blank"
-                rel="noopener"
-            >
-                @lucanicohe
-                <span class="instagram-arrow">↗</span>
-            </a>
-
-            <button
-                type="button"
-                id="skillsInfoToggle"
-                class="skills-info-toggle"
-                aria-expanded="false"
-                aria-controls="skillsInfoPanel"
-            >
-                <span class="i18n" data-en="By the way" data-ja="ちなみに">
-                    By the way
-                </span>
-
-                <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M1 1.5L6 6.5L11 1.5"/>
-                </svg>
-            </button>
-
-            <div class="skills-info-panel" id="skillsInfoPanel">
-
-                <div class="skills-info-inner">
-
-                    <p
-                        class="skills-info-text i18n"
-                        data-en="The skills on the right are only a selection. I also work across a much wider range of technical and creative areas, depending on what a project needs."
-                        data-ja="右に掲載しているのはスキルの一部です。プロジェクトに必要なことに合わせて、さらに幅広い技術・クリエイティブ分野に対応しています。"
-                    >
-                        The skills on the right are only a selection. I also work
-                        across a much wider range of technical and creative
-                        areas, depending on what a project needs.
-                    </p>
-
-                    <ul class="skills-info-list">
-
-                        <li
-                            class="i18n"
-                            data-en="Unity development beyond programming, with a focus on finishing and polishing games, shaders, Shader Graph, UI, interaction, and overall presentation."
-                            data-ja="プログラミングだけでなく、ゲームの完成・調整・クオリティアップを重視したUnity開発。シェーダー、Shader Graph、UI、インタラクション、全体の見せ方まで対応。"
-                        >
-                            Unity development beyond programming, with a
-                            focus on finishing and polishing games, shaders,
-                            Shader Graph, UI, interaction, and overall
-                            presentation.
-                        </li>
-
-                        <li
-                            class="i18n"
-                            data-en="Procedural 3D modeling and environment creation with World Machine."
-                            data-ja="World Machineを使ったプロシージャル3Dモデリングと環境制作。"
-                        >
-                            Procedural 3D modeling and environment creation
-                            with World Machine.
-                        </li>
-
-                        <li
-                            class="i18n"
-                            data-en="AI-assisted creative workflows, including Stable Diffusion for image generation and experimentation."
-                            data-ja="Stable Diffusionなどを活用した画像生成や実験を含む、AIを取り入れたクリエイティブワークフロー。"
-                        >
-                            AI-assisted creative workflows, including
-                            Stable Diffusion for image generation and
-                            experimentation.
-                        </li>
-
-                        <li
-                            class="i18n"
-                            data-en="Visual design and UI work, combining technical implementation with a strong focus on presentation."
-                            data-ja="技術的な実装とビジュアル表現を組み合わせた、デザインとUI制作。"
-                        >
-                            Visual design and UI work, combining technical
-                            implementation with a strong focus on
-                            presentation.
-                        </li>
-
-                        <li
-                            class="i18n"
-                            data-en="3D production across Blender, Cinema 4D, Blockbench, and other tools."
-                            data-ja="Blender、Cinema 4D、Blockbenchなど、複数の3Dツールを使った制作。"
-                        >
-                            3D production across Blender, Cinema 4D,
-                            Blockbench, and other tools.
-                        </li>
-
-                        <li
-                            class="i18n"
-                            data-en="WebGL, most of my solo projects are playable in browser using WebGL."
-                            data-ja="WebGL。個人プロジェクトの多くは、WebGLを使ってブラウザ上でプレイできます。"
-                        >
-                            WebGL, most of my solo projects are playable in
-                            browser using WebGL.
-                        </li>
-
-                        <li
-                            class="i18n"
-                            data-en="Digital drawing and painting with Clip Studio Paint, ranging from realistic illustration to anime-style artwork."
-                            data-ja="CLIP STUDIO PAINTを使ったデジタル作画・イラスト制作。リアル寄りの表現からアニメ調まで幅広く対応。"
-                        >
-                            Digital drawing and painting with Clip Studio
-                            Paint, ranging from realistic illustration to
-                            anime-style artwork.
-                        </li>
-
-                        <li
-                            class="i18n"
-                            data-en="GitHub, this portfolio exists here as well as most of my games."
-                            data-ja="GitHub。このポートフォリオも、ほとんどのゲームもここに公開しています。"
-                        >
-                            GitHub, this portfolio exists here as well as
-                            most of my games.
-                        </li>
-
-                        <li
-                            class="i18n"
-                            data-en="HTML, I wrote this portfolio in HTML without using a service."
-                            data-ja="HTML。このポートフォリオはサービスを使わず、HTMLで自分で書きました。"
-                        >
-                            HTML, I wrote this portfolio in HTML without
-                            using a service.
-                        </li>
-
-                        <li
-                            class="i18n"
-                            data-en="Development across both macOS and Windows environments."
-                            data-ja="macOSとWindowsの両方での開発環境に対応。"
-                        >
-                            Development across both macOS and Windows
-                            environments.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="skills">
-
-            <div
-                class="skills-heading i18n"
-                data-en="My Skills"
-                data-ja="スキル"
-            >
-                My Skills
-            </div>
-
-            <div class="skill-row">
-
-                <div class="skill-row-top">
-
-                    <div
-                        class="skill-name i18n"
-                        data-en="3D"
-                        data-ja="3D"
-                    >
-                        3D
-                    </div>
-
-                    <div
-                        class="skill-details i18n"
-                        data-en="5 years+"
-                        data-ja="5年以上"
-                    >
-                        5 years+
-                    </div>
-
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="--pct: 100%;"></div>
-                </div>
-
-            </div>
-
-
-            <div class="skill-row">
-
-                <div class="skill-row-top">
-
-                    <div
-                        class="skill-name i18n"
-                        data-en="Unity"
-                        data-ja="Unity"
-                    >
-                        Unity
-                    </div>
-
-                    <div
-                        class="skill-details i18n"
-                        data-en="3 years"
-                        data-ja="3年"
-                    >
-                        3 years
-                    </div>
-
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="--pct: 85%;"></div>
-                </div>
-
-            </div>
-
-
-            <div class="skill-row">
-
-                <div class="skill-row-top">
-
-                    <div
-                        class="skill-name i18n"
-                        data-en="C#"
-                        data-ja="C#"
-                    >
-                        C#
-                    </div>
-
-                    <div
-                        class="skill-details i18n"
-                        data-en="3 years"
-                        data-ja="3年"
-                    >
-                        3 years
-                    </div>
-
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="--pct: 85%;"></div>
-                </div>
-
-            </div>
-
-
-            <div class="skill-row">
-
-                <div class="skill-row-top">
-
-                    <div
-                        class="skill-name i18n"
-                        data-en="Unreal Engine"
-                        data-ja="Unreal Engine"
-                    >
-                        Unreal Engine
-                    </div>
-
-                    <div
-                        class="skill-details i18n"
-                        data-en="1 year"
-                        data-ja="1年"
-                    >
-                        1 year
-                    </div>
-
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="--pct: 55%;"></div>
-                </div>
-
-            </div>
-
-
-            <div class="skill-row">
-
-                <div class="skill-row-top">
-
-                    <div
-                        class="skill-name i18n"
-                        data-en="C++"
-                        data-ja="C++"
-                    >
-                        C++
-                    </div>
-
-                    <div
-                        class="skill-details i18n"
-                        data-en="1 year"
-                        data-ja="1年"
-                    >
-                        1 year
-                    </div>
-
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="--pct: 55%;"></div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<h2 class="i18n" data-en="Code meets art.&lt;span&gt;Games bring them together.&lt;/span&gt;" data-ja="コードと、アート。&lt;span&gt;それをひとつにするのが、ゲーム。&lt;/span&gt;">Code meets art.<span>Games bring them together.</span></h2>
+<div class="statement-info">
+
+<div class="instagram-block">
+<div class="small-label i18n" data-en="Documenting the process" data-ja="制作の記録">Documenting the process</div>
+<p class="instagram-text i18n" data-en="I document what I build and create on Instagram, where the account has grown rapidly. My most-viewed video has reached more than 4 million views." data-ja="制作の様子はInstagramで発信しています。フォロワーは着実に伸びており、最も再生された動画は400万回を超えました。">I document what I build and create on Instagram, where the account has grown rapidly. My most-viewed video has reached more than 4 million views.</p>
+<a class="instagram-link" href="https://www.instagram.com/lucanicohe" target="_blank" rel="noopener">@lucanicohe <span class="instagram-arrow">↗</span></a>
+<button type="button" id="skillsInfoToggle" class="skills-info-toggle" aria-expanded="false" aria-controls="skillsInfoPanel"><span class="i18n" data-en="By the way" data-ja="ちなみに">By the way</span><svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1.5L6 6.5L11 1.5"/></svg></button>
+<div class="skills-info-panel" id="skillsInfoPanel"><div class="skills-info-inner">
+<p class="skills-info-text i18n" data-en="The skills on the right are only a selection. I also work across a much wider range of technical and creative areas, depending on what a project needs." data-ja="右に掲載しているのはスキルの一部です。プロジェクトに必要なことに合わせて、さらに幅広い技術・クリエイティブ分野に対応しています。">The skills on the right are only a selection. I also work across a much wider range of technical and creative areas, depending on what a project needs.</p>
+<ul class="skills-info-list">
+<li class="i18n" data-en="Unity development beyond programming, with a focus on finishing and polishing games, shaders, Shader Graph, UI, interaction, and overall presentation." data-ja="プログラミングだけでなく、ゲームの完成・調整・クオリティアップを重視したUnity開発。シェーダー、Shader Graph、UI、インタラクション、全体の見せ方まで対応。">Unity development beyond programming, with a focus on finishing and polishing games, shaders, Shader Graph, UI, interaction, and overall presentation.</li>
+<li class="i18n" data-en="Procedural 3D modeling and environment creation with World Machine." data-ja="World Machineを使ったプロシージャル3Dモデリングと環境制作。">Procedural 3D modeling and environment creation with World Machine.</li>
+<li class="i18n" data-en="AI-assisted creative workflows, including Stable Diffusion for image generation and experimentation." data-ja="Stable Diffusionなどを活用した画像生成や実験を含む、AIを取り入れたクリエイティブワークフロー。">AI-assisted creative workflows, including Stable Diffusion for image generation and experimentation.</li>
+<li class="i18n" data-en="Visual design and UI work, combining technical implementation with a strong focus on presentation." data-ja="技術的な実装とビジュアル表現を組み合わせた、デザインとUI制作。">Visual design and UI work, combining technical implementation with a strong focus on presentation.</li>
+<li class="i18n" data-en="3D production across Blender, Cinema 4D, Blockbench, and other tools." data-ja="Blender、Cinema 4D、Blockbenchなど、複数の3Dツールを使った制作。">3D production across Blender, Cinema 4D, Blockbench, and other tools.</li>
+<li class="i18n" data-en="WebGL, most of my solo projects are playable in browser using WebGL." data-ja="WebGL。個人プロジェクトの多くは、WebGLを使ってブラウザ上でプレイできます。">WebGL, most of my solo projects are playable in browser using WebGL.</li>
+<li class="i18n" data-en="Digital drawing and painting with Clip Studio Paint, ranging from realistic illustration to anime-style artwork." data-ja="CLIP STUDIO PAINTを使ったデジタル作画・イラスト制作。リアル寄りの表現からアニメ調まで幅広く対応。">Digital drawing and painting with Clip Studio Paint, ranging from realistic illustration to anime-style artwork.</li>
+<li class="i18n" data-en="GitHub, this portfolio exists here as well as most of my games." data-ja="GitHub。このポートフォリオも、ほとんどのゲームもここに公開しています。">GitHub, this portfolio exists here as well as most of my games.</li>
+<li class="i18n" data-en="HTML, I wrote this portfolio in HTML without using a service." data-ja="HTML。このポートフォリオはサービスを使わず、HTMLで自分で書きました。">HTML, I wrote this portfolio in HTML without using a service.</li>
+<li class="i18n" data-en="Development across both macOS and Windows environments." data-ja="macOSとWindowsの両方での開発環境に対応。">Development across both macOS and Windows environments.</li>
+</ul>
+</div></div>
+</div>
+
+<div class="skills">
+<div class="skills-heading i18n" data-en="My Skills" data-ja="スキル">My Skills</div>
+<div class="skill-row"><div class="skill-row-top"><div class="skill-name i18n" data-en="3D" data-ja="3D">3D</div><div class="skill-details i18n" data-en="5 years+" data-ja="5年以上">5 years+</div></div><div class="skill-bar"><div class="skill-bar-fill" style="--pct: 100%;"></div></div></div>
+<div class="skill-row"><div class="skill-row-top"><div class="skill-name i18n" data-en="Unity" data-ja="Unity">Unity</div><div class="skill-details i18n" data-en="3 years" data-ja="3年">3 years</div></div><div class="skill-bar"><div class="skill-bar-fill" style="--pct: 85%;"></div></div></div>
+<div class="skill-row"><div class="skill-row-top"><div class="skill-name i18n" data-en="C#" data-ja="C#">C#</div><div class="skill-details i18n" data-en="3 years" data-ja="3年">3 years</div></div><div class="skill-bar"><div class="skill-bar-fill" style="--pct: 85%;"></div></div></div>
+<div class="skill-row"><div class="skill-row-top"><div class="skill-name i18n" data-en="Unreal Engine" data-ja="Unreal Engine">Unreal Engine</div><div class="skill-details i18n" data-en="1 year" data-ja="1年">1 year</div></div><div class="skill-bar"><div class="skill-bar-fill" style="--pct: 55%;"></div></div></div>
+<div class="skill-row"><div class="skill-row-top"><div class="skill-name i18n" data-en="C++" data-ja="C++">C++</div><div class="skill-details i18n" data-en="1 year" data-ja="1年">1 year</div></div><div class="skill-bar"><div class="skill-bar-fill" style="--pct: 55%;"></div></div></div>
+</div>
+
+</div>
 </section>
 
-
-<!-- =======================================================
-     WORK
-======================================================= -->
-
+<!-- WORK -->
 <section class="work" id="work">
-
-
-    <div class="work-header">
-
-        <h2 class="i18n" data-en="Selected work" data-ja="代表作品">
-            Selected work
-        </h2>
-
-    </div>
-
-
-    <div class="project-switcher">
-
-        <button
-            type="button"
-            data-target="team-projects"
-            class="i18n"
-            data-en="Team Projects"
-            data-ja="チームプロジェクト"
-        >
-            Team Projects
-        </button>
-
-        <button
-            type="button"
-            data-target="solo-projects"
-            class="i18n"
-            data-en="Solo Projects"
-            data-ja="個人プロジェクト"
-        >
-            Solo Projects
-        </button>
-
-    </div>
-
-
-    <!-- ===================================================
-         TEAM PROJECTS
-    =================================================== -->
-
-    <div
-        class="project-panel"
-        id="team-projects"
-    >
-
-        <p
-            class="team-intro i18n"
-            data-en="These are school projects, each with different team members. They are larger games that need collaboration with others. For each project I explain my role, my skills, and what was difficult."
-            data-ja="学校で制作したプロジェクトで、チームのメンバーは毎回違います。どれも、他の人との協力が必要な規模の大きなゲームです。それぞれについて、自分の役割、スキル、難しかったことをまとめています。"
-        >These are school projects, each with different team members. They are larger games that need collaboration with others. For each project I explain my role, my skills, and what was difficult.</p>
-
-        <div class="team-feature-list">
-
-            <article class="team-feature">
-
-                <div class="team-head">
-
-                    <div
-                        class="team-feature-eyebrow i18n"
-                        data-en="Team of 5 · Unity · School award winner"
-                        data-ja="5人チーム · Unity · 学内アワード受賞"
-                    >Team of 5 · Unity · School award winner</div>
-
-                    <h3
-                        class="team-feature-title i18n"
-                        data-en="Guilty Lane"
-                        data-ja="ギルティ・レーン"
-                    >Guilty Lane</h3>
-
-                    <p
-                        class="team-feature-lead i18n"
-                        data-en="A first-person train game. It won an award at school."
-                        data-ja="一人称視点の電車ゲーム。学内アワードを受賞しました。"
-                    >A first-person train game. It won an award at school.</p>
-
-                </div>
-
-                <div class="team-body">
-
-                    <div class="team-video" data-video="mlNIDH5t1FQ" data-watch="https://www.youtube.com/watch?v=mlNIDH5t1FQ">
-                        <button type="button" class="team-video-play" aria-label="Play video: Guilty Lane">
-                            <img src="https://i.ytimg.com/vi/mlNIDH5t1FQ/hqdefault.jpg" alt="Guilty Lane video thumbnail" loading="lazy">
-                            <span class="team-video-icon">
-                                <svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg>
-                            </span>
-                        </button>
-                    </div>
-
-                    <div class="team-shot"><img src="guilty1.jpg" alt="Guilty Lane" loading="lazy"></div>
-                    <div class="team-shot"><img src="guilty2.jpg" alt="Guilty Lane" loading="lazy"></div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div>
-                        <h4 class="team-card-title i18n" data-en="Programmer and 3D artist" data-ja="プログラマー兼3Dアーティスト">Programmer and 3D artist</h4>
-                        <p class="team-card-text i18n" data-en="I also came up with the first-person view and the in-game screen UI." data-ja="一人称視点と、ゲーム内スクリーンのUIも私の発案です。">I also came up with the first-person view and the in-game screen UI.</p>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
-                        <div class="team-chips">
-                            <span class="team-chip i18n" data-en="C# in Unity" data-ja="UnityのC#">C# in Unity</span>
-                            <span class="team-chip i18n" data-en="Procedural track spawning" data-ja="線路のプロシージャル生成">Procedural track spawning</span>
-                            <span class="team-chip i18n" data-en="2D drawing in the Unity Sprite Editor" data-ja="Unity Sprite Editorでの2D作画">2D drawing in the Unity Sprite Editor</span>
-                            <span class="team-chip i18n" data-en="3D modeling in Blockbench" data-ja="Blockbenchでの3Dモデリング">3D modeling in Blockbench</span>
-                            <span class="team-chip i18n" data-en="3D modeling in Blender" data-ja="Blenderでの3Dモデリング">3D modeling in Blender</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div>
-                        <ul class="team-list">
-                            <li class="i18n" data-en="Making the train tracks spawn automatically" data-ja="線路を自動で生成する仕組みを作ること">Making the train tracks spawn automatically</li>
-                            <li class="i18n" data-en="Learning drawing and 3D tools while also programming" data-ja="プログラミングをしながら、作画と3Dツールも学ぶこと">Learning drawing and 3D tools while also programming</li>
-                        </ul>
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <article class="team-feature">
-
-                <div class="team-head">
-
-                    <div
-                        class="team-feature-eyebrow i18n"
-                        data-en="Team of 5 · Unity · Project lead"
-                        data-ja="5人チーム · Unity · プロジェクトリーダー"
-                    >Team of 5 · Unity · Project lead</div>
-
-                    <h3
-                        class="team-feature-title i18n"
-                        data-en="Kumo vs. Mahou"
-                        data-ja="蜘蛛 vs. 魔法"
-                    >Kumo vs. Mahou</h3>
-
-                    <p
-                        class="team-feature-lead i18n"
-                        data-en="An open-world fantasy game where the player hunts spiders with magic."
-                        data-ja="魔法で蜘蛛を狩る、オープンワールドのファンタジーゲーム。"
-                    >An open-world fantasy game where the player hunts spiders with magic.</p>
-
-                </div>
-
-                <div class="team-body">
-
-                    <div class="team-video" data-video="uo1qHLfWFxg" data-watch="https://www.youtube.com/watch?v=uo1qHLfWFxg">
-                        <button type="button" class="team-video-play" aria-label="Play video: Kumo vs. Mahou">
-                            <img src="https://i.ytimg.com/vi/uo1qHLfWFxg/hqdefault.jpg" alt="Kumo vs. Mahou video thumbnail" loading="lazy">
-                            <span class="team-video-icon">
-                                <svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg>
-                            </span>
-                        </button>
-                    </div>
-
-                    <div class="team-shot"><img src="kumo1.jpg" alt="Kumo vs. Mahou" loading="lazy"></div>
-                    <div class="team-shot"><img src="kumo2.jpg" alt="Kumo vs. Mahou" loading="lazy"></div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div>
-                        <h4 class="team-card-title i18n" data-en="Project lead" data-ja="プロジェクトリーダー">Project lead</h4>
-                        <p class="team-card-text i18n" data-en="I led a team of 5, wrote the game specification document, and planned the work. I also programmed and made 3D art." data-ja="5人チームを率い、ゲームの仕様書を書き、作業の計画を立てました。プログラミングと3Dアートも担当しました。">I led a team of 5, wrote the game specification document, and planned the work. I also programmed and made 3D art.</p>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
-                        <div class="team-chips">
-                            <span class="team-chip i18n" data-en="Leadership" data-ja="リーダーシップ">Leadership</span>
-                            <span class="team-chip i18n" data-en="Team coordination" data-ja="チームのまとめ方">Team coordination</span>
-                            <span class="team-chip i18n" data-en="Game specification document" data-ja="ゲームの仕様書">Game specification document</span>
-                            <span class="team-chip i18n" data-en="C# in Unity" data-ja="UnityのC#">C# in Unity</span>
-                            <span class="team-chip i18n" data-en="3D modeling" data-ja="3Dモデリング">3D modeling</span>
-                            <span class="team-chip i18n" data-en="World map with procedural tools (World Machine)" data-ja="プロシージャルツールでのワールドマップ制作（World Machine）">World map with procedural tools (World Machine)</span>
-                            <span class="team-chip i18n" data-en="Textures made from real photos" data-ja="実際の写真からのテクスチャ制作">Textures made from real photos</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div>
-                        <ul class="team-list">
-                            <li class="i18n" data-en="Leading a team for the first time" data-ja="初めてチームを率いること">Leading a team for the first time</li>
-                            <li class="i18n" data-en="Keeping all 5 people working toward the same plan" data-ja="5人全員を同じ計画に沿って動かすこと">Keeping all 5 people working toward the same plan</li>
-                            <li class="i18n" data-en="Building a large world while also leading" data-ja="リーダーをしながら、広いワールドも作ること">Building a large world while also leading</li>
-                        </ul>
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <article class="team-feature">
-
-                <div class="team-head">
-
-                    <div
-                        class="team-feature-eyebrow i18n"
-                        data-en="Team of 5 · Unity · My first game"
-                        data-ja="5人チーム · Unity · 初めて作ったゲーム"
-                    >Team of 5 · Unity · My first game</div>
-
-                    <h3
-                        class="team-feature-title i18n"
-                        data-en="Dekame no Ippai"
-                        data-ja="でかめのいっぱい"
-                    >Dekame no Ippai</h3>
-
-                    <p
-                        class="team-feature-lead i18n"
-                        data-en="A fishing simulator. This is the first game I ever made."
-                        data-ja="釣りシミュレーター。私が初めて作ったゲームです。"
-                    >A fishing simulator. This is the first game I ever made.</p>
-
-                    <div class="team-actions">
-                        <a
-                            class="play-button"
-                            href="https://lucahelgert.itch.io/dekameippai"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M3 8h9"/>
-                                <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                            </svg>
-                        </a>
-                    </div>
-
-                </div>
-
-                <div class="team-body">
-
-                    <div class="team-shot"><img src="dekame1.jpg" alt="Dekame no Ippai" loading="lazy"></div>
-                    <div class="team-shot"><img src="dekame2.jpg" alt="Dekame no Ippai" loading="lazy"></div>
-                    <div class="team-shot"><img src="dekame3.jpg" alt="Dekame no Ippai" loading="lazy"></div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div>
-                        <h4 class="team-card-title i18n" data-en="Programmer and artist" data-ja="プログラマー兼アーティスト">Programmer and artist</h4>
-                        <p class="team-card-text i18n" data-en="I wrote the fish behavior scripts and made the art, sound, and lighting." data-ja="魚の動きのスクリプトを書き、アート、サウンド、ライティングも作りました。">I wrote the fish behavior scripts and made the art, sound, and lighting.</p>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
-                        <div class="team-chips">
-                            <span class="team-chip i18n" data-en="Unity and C# basics" data-ja="UnityとC#の基礎">Unity and C# basics</span>
-                            <span class="team-chip i18n" data-en="Pixel art" data-ja="ピクセルアート">Pixel art</span>
-                            <span class="team-chip i18n" data-en="Simple 3D modeling" data-ja="シンプルな3Dモデリング">Simple 3D modeling</span>
-                            <span class="team-chip i18n" data-en="Texture making" data-ja="テクスチャ制作">Texture making</span>
-                            <span class="team-chip i18n" data-en="Sound design" data-ja="サウンドデザイン">Sound design</span>
-                            <span class="team-chip i18n" data-en="Lighting" data-ja="ライティング">Lighting</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div>
-                        <ul class="team-list">
-                            <li class="i18n" data-en="Learning everything for the first time" data-ja="すべてを初めて学ぶこと">Learning everything for the first time</li>
-                            <li class="i18n" data-en="Doing programming, art, sound, and lighting in one project" data-ja="1つのプロジェクトで、プログラミング、アート、サウンド、ライティングをすべて行うこと">Doing programming, art, sound, and lighting in one project</li>
-                        </ul>
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <article class="team-feature">
-
-                <div class="team-head">
-
-                    <div
-                        class="team-feature-eyebrow i18n"
-                        data-en="Team of 5 · Unreal Engine"
-                        data-ja="5人チーム · Unreal Engine"
-                    >Team of 5 · Unreal Engine</div>
-
-                    <h3
-                        class="team-feature-title i18n"
-                        data-en="Mystery Box"
-                        data-ja="ミステリーボックス"
-                    >Mystery Box</h3>
-
-                    <p
-                        class="team-feature-lead i18n"
-                        data-en="A game made in Unreal Engine."
-                        data-ja="Unreal Engineで作ったゲーム。"
-                    >A game made in Unreal Engine.</p>
-
-                </div>
-
-                <div class="team-body">
-
-                    <div class="team-shot"><img src="mysterybox1.jpg" alt="Mystery Box" loading="lazy"></div>
-                    <div class="team-shot"><img src="mysterybox2.jpg" alt="Mystery Box" loading="lazy"></div>
-                    <div class="team-shot"><img src="mysterybox3.jpg" alt="Mystery Box" loading="lazy"></div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div>
-                        <h4 class="team-card-title i18n" data-en="3D artist and programmer" data-ja="3Dアーティスト兼プログラマー">3D artist and programmer</h4>
-                        <p class="team-card-text i18n" data-en="I made 3D models, materials, the environment, and the game menu." data-ja="3Dモデル、マテリアル、環境、ゲームメニューを作りました。">I made 3D models, materials, the environment, and the game menu.</p>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
-                        <div class="team-chips">
-                            <span class="team-chip i18n" data-en="3D modeling" data-ja="3Dモデリング">3D modeling</span>
-                            <span class="team-chip i18n" data-en="Materials in Unreal Engine" data-ja="Unreal Engineでのマテリアル制作">Materials in Unreal Engine</span>
-                            <span class="team-chip i18n" data-en="Node-based coding (Blueprints)" data-ja="ノードベースのコーディング（Blueprint）">Node-based coding (Blueprints)</span>
-                            <span class="team-chip i18n" data-en="3D environment building" data-ja="3D環境の構築">3D environment building</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div>
-                        <ul class="team-list">
-                            <li class="i18n" data-en="Learning Unreal Engine" data-ja="Unreal Engineを学ぶこと">Learning Unreal Engine</li>
-                            <li class="i18n" data-en="Node-based coding works differently from writing code" data-ja="ノードベースのコーディングは、文字でコードを書くのとは違うこと">Node-based coding works differently from writing code</li>
-                        </ul>
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <article class="team-feature">
-
-                <div class="team-head">
-
-                    <div
-                        class="team-feature-eyebrow i18n"
-                        data-en="Team of 5 · Unity"
-                        data-ja="5人チーム · Unity"
-                    >Team of 5 · Unity</div>
-
-                    <h3
-                        class="team-feature-title i18n"
-                        data-en="Toy Pair"
-                        data-ja="トイ・ペア"
-                    >Toy Pair</h3>
-
-                    <p
-                        class="team-feature-lead i18n"
-                        data-en="A game built around many small gameplay mechanics."
-                        data-ja="小さなゲームプレイの仕掛けをたくさん盛り込んだゲーム。"
-                    >A game built around many small gameplay mechanics.</p>
-
-                </div>
-
-                <div class="team-body">
-
-                    <div class="team-shot"><img src="toypair1.jpg" alt="Toy Pair" loading="lazy"></div>
-                    <div class="team-shot"><img src="toypair2.jpg" alt="Toy Pair" loading="lazy"></div>
-                    <div class="team-shot"><img src="toypair3.jpg" alt="Toy Pair" loading="lazy"></div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div>
-                        <h4 class="team-card-title i18n" data-en="Gameplay programmer and designer" data-ja="ゲームプレイのプログラマー兼デザイナー">Gameplay programmer and designer</h4>
-                        <p class="team-card-text i18n" data-en="I designed and programmed the gameplay mechanics." data-ja="ゲームの仕掛けを設計し、実装しました。">I designed and programmed the gameplay mechanics.</p>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
-                        <div class="team-chips">
-                            <span class="team-chip i18n" data-en="C# in Unity" data-ja="UnityのC#">C# in Unity</span>
-                            <span class="team-chip i18n" data-en="Gameplay design" data-ja="ゲームプレイの設計">Gameplay design</span>
-                            <span class="team-chip i18n" data-en="Teamwork in a shared project" data-ja="共有プロジェクトでのチーム作業">Teamwork in a shared project</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div>
-                        <ul class="team-list">
-                            <li class="i18n" data-en="Making many different mechanics work together" data-ja="たくさんの仕掛けをうまく連携させること">Making many different mechanics work together</li>
-                            <li class="i18n" data-en="Sharing one project with 4 other people" data-ja="4人の仲間と1つのプロジェクトを共有すること">Sharing one project with 4 other people</li>
-                        </ul>
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-
-    <!-- ===================================================
-         SOLO PROJECTS
-    =================================================== -->
-
-    <div
-        class="project-panel"
-        id="solo-projects"
-    >
-
-
-        <!-- =================================================
-             FIRST FOUR PROJECTS
-        ================================================== -->
-
-        <div class="game-grid">
-
-
-            <!-- =============================================
-                 ARTWORK RESTORATION
-            ============================================== -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="art.jpg"
-                        alt="Artwork Restoration"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Artwork Restoration"
-                            data-ja="アートワークの復元"
-                        >
-                            Artwork Restoration
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en='A collaborative interactive artwork restoration project developed with illustrator <a href="https://www.instagram.com/chip_illustrator/" target="_blank" rel="noopener">@chip_illustrator</a>. Her illustration work was transformed into an interactive digital experience through programming, animation and technical implementation.'
-                            data-ja='イラストレーター <a href="https://www.instagram.com/chip_illustrator/" target="_blank" rel="noopener">@chip_illustrator</a> と共同制作した、インタラクティブなアートワーク復元プロジェクト。彼女のイラストを、プログラミングとアニメーションによってデジタル作品として蘇らせました。'
-                        >
-                            A collaborative interactive artwork restoration
-                            project developed with illustrator
-                            <a
-                                href="https://www.instagram.com/chip_illustrator/"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                @chip_illustrator
-                            </a>.
-                            Her illustration work was transformed into an
-                            interactive digital experience through programming,
-                            animation and technical implementation.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/chipartwork/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- =============================================
-                 LOST IN THE COLD
-            ============================================== -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="maze.jpg"
-                        alt="Lost in the Cold"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Lost in the Cold"
-                            data-ja="極寒の迷路"
-                        >
-                            Lost in the Cold
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A procedural exploration game that constructs a new maze layout on every launch. The player must navigate an ever-changing frozen maze, demonstrating algorithmic generation and replayable level structure."
-                            data-ja="起動するたびに新しい迷路が生成される、プロシージャル探索ゲーム。絶えず姿を変える氷の迷路を進みながら、アルゴリズム生成による高いリプレイ性を体感できます。"
-                        >
-                            A procedural exploration game that constructs
-                            a new maze layout on every launch. The player
-                            must navigate an ever-changing frozen maze,
-                            demonstrating algorithmic generation and
-                            replayable level structure.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/smallmazegame/index.html"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- =============================================
-                 EARTH IS A TOY
-            ============================================== -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="aliencatchball.jpg"
-                        alt="Earth is a Toy"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Earth is a Toy"
-                            data-ja="地球はおもちゃ"
-                        >
-                            Earth is a Toy
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A physics-based alien catching game where animated aliens react to the player's actions. I used Inverse Kinematics (IK) to create procedural character animations, allowing the aliens' bodies and limbs to naturally react to the movement and direction of the gameplay."
-                            data-ja="プレイヤーの動きに反応するエイリアンが登場する、物理演算ベースのキャッチゲーム。逆運動学（IK）によるプロシージャルアニメーションで、エイリアンの体や手足がゲームの動きに自然に反応します。"
-                        >
-                            A physics-based alien catching game where
-                            animated aliens react to the player's actions.
-                            I used Inverse Kinematics (IK) to create
-                            procedural character animations, allowing the
-                            aliens' bodies and limbs to naturally react to
-                            the movement and direction of the gameplay.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/aliensandstuff/index.html"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- =============================================
-                 ONLY BAD GUYS ON THE TRAIN
-            ============================================== -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="train.jpg"
-                        alt="Only Bad Guys on the Train"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Only Bad Guys on the Train"
-                            data-ja="電車の中の悪者たち"
-                        >
-                            Only Bad Guys on the Train
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A first-person combat experience set entirely within a moving train. I modeled everything myself, including all 3D assets, 2D elements and textures. The complete visual content is 100% my own creation, from the models and environments to the textures and artwork."
-                            data-ja="走行中の電車を舞台にした、一人称視点の戦闘アクション。3Dモデルから2D素材、テクスチャに至るまで、ビジュアルはすべて自分の手で制作しました。"
-                        >
-                            A first-person combat experience set entirely
-                            within a moving train. I modeled everything
-                            myself, including all 3D assets, 2D elements
-                            and textures. The complete visual content is
-                            100% my own creation, from the models and
-                            environments to the textures and artwork.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/onlybadguysonthetrain/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-
-        <!-- =================================================
-             SEE MORE / SEE LESS
-        ================================================== -->
-
-        <div
-            class="see-more-wrap"
-            id="seeMoreWrap"
-        >
-
-            <button
-                class="see-more"
-                id="seeMoreButton"
-                type="button"
-            >
-                See more
-            </button>
-
-        </div>
-
-
-        <!-- =================================================
-             REMAINING PROJECTS
-        ================================================= -->
-
-        <div
-            class="game-grid extra-projects"
-            id="extraProjects"
-        >
-
-
-            <!-- OLYMPUS DODGE -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="olympus.jpg"
-                        alt="Olympus Dodge"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Olympus Dodge"
-                            data-ja="オリンポス・ドッジ"
-                        >
-                            Olympus Dodge
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A first-person fantasy dodgeball game inspired by the feeling of exploring a world like Skyrim. I created the environment background in World Machine and used it to build a large fantasy landscape around the gameplay."
-                            data-ja="Skyrimのような世界を旅する感覚を目指した、一人称視点のファンタジー・ドッジボール。World Machineで作り込んだ広大な背景が、ゲームプレイを包み込みます。"
-                        >
-                            A first-person fantasy dodgeball game inspired
-                            by the feeling of exploring a world like Skyrim.
-                            I created the environment background in World
-                            Machine and used it to build a large fantasy
-                            landscape around the gameplay.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/OlympusDodgeBall/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- FROG KAMIZUMO -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="kamizumo.jpg"
-                        alt="Frog Kamizumo"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Frog Kamizumo"
-                            data-ja="カエル紙相撲"
-                        >
-                            Frog Kamizumo
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A 3D reinterpretation of traditional Japanese Kamizumo, transforming the classic paper sumo game into a physical 3D experience. The main technical challenge was creating convincing physics that make the sumo characters react naturally to movement, collisions and impacts."
-                            data-ja="日本の伝統的な紙相撲を3Dで再構築した作品。動きや衝突、衝撃に自然に反応する力士たちの物理表現が、最大の技術的挑戦でした。"
-                        >
-                            A 3D reinterpretation of traditional Japanese
-                            Kamizumo, transforming the classic paper sumo
-                            game into a physical 3D experience. The main
-                            technical challenge was creating convincing
-                            physics that make the sumo characters react
-                            naturally to movement, collisions and impacts.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/kamizumo/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- UNDERWATER PINBALL -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="pin.jpg"
-                        alt="Underwater Pinball"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Underwater Pinball"
-                            data-ja="水中ピンボール"
-                        >
-                            Underwater Pinball
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="An old-school pinball game set underwater, developed entirely in Unity. I modeled all of the game's 3D assets myself and programmed the complete gameplay and pinball mechanics."
-                            data-ja="水中を舞台にしたクラシックなピンボールゲーム。Unityで開発し、3Dアセットからゲームプレイ、物理挙動まですべて自分の手で制作しました。"
-                        >
-                            An old-school pinball game set underwater,
-                            developed entirely in Unity. I modeled all
-                            of the game's 3D assets myself and programmed
-                            the complete gameplay and pinball mechanics.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/PinBall/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- BONGO 3D -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="bongo3d.jpg"
-                        alt="Bongo 3D"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Bongo 3D"
-                            data-ja="ボンゴ3D"
-                        >
-                            Bongo 3D
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A 3D interactive reinterpretation of the Bongo Cat internet phenomenon, combining character interaction, animation and responsive gameplay into a browser-based experience."
-                            data-ja="インターネットで話題になった「ボンゴキャット」を3Dで再構築。キャラクターとの掛け合いやアニメーションを、ブラウザ上のインタラクティブな体験としてまとめました。"
-                        >
-                            A 3D interactive reinterpretation of the Bongo
-                            Cat internet phenomenon, combining character
-                            interaction, animation and responsive gameplay
-                            into a browser-based experience.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/bongo3d/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- BOW & BONES -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="bowbones.jpg"
-                        alt="Bow and Bones"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Bow &amp; Bones"
-                            data-ja="ボウ・アンド・ボーンズ"
-                        >
-                            Bow &amp; Bones
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A stylized 2D archery experience combining hand-drawn visuals with projectile mechanics, enemy encounters and responsive combat."
-                            data-ja="手描き風のビジュアルと発射物の挙動を組み合わせた、スタイリッシュな2Dアーチェリーアクション。"
-                        >
-                            A stylized 2D archery experience combining
-                            hand-drawn visuals with projectile mechanics,
-                            enemy encounters and responsive combat.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/shootinggame/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- ZERO GRAVITY BOWLING -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="zerogravitybowling.jpg"
-                        alt="Zero Gravity Bowling"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Zero Gravity Bowling"
-                            data-ja="無重力ボウリング"
-                        >
-                            Zero Gravity Bowling
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A physics-driven bowling experiment that removes conventional gravity, requiring the player to read momentum, trajectories and spatial movement in zero gravity."
-                            data-ja="重力を取り払った、物理演算ベースのボウリング実験。無重力の中で運動量と軌道を読みながらプレイします。"
-                        >
-                            A physics-driven bowling experiment that removes
-                            conventional gravity, requiring the player to
-                            read momentum, trajectories and spatial movement
-                            in zero gravity.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/zerogravitybowling/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- THE FLOOR IS LAVA -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="lava.jpg"
-                        alt="The Floor Is Lava"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="The Floor Is Lava"
-                            data-ja="床は溶岩"
-                        >
-                            The Floor Is Lava
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A movement-focused traversal experience set inside a flooded classroom, turning the environment itself into the central obstacle and movement system."
-                            data-ja="水没した教室を舞台にした、移動そのものを楽しむ探索体験。環境そのものが最大の障害物になります。"
-                        >
-                            A movement-focused traversal experience set
-                            inside a flooded classroom, turning the
-                            environment itself into the central obstacle
-                            and movement system.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/thefloorislava/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- TRON RHYTHM -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="rhythm.jpg"
-                        alt="Tron Rhythm"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="Tron Rhythm"
-                            data-ja="トロン・リズム"
-                        >
-                            Tron Rhythm
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A rhythm-based dodge game where obstacles are spawned in sync with the rhythm of the music. The player must follow the beat while avoiding incoming cubes, combining simple movement with music-driven gameplay."
-                            data-ja="音楽のリズムに合わせて障害物が現れる、リズムアクション。ビートに乗りながら迫りくるキューブを避ける、シンプルで心地よいゲームプレイです。"
-                        >
-                            A rhythm-based dodge game where obstacles are
-                            spawned in sync with the rhythm of the music.
-                            The player must follow the beat while avoiding
-                            incoming cubes, combining simple movement with
-                            music-driven gameplay.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/rhythmgame/index.html"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- THE UNIVERSE -->
-
-            <article class="game">
-
-                <div class="game-visual">
-
-                    <img
-                        src="uni.jpg"
-                        alt="The Universe"
-                    >
-
-                </div>
-
-
-                <div class="game-info">
-
-                    <div>
-
-                        <h3
-                            class="game-title i18n"
-                            data-en="The Universe"
-                            data-ja="宇宙"
-                        >
-                            The Universe
-                        </h3>
-
-                        <p
-                            class="game-description i18n"
-                            data-en="A fully hand-drawn animation piece rather than a playable game, imagining a simplified and artistic version of the universe. Meditation on scale and existence rather than something with rules to learn."
-                            data-ja="プレイするゲームではなく、完全手描きのアニメーション作品。シンプルで芸術的な宇宙の姿を通して、スケールと存在についてそっと問いかけます。"
-                        >
-                            A fully hand-drawn animation piece rather than
-                            a playable game, imagining a simplified and
-                            artistic version of the universe. Meditation
-                            on scale and existence rather than something
-                            with rules to learn.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="play-button"
-                        href="https://lucanicohe.github.io/dmtexperience/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <span class="i18n" data-en="Play" data-ja="プレイ">Play</span>
-
-                        <svg
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        >
-                            <path d="M3 8h9"/>
-                            <path d="M8.5 4.5L12 8l-3.5 3.5"/>
-                        </svg>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
+<div class="work-header"><h2 class="i18n" data-en="Selected work" data-ja="代表作品">Selected work</h2></div>
+<div class="project-switcher">
+<button class="i18n" type="button" data-target="team-projects" data-en="Team Projects" data-ja="チームプロジェクト">Team Projects</button>
+<button class="i18n" type="button" data-target="solo-projects" data-en="Solo Projects" data-ja="個人プロジェクト">Solo Projects</button>
+</div>
+
+<!-- TEAM PROJECTS -->
+<div class="project-panel" id="team-projects">
+<p class="team-intro i18n" data-en="These are school projects, each with different team members. They are larger games that need collaboration with others. For each project I explain my role, my skills, and what was difficult." data-ja="学校で制作したプロジェクトで、チームのメンバーは毎回違います。どれも、他の人との協力が必要な規模の大きなゲームです。それぞれについて、自分の役割、スキル、難しかったことをまとめています。">These are school projects, each with different team members. They are larger games that need collaboration with others. For each project I explain my role, my skills, and what was difficult.</p>
+<div class="team-feature-list">
+<article class="team-feature"><div class="team-head"><div class="team-feature-eyebrow i18n" data-en="Team of 5 · Unity · School award winner" data-ja="5人チーム · Unity · 学内アワード受賞">Team of 5 · Unity · School award winner</div><h3 class="team-feature-title i18n" data-en="Guilty Lane" data-ja="ギルティ・レーン">Guilty Lane</h3><p class="team-feature-lead i18n" data-en="A first-person train game. It won an award at school." data-ja="一人称視点の電車ゲーム。学内アワードを受賞しました。">A first-person train game. It won an award at school.</p></div><div class="team-body"><div class="team-video" data-video="mlNIDH5t1FQ" data-watch="https://www.youtube.com/watch?v=mlNIDH5t1FQ"><button type="button" class="team-video-play" aria-label="Play video: Guilty Lane"><img src="https://i.ytimg.com/vi/mlNIDH5t1FQ/hqdefault.jpg" alt="Guilty Lane video thumbnail" loading="lazy"><span class="team-video-icon"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></button></div><div class="team-shot"><img src="guilty1.jpg" alt="Guilty Lane" loading="lazy"></div><div class="team-shot"><img src="guilty2.jpg" alt="Guilty Lane" loading="lazy"></div><div class="team-card"><div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div><h4 class="team-card-title i18n" data-en="Programmer and 3D artist" data-ja="プログラマー兼3Dアーティスト">Programmer and 3D artist</h4><p class="team-card-text i18n" data-en="I also came up with the first-person view and the in-game screen UI." data-ja="一人称視点と、ゲーム内スクリーンのUIも私の発案です。">I also came up with the first-person view and the in-game screen UI.</p></div><div class="team-card"><div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div><div class="team-chips"><span class="team-chip i18n" data-en="C# in Unity" data-ja="UnityのC#">C# in Unity</span><span class="team-chip i18n" data-en="Procedural track spawning" data-ja="線路のプロシージャル生成">Procedural track spawning</span><span class="team-chip i18n" data-en="2D drawing in the Unity Sprite Editor" data-ja="Unity Sprite Editorでの2D作画">2D drawing in the Unity Sprite Editor</span><span class="team-chip i18n" data-en="3D modeling in Blockbench" data-ja="Blockbenchでの3Dモデリング">3D modeling in Blockbench</span><span class="team-chip i18n" data-en="3D modeling in Blender" data-ja="Blenderでの3Dモデリング">3D modeling in Blender</span></div></div><div class="team-card"><div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div><ul class="team-list"><li class="i18n" data-en="Making the train tracks spawn automatically" data-ja="線路を自動で生成する仕組みを作ること">Making the train tracks spawn automatically</li><li class="i18n" data-en="Learning drawing and 3D tools while also programming" data-ja="プログラミングをしながら、作画と3Dツールも学ぶこと">Learning drawing and 3D tools while also programming</li></ul></div></div></article>
+<article class="team-feature"><div class="team-head"><div class="team-feature-eyebrow i18n" data-en="Team of 5 · Unity · Project lead" data-ja="5人チーム · Unity · プロジェクトリーダー">Team of 5 · Unity · Project lead</div><h3 class="team-feature-title i18n" data-en="Kumo vs. Mahou" data-ja="蜘蛛 vs. 魔法">Kumo vs. Mahou</h3><p class="team-feature-lead i18n" data-en="An open-world fantasy game where the player hunts spiders with magic." data-ja="魔法で蜘蛛を狩る、オープンワールドのファンタジーゲーム。">An open-world fantasy game where the player hunts spiders with magic.</p></div><div class="team-body"><div class="team-video" data-video="uo1qHLfWFxg" data-watch="https://www.youtube.com/watch?v=uo1qHLfWFxg"><button type="button" class="team-video-play" aria-label="Play video: Kumo vs. Mahou"><img src="https://i.ytimg.com/vi/uo1qHLfWFxg/hqdefault.jpg" alt="Kumo vs. Mahou video thumbnail" loading="lazy"><span class="team-video-icon"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></button></div><div class="team-shot"><img src="kumo1.jpg" alt="Kumo vs. Mahou" loading="lazy"></div><div class="team-shot"><img src="kumo2.jpg" alt="Kumo vs. Mahou" loading="lazy"></div><div class="team-card"><div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div><h4 class="team-card-title i18n" data-en="Project lead" data-ja="プロジェクトリーダー">Project lead</h4><p class="team-card-text i18n" data-en="I led a team of 5, wrote the game specification document, and planned the work. I also programmed and made 3D art." data-ja="5人チームを率い、ゲームの仕様書を書き、作業の計画を立てました。プログラミングと3Dアートも担当しました。">I led a team of 5, wrote the game specification document, and planned the work. I also programmed and made 3D art.</p></div><div class="team-card"><div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div><div class="team-chips"><span class="team-chip i18n" data-en="Leadership" data-ja="リーダーシップ">Leadership</span><span class="team-chip i18n" data-en="Team coordination" data-ja="チームのまとめ方">Team coordination</span><span class="team-chip i18n" data-en="Game specification document" data-ja="ゲームの仕様書">Game specification document</span><span class="team-chip i18n" data-en="C# in Unity" data-ja="UnityのC#">C# in Unity</span><span class="team-chip i18n" data-en="3D modeling" data-ja="3Dモデリング">3D modeling</span><span class="team-chip i18n" data-en="World map with procedural tools (World Machine)" data-ja="プロシージャルツールでのワールドマップ制作（World Machine）">World map with procedural tools (World Machine)</span><span class="team-chip i18n" data-en="Textures made from real photos" data-ja="実際の写真からのテクスチャ制作">Textures made from real photos</span></div></div><div class="team-card"><div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div><ul class="team-list"><li class="i18n" data-en="Leading a team for the first time" data-ja="初めてチームを率いること">Leading a team for the first time</li><li class="i18n" data-en="Keeping all 5 people working toward the same plan" data-ja="5人全員を同じ計画に沿って動かすこと">Keeping all 5 people working toward the same plan</li><li class="i18n" data-en="Building a large world while also leading" data-ja="リーダーをしながら、広いワールドも作ること">Building a large world while also leading</li></ul></div></div></article>
+<article class="team-feature"><div class="team-head"><div class="team-feature-eyebrow i18n" data-en="Team of 5 · Unity · My first game" data-ja="5人チーム · Unity · 初めて作ったゲーム">Team of 5 · Unity · My first game</div><h3 class="team-feature-title i18n" data-en="Dekame no Ippai" data-ja="でかめのいっぱい">Dekame no Ippai</h3><p class="team-feature-lead i18n" data-en="A fishing simulator. This is the first game I ever made." data-ja="釣りシミュレーター。私が初めて作ったゲームです。">A fishing simulator. This is the first game I ever made.</p><div class="team-actions"><a class="play-button" href="https://lucahelgert.itch.io/dekameippai" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></div><div class="team-body"><div class="team-shot"><img src="dekame1.jpg" alt="Dekame no Ippai" loading="lazy"></div><div class="team-shot"><img src="dekame2.jpg" alt="Dekame no Ippai" loading="lazy"></div><div class="team-shot"><img src="dekame3.jpg" alt="Dekame no Ippai" loading="lazy"></div><div class="team-card"><div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div><h4 class="team-card-title i18n" data-en="Programmer and artist" data-ja="プログラマー兼アーティスト">Programmer and artist</h4><p class="team-card-text i18n" data-en="I wrote the fish behavior scripts and made the art, sound, and lighting." data-ja="魚の動きのスクリプトを書き、アート、サウンド、ライティングも作りました。">I wrote the fish behavior scripts and made the art, sound, and lighting.</p></div><div class="team-card"><div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div><div class="team-chips"><span class="team-chip i18n" data-en="Unity and C# basics" data-ja="UnityとC#の基礎">Unity and C# basics</span><span class="team-chip i18n" data-en="Pixel art" data-ja="ピクセルアート">Pixel art</span><span class="team-chip i18n" data-en="Simple 3D modeling" data-ja="シンプルな3Dモデリング">Simple 3D modeling</span><span class="team-chip i18n" data-en="Texture making" data-ja="テクスチャ制作">Texture making</span><span class="team-chip i18n" data-en="Sound design" data-ja="サウンドデザイン">Sound design</span><span class="team-chip i18n" data-en="Lighting" data-ja="ライティング">Lighting</span></div></div><div class="team-card"><div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div><ul class="team-list"><li class="i18n" data-en="Learning everything for the first time" data-ja="すべてを初めて学ぶこと">Learning everything for the first time</li><li class="i18n" data-en="Doing programming, art, sound, and lighting in one project" data-ja="1つのプロジェクトで、プログラミング、アート、サウンド、ライティングをすべて行うこと">Doing programming, art, sound, and lighting in one project</li></ul></div></div></article>
+<article class="team-feature"><div class="team-head"><div class="team-feature-eyebrow i18n" data-en="Team of 5 · Unreal Engine" data-ja="5人チーム · Unreal Engine">Team of 5 · Unreal Engine</div><h3 class="team-feature-title i18n" data-en="Mystery Box" data-ja="ミステリーボックス">Mystery Box</h3><p class="team-feature-lead i18n" data-en="A game made in Unreal Engine." data-ja="Unreal Engineで作ったゲーム。">A game made in Unreal Engine.</p></div><div class="team-body"><div class="team-shot"><img src="mysterybox1.jpg" alt="Mystery Box" loading="lazy"></div><div class="team-shot"><img src="mysterybox2.jpg" alt="Mystery Box" loading="lazy"></div><div class="team-shot"><img src="mysterybox3.jpg" alt="Mystery Box" loading="lazy"></div><div class="team-card"><div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div><h4 class="team-card-title i18n" data-en="3D artist and programmer" data-ja="3Dアーティスト兼プログラマー">3D artist and programmer</h4><p class="team-card-text i18n" data-en="I made 3D models, materials, the environment, and the game menu." data-ja="3Dモデル、マテリアル、環境、ゲームメニューを作りました。">I made 3D models, materials, the environment, and the game menu.</p></div><div class="team-card"><div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div><div class="team-chips"><span class="team-chip i18n" data-en="3D modeling" data-ja="3Dモデリング">3D modeling</span><span class="team-chip i18n" data-en="Materials in Unreal Engine" data-ja="Unreal Engineでのマテリアル制作">Materials in Unreal Engine</span><span class="team-chip i18n" data-en="Node-based coding (Blueprints)" data-ja="ノードベースのコーディング（Blueprint）">Node-based coding (Blueprints)</span><span class="team-chip i18n" data-en="3D environment building" data-ja="3D環境の構築">3D environment building</span></div></div><div class="team-card"><div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div><ul class="team-list"><li class="i18n" data-en="Learning Unreal Engine" data-ja="Unreal Engineを学ぶこと">Learning Unreal Engine</li><li class="i18n" data-en="Node-based coding works differently from writing code" data-ja="ノードベースのコーディングは、文字でコードを書くのとは違うこと">Node-based coding works differently from writing code</li></ul></div></div></article>
+<article class="team-feature"><div class="team-head"><div class="team-feature-eyebrow i18n" data-en="Team of 5 · Unity" data-ja="5人チーム · Unity">Team of 5 · Unity</div><h3 class="team-feature-title i18n" data-en="Toy Pair" data-ja="トイ・ペア">Toy Pair</h3><p class="team-feature-lead i18n" data-en="A game built around many small gameplay mechanics." data-ja="小さなゲームプレイの仕掛けをたくさん盛り込んだゲーム。">A game built around many small gameplay mechanics.</p></div><div class="team-body"><div class="team-shot"><img src="toypair1.jpg" alt="Toy Pair" loading="lazy"></div><div class="team-shot"><img src="toypair2.jpg" alt="Toy Pair" loading="lazy"></div><div class="team-shot"><img src="toypair3.jpg" alt="Toy Pair" loading="lazy"></div><div class="team-card"><div class="team-card-label i18n" data-en="My role" data-ja="自分の役割">My role</div><h4 class="team-card-title i18n" data-en="Gameplay programmer and designer" data-ja="ゲームプレイのプログラマー兼デザイナー">Gameplay programmer and designer</h4><p class="team-card-text i18n" data-en="I designed and programmed the gameplay mechanics." data-ja="ゲームの仕掛けを設計し、実装しました。">I designed and programmed the gameplay mechanics.</p></div><div class="team-card"><div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div><div class="team-chips"><span class="team-chip i18n" data-en="C# in Unity" data-ja="UnityのC#">C# in Unity</span><span class="team-chip i18n" data-en="Gameplay design" data-ja="ゲームプレイの設計">Gameplay design</span><span class="team-chip i18n" data-en="Teamwork in a shared project" data-ja="共有プロジェクトでのチーム作業">Teamwork in a shared project</span></div></div><div class="team-card"><div class="team-card-label i18n" data-en="Difficulties" data-ja="難しかったこと">Difficulties</div><ul class="team-list"><li class="i18n" data-en="Making many different mechanics work together" data-ja="たくさんの仕掛けをうまく連携させること">Making many different mechanics work together</li><li class="i18n" data-en="Sharing one project with 4 other people" data-ja="4人の仲間と1つのプロジェクトを共有すること">Sharing one project with 4 other people</li></ul></div></div></article>
+</div>
+</div>
+
+<!-- SOLO PROJECTS -->
+<div class="project-panel" id="solo-projects">
+<div class="game-grid">
+<article class="game"><div class="game-visual"><img src="art.jpg" alt="Artwork Restoration"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Artwork Restoration" data-ja="アートワークの復元">Artwork Restoration</h3><p class="game-description i18n" data-en="A collaborative interactive artwork restoration project developed with illustrator &lt;a href=&quot;https://www.instagram.com/chip_illustrator/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;@chip_illustrator&lt;/a&gt;. Her illustration work was transformed into an interactive digital experience through programming, animation and technical implementation." data-ja="イラストレーター &lt;a href=&quot;https://www.instagram.com/chip_illustrator/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;@chip_illustrator&lt;/a&gt; と共同制作した、インタラクティブなアートワーク復元プロジェクト。彼女のイラストを、プログラミングとアニメーションによってデジタル作品として蘇らせました。">A collaborative interactive artwork restoration project developed with illustrator <a href="https://www.instagram.com/chip_illustrator/" target="_blank" rel="noopener">@chip_illustrator</a>. Her illustration work was transformed into an interactive digital experience through programming, animation and technical implementation.</p></div><a class="play-button" href="https://lucanicohe.github.io/chipartwork/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="maze.jpg" alt="Lost in the Cold"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Lost in the Cold" data-ja="極寒の迷路">Lost in the Cold</h3><p class="game-description i18n" data-en="A procedural exploration game that constructs a new maze layout on every launch. The player must navigate an ever-changing frozen maze, demonstrating algorithmic generation and replayable level structure." data-ja="起動するたびに新しい迷路が生成される、プロシージャル探索ゲーム。絶えず姿を変える氷の迷路を進みながら、アルゴリズム生成による高いリプレイ性を体感できます。">A procedural exploration game that constructs a new maze layout on every launch. The player must navigate an ever-changing frozen maze, demonstrating algorithmic generation and replayable level structure.</p></div><a class="play-button" href="https://lucanicohe.github.io/smallmazegame/index.html" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="aliencatchball.jpg" alt="Earth is a Toy"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Earth is a Toy" data-ja="地球はおもちゃ">Earth is a Toy</h3><p class="game-description i18n" data-en="A physics-based alien catching game where animated aliens react to the player&#x27;s actions. I used Inverse Kinematics (IK) to create procedural character animations, allowing the aliens&#x27; bodies and limbs to naturally react to the movement and direction of the gameplay." data-ja="プレイヤーの動きに反応するエイリアンが登場する、物理演算ベースのキャッチゲーム。逆運動学（IK）によるプロシージャルアニメーションで、エイリアンの体や手足がゲームの動きに自然に反応します。">A physics-based alien catching game where animated aliens react to the player's actions. I used Inverse Kinematics (IK) to create procedural character animations, allowing the aliens' bodies and limbs to naturally react to the movement and direction of the gameplay.</p></div><a class="play-button" href="https://lucanicohe.github.io/aliensandstuff/index.html" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="train.jpg" alt="Only Bad Guys on the Train"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Only Bad Guys on the Train" data-ja="電車の中の悪者たち">Only Bad Guys on the Train</h3><p class="game-description i18n" data-en="A first-person combat experience set entirely within a moving train. I modeled everything myself, including all 3D assets, 2D elements and textures. The complete visual content is 100% my own creation, from the models and environments to the textures and artwork." data-ja="走行中の電車を舞台にした、一人称視点の戦闘アクション。3Dモデルから2D素材、テクスチャに至るまで、ビジュアルはすべて自分の手で制作しました。">A first-person combat experience set entirely within a moving train. I modeled everything myself, including all 3D assets, 2D elements and textures. The complete visual content is 100% my own creation, from the models and environments to the textures and artwork.</p></div><a class="play-button" href="https://lucanicohe.github.io/onlybadguysonthetrain/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+</div>
+<div class="see-more-wrap" id="seeMoreWrap"><button class="see-more" id="seeMoreButton" type="button">See more</button></div>
+<div class="game-grid extra-projects" id="extraProjects">
+<article class="game"><div class="game-visual"><img src="olympus.jpg" alt="Olympus Dodge"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Olympus Dodge" data-ja="オリンポス・ドッジ">Olympus Dodge</h3><p class="game-description i18n" data-en="A first-person fantasy dodgeball game inspired by the feeling of exploring a world like Skyrim. I created the environment background in World Machine and used it to build a large fantasy landscape around the gameplay." data-ja="Skyrimのような世界を旅する感覚を目指した、一人称視点のファンタジー・ドッジボール。World Machineで作り込んだ広大な背景が、ゲームプレイを包み込みます。">A first-person fantasy dodgeball game inspired by the feeling of exploring a world like Skyrim. I created the environment background in World Machine and used it to build a large fantasy landscape around the gameplay.</p></div><a class="play-button" href="https://lucanicohe.github.io/OlympusDodgeBall/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="kamizumo.jpg" alt="Frog Kamizumo"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Frog Kamizumo" data-ja="カエル紙相撲">Frog Kamizumo</h3><p class="game-description i18n" data-en="A 3D reinterpretation of traditional Japanese Kamizumo, transforming the classic paper sumo game into a physical 3D experience. The main technical challenge was creating convincing physics that make the sumo characters react naturally to movement, collisions and impacts." data-ja="日本の伝統的な紙相撲を3Dで再構築した作品。動きや衝突、衝撃に自然に反応する力士たちの物理表現が、最大の技術的挑戦でした。">A 3D reinterpretation of traditional Japanese Kamizumo, transforming the classic paper sumo game into a physical 3D experience. The main technical challenge was creating convincing physics that make the sumo characters react naturally to movement, collisions and impacts.</p></div><a class="play-button" href="https://lucanicohe.github.io/kamizumo/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="pin.jpg" alt="Underwater Pinball"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Underwater Pinball" data-ja="水中ピンボール">Underwater Pinball</h3><p class="game-description i18n" data-en="An old-school pinball game set underwater, developed entirely in Unity. I modeled all of the game&#x27;s 3D assets myself and programmed the complete gameplay and pinball mechanics." data-ja="水中を舞台にしたクラシックなピンボールゲーム。Unityで開発し、3Dアセットからゲームプレイ、物理挙動まですべて自分の手で制作しました。">An old-school pinball game set underwater, developed entirely in Unity. I modeled all of the game's 3D assets myself and programmed the complete gameplay and pinball mechanics.</p></div><a class="play-button" href="https://lucanicohe.github.io/PinBall/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="bongo3d.jpg" alt="Bongo 3D"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Bongo 3D" data-ja="ボンゴ3D">Bongo 3D</h3><p class="game-description i18n" data-en="A 3D interactive reinterpretation of the Bongo Cat internet phenomenon, combining character interaction, animation and responsive gameplay into a browser-based experience." data-ja="インターネットで話題になった「ボンゴキャット」を3Dで再構築。キャラクターとの掛け合いやアニメーションを、ブラウザ上のインタラクティブな体験としてまとめました。">A 3D interactive reinterpretation of the Bongo Cat internet phenomenon, combining character interaction, animation and responsive gameplay into a browser-based experience.</p></div><a class="play-button" href="https://lucanicohe.github.io/bongo3d/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="bowbones.jpg" alt="Bow and Bones"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Bow &amp;amp; Bones" data-ja="ボウ・アンド・ボーンズ">Bow &amp; Bones</h3><p class="game-description i18n" data-en="A stylized 2D archery experience combining hand-drawn visuals with projectile mechanics, enemy encounters and responsive combat." data-ja="手描き風のビジュアルと発射物の挙動を組み合わせた、スタイリッシュな2Dアーチェリーアクション。">A stylized 2D archery experience combining hand-drawn visuals with projectile mechanics, enemy encounters and responsive combat.</p></div><a class="play-button" href="https://lucanicohe.github.io/shootinggame/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="zerogravitybowling.jpg" alt="Zero Gravity Bowling"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Zero Gravity Bowling" data-ja="無重力ボウリング">Zero Gravity Bowling</h3><p class="game-description i18n" data-en="A physics-driven bowling experiment that removes conventional gravity, requiring the player to read momentum, trajectories and spatial movement in zero gravity." data-ja="重力を取り払った、物理演算ベースのボウリング実験。無重力の中で運動量と軌道を読みながらプレイします。">A physics-driven bowling experiment that removes conventional gravity, requiring the player to read momentum, trajectories and spatial movement in zero gravity.</p></div><a class="play-button" href="https://lucanicohe.github.io/zerogravitybowling/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="lava.jpg" alt="The Floor Is Lava"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="The Floor Is Lava" data-ja="床は溶岩">The Floor Is Lava</h3><p class="game-description i18n" data-en="A movement-focused traversal experience set inside a flooded classroom, turning the environment itself into the central obstacle and movement system." data-ja="水没した教室を舞台にした、移動そのものを楽しむ探索体験。環境そのものが最大の障害物になります。">A movement-focused traversal experience set inside a flooded classroom, turning the environment itself into the central obstacle and movement system.</p></div><a class="play-button" href="https://lucanicohe.github.io/thefloorislava/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="rhythm.jpg" alt="Tron Rhythm"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="Tron Rhythm" data-ja="トロン・リズム">Tron Rhythm</h3><p class="game-description i18n" data-en="A rhythm-based dodge game where obstacles are spawned in sync with the rhythm of the music. The player must follow the beat while avoiding incoming cubes, combining simple movement with music-driven gameplay." data-ja="音楽のリズムに合わせて障害物が現れる、リズムアクション。ビートに乗りながら迫りくるキューブを避ける、シンプルで心地よいゲームプレイです。">A rhythm-based dodge game where obstacles are spawned in sync with the rhythm of the music. The player must follow the beat while avoiding incoming cubes, combining simple movement with music-driven gameplay.</p></div><a class="play-button" href="https://lucanicohe.github.io/rhythmgame/index.html" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+<article class="game"><div class="game-visual"><img src="uni.jpg" alt="The Universe"></div><div class="game-info"><div><h3 class="game-title i18n" data-en="The Universe" data-ja="宇宙">The Universe</h3><p class="game-description i18n" data-en="A fully hand-drawn animation piece rather than a playable game, imagining a simplified and artistic version of the universe. Meditation on scale and existence rather than something with rules to learn." data-ja="プレイするゲームではなく、完全手描きのアニメーション作品。シンプルで芸術的な宇宙の姿を通して、スケールと存在についてそっと問いかけます。">A fully hand-drawn animation piece rather than a playable game, imagining a simplified and artistic version of the universe. Meditation on scale and existence rather than something with rules to learn.</p></div><a class="play-button" href="https://lucanicohe.github.io/dmtexperience/" target="_blank" rel="noopener"><span class="i18n" data-en="Play" data-ja="プレイ">Play</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h9"/><path d="M8.5 4.5L12 8l-3.5 3.5"/></svg></a></div></article>
+</div>
+</div>
 
 </section>
 
-
-<!-- =======================================================
-     CONTACT
-======================================================= -->
-
-<section
-    class="contact"
-    id="contact"
->
-
-    <div class="contact-header">
-
-        <h2
-            class="contact-title i18n"
-            data-en="Let's build<br>something together."
-            data-ja="一緒に、何かを<br>つくりましょう。"
-        >
-            Let's build<br>
-            something together.
-        </h2>
-
-
-        <div class="contact-details">
-
-            <div
-                class="contact-details-label i18n"
-                data-en="Contact"
-                data-ja="連絡先"
-            >
-                Contact
-            </div>
-
-
-            <a
-                class="contact-item"
-                href="mailto:luca.helgert@icloud.com"
-            >
-
-                <span
-                    class="contact-item-name i18n"
-                    data-en="Email"
-                    data-ja="メール"
-                >
-                    Email
-                </span>
-
-                <span class="contact-item-value">
-                    luca.helgert@icloud.com
-                    <span class="contact-item-arrow">↗</span>
-                </span>
-
-            </a>
-
-
-            <a
-                class="contact-item"
-                href="https://www.instagram.com/lucanicohe"
-                target="_blank"
-                rel="noopener"
-            >
-
-                <span class="contact-item-name">
-                    Instagram
-                </span>
-
-                <span class="contact-item-value">
-                    @lucanicohe
-                    <span class="contact-item-arrow">↗</span>
-                </span>
-
-            </a>
-
-
-            <a
-                class="contact-item"
-                href="https://github.com/lucanicohe"
-                target="_blank"
-                rel="noopener"
-            >
-
-                <span class="contact-item-name">
-                    GitHub
-                </span>
-
-                <span class="contact-item-value">
-                    /lucanicohe
-                    <span class="contact-item-arrow">↗</span>
-                </span>
-
-            </a>
-
-        </div>
-
-    </div>
-
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<div class="contact-header">
+<h2 class="contact-title i18n" data-en="Let&#x27;s build&lt;br&gt;something together." data-ja="一緒に、何かを&lt;br&gt;つくりましょう。">Let's build<br>something together.</h2>
+<div class="contact-details">
+<div class="contact-details-label i18n" data-en="Contact" data-ja="連絡先">Contact</div>
+<a class="contact-item" href="mailto:luca.helgert@icloud.com"><span class="contact-item-name i18n" data-en="Email" data-ja="メール">Email</span><span class="contact-item-value">luca.helgert@icloud.com<span class="contact-item-arrow">↗</span></span></a>
+<a class="contact-item" href="https://www.instagram.com/lucanicohe" target="_blank" rel="noopener"><span class="contact-item-name">Instagram</span><span class="contact-item-value">@lucanicohe<span class="contact-item-arrow">↗</span></span></a>
+<a class="contact-item" href="https://github.com/lucanicohe" target="_blank" rel="noopener"><span class="contact-item-name">GitHub</span><span class="contact-item-value">/lucanicohe<span class="contact-item-arrow">↗</span></span></a>
+</div>
+</div>
 </section>
-
 
 </main>
 
-
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
+<!-- FOOTER -->
 <footer>
-
-    <div class="footer-inner">
-
-        <span class="i18n" data-en="© 2026 Luca Helgert" data-ja="© 2026 ルカ・ヘルゲルト">
-            © 2026 Luca Helgert
-        </span>
-
-        <span class="i18n" data-en="Tokyo, Japan" data-ja="東京、日本">
-            Tokyo, Japan
-        </span>
-
-    </div>
-
+<div class="footer-inner">
+<span class="i18n" data-en="© 2026 Luca Helgert" data-ja="© 2026 ルカ・ヘルゲルト">© 2026 Luca Helgert</span>
+<span class="i18n" data-en="Tokyo, Japan" data-ja="東京、日本">Tokyo, Japan</span>
+</div>
 </footer>
 
-
 <script>
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
+/* NAVIGATION */
 const nav = document.getElementById("nav");
-
 window.addEventListener("scroll", () => {
-
-    nav.classList.toggle(
-        "scrolled",
-        window.scrollY > 20
-    );
-
+    nav.classList.toggle("scrolled", window.scrollY > 20);
 }, { passive: true });
 
-
-/* =========================================================
-   SKILLS INFO DROPDOWN
-========================================================= */
-
-const skillsInfoToggle =
-    document.getElementById("skillsInfoToggle");
-
-const skillsInfoPanel =
-    document.getElementById("skillsInfoPanel");
-
-
+/* SKILLS INFO DROPDOWN */
+const skillsInfoToggle = document.getElementById("skillsInfoToggle");
+const skillsInfoPanel = document.getElementById("skillsInfoPanel");
 skillsInfoToggle.addEventListener("click", () => {
-
-    const isOpen =
-        skillsInfoPanel.classList.toggle("open");
-
+    const isOpen = skillsInfoPanel.classList.toggle("open");
     skillsInfoToggle.classList.toggle("open", isOpen);
-
-    skillsInfoToggle.setAttribute(
-        "aria-expanded",
-        isOpen
-    );
-
+    skillsInfoToggle.setAttribute("aria-expanded", isOpen);
 });
 
-
-/* =========================================================
-   SKILL BARS
-========================================================= */
-
-const skillBarFills =
-    document.querySelectorAll(".skill-bar-fill");
-
+/* SKILL BARS */
 const skillBarObserver = new IntersectionObserver((entries) => {
-
     entries.forEach((entry) => {
-
         if (entry.isIntersecting) {
-
             entry.target.classList.add("filled");
-
             skillBarObserver.unobserve(entry.target);
-
         }
-
     });
-
 }, { threshold: .4 });
+document.querySelectorAll(".skill-bar-fill").forEach((fill) => skillBarObserver.observe(fill));
 
-
-skillBarFills.forEach((fill) => {
-    skillBarObserver.observe(fill);
-});
-
-
-/* =========================================================
-   PROJECT SWITCHER
-========================================================= */
-
-const projectButtons =
-    document.querySelectorAll(".project-switcher button");
-
-const projectPanels =
-    document.querySelectorAll(".project-panel");
-
-
+/* PROJECT SWITCHER */
+const projectButtons = document.querySelectorAll(".project-switcher button");
+const projectPanels = document.querySelectorAll(".project-panel");
 projectButtons.forEach((button) => {
-
     button.addEventListener("click", () => {
-
-        const targetId =
-            button.dataset.target;
-
-        const targetPanel =
-            document.getElementById(targetId);
-
-        const isAlreadyOpen =
-            targetPanel.classList.contains("active");
-
-
-        if (isAlreadyOpen) {
-
+        const targetPanel = document.getElementById(button.dataset.target);
+        if (targetPanel.classList.contains("active")) {
             button.classList.remove("active");
             targetPanel.classList.remove("active");
-
             return;
         }
-
-
-        projectButtons.forEach((item) => {
-            item.classList.remove("active");
-        });
-
-        projectPanels.forEach((panel) => {
-            panel.classList.remove("active");
-        });
-
-
+        projectButtons.forEach((item) => item.classList.remove("active"));
+        projectPanels.forEach((panel) => panel.classList.remove("active"));
         button.classList.add("active");
         targetPanel.classList.add("active");
-
     });
-
 });
 
-
-/* =========================================================
-   SEE MORE / SEE LESS
-========================================================= */
-
-const seeMoreButton =
-    document.getElementById("seeMoreButton");
-
-const extraProjects =
-    document.getElementById("extraProjects");
-
+/* SEE MORE / SEE LESS */
+const seeMoreButton = document.getElementById("seeMoreButton");
+const extraProjects = document.getElementById("extraProjects");
 
 function updateSeeMoreLabel() {
-
-    const isExpanded =
-        extraProjects.classList.contains("visible");
-
+    const isExpanded = extraProjects.classList.contains("visible");
     const labels = {
         en: { more: "See more", less: "See less" },
         ja: { more: "もっと見る", less: "閉じる" }
     };
-
-    const set =
-        labels[currentLang] || labels.en;
-
-    seeMoreButton.textContent =
-        isExpanded ? set.less : set.more;
-
+    const set = labels[currentLang] || labels.en;
+    seeMoreButton.textContent = isExpanded ? set.less : set.more;
 }
-
 
 seeMoreButton.addEventListener("click", () => {
-
-    const isExpanded =
-        extraProjects.classList.contains("visible");
-
-
+    const isExpanded = extraProjects.classList.contains("visible");
     if (isExpanded) {
-
         extraProjects.classList.remove("visible");
-
         updateSeeMoreLabel();
-
-
-        const soloPanel =
-            document.getElementById("solo-projects");
-
+        const soloPanel = document.getElementById("solo-projects");
         if (soloPanel.classList.contains("active")) {
-
-            const firstProject =
-                soloPanel.querySelector(".game-grid");
-
+            const firstProject = soloPanel.querySelector(".game-grid");
             if (firstProject) {
-
-                const top =
-                    firstProject.getBoundingClientRect().top +
-                    window.scrollY -
-                    120;
-
-                window.scrollTo({
-                    top: Math.max(0, top),
-                    behavior: "smooth"
-                });
-
+                const top = firstProject.getBoundingClientRect().top + window.scrollY - 120;
+                window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
             }
-
         }
-
         return;
     }
-
-
     extraProjects.classList.add("visible");
-
     updateSeeMoreLabel();
-
 });
 
-
-/* =========================================================
-   LANGUAGE TOGGLE
-========================================================= */
-
-const langToggle =
-    document.getElementById("langToggle");
-
+/* LANGUAGE TOGGLE */
+const langToggle = document.getElementById("langToggle");
 let currentLang = "en";
 
-
 function applyLanguage(lang) {
-
     currentLang = lang;
-
-    document.documentElement.lang =
-        lang === "ja" ? "ja" : "en";
-
-    document.documentElement.classList.toggle(
-        "lang-ja",
-        lang === "ja"
-    );
-
+    document.documentElement.lang = lang === "ja" ? "ja" : "en";
+    document.documentElement.classList.toggle("lang-ja", lang === "ja");
     document.querySelectorAll(".i18n").forEach((el) => {
-
-        const content =
-            lang === "ja" ? el.dataset.ja : el.dataset.en;
-
-        if (content !== undefined) {
-            el.innerHTML = content;
-        }
-
+        const content = lang === "ja" ? el.dataset.ja : el.dataset.en;
+        if (content !== undefined) el.innerHTML = content;
     });
-
-    langToggle.textContent =
-        lang === "ja" ? "EN" : "日本語";
-
-    langToggle.setAttribute(
-        "aria-pressed",
-        lang === "ja"
-    );
-
+    langToggle.textContent = lang === "ja" ? "EN" : "日本語";
+    langToggle.setAttribute("aria-pressed", lang === "ja");
     updateSeeMoreLabel();
-
 }
 
-
 langToggle.addEventListener("click", () => {
-
     applyLanguage(currentLang === "en" ? "ja" : "en");
-
 });
 
-
-
-/* =========================================================
-   TEAM VIDEOS (click to load)
-========================================================= */
-
+/* TEAM VIDEOS (click to load) */
 document.querySelectorAll(".team-video").forEach((box) => {
-
     const button = box.querySelector(".team-video-play");
-
     if (!button) return;
-
     button.addEventListener("click", () => {
-
         const id = box.dataset.video;
-
         /* YouTube only plays embeds on pages served over http(s) */
         if (!/^https?:$/.test(window.location.protocol)) {
             window.open(box.dataset.watch, "_blank", "noopener");
             return;
         }
-
         const frame = document.createElement("iframe");
-
-        frame.src =
-            "https://www.youtube.com/embed/" + id +
-            "?autoplay=1&rel=0&playsinline=1";
-
+        frame.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0&playsinline=1";
         frame.title = button.getAttribute("aria-label") || "Video";
-
-        frame.allow =
-            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-
+        frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
         frame.referrerPolicy = "strict-origin-when-cross-origin";
-
         frame.allowFullscreen = true;
-
         box.innerHTML = "";
         box.appendChild(frame);
-
     });
-
 });
-
-
 
 </script>
 
