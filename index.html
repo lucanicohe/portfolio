@@ -19,7 +19,7 @@
     --text: #111111;
     --muted: #73736e;
     --line: rgba(17,17,17,.12);
-    --max: 100vw;
+    --max: 1500px;
     --padding: clamp(28px, 5vw, 80px);
 }
 
@@ -611,6 +611,14 @@ nav.scrolled {
     text-align: center;
 }
 
+.team-feature-eyebrow {
+    margin-bottom: 18px;
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
 .team-feature-title {
     margin: 0;
     font-size: clamp(2.6rem, 6vw, 5rem);
@@ -638,7 +646,7 @@ nav.scrolled {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
-    max-width: none;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -809,7 +817,7 @@ nav.scrolled {
     column-gap: 45px;
     row-gap: 90px;
     width: 100%;
-    max-width: none;
+    max-width: 1250px;
     margin: auto;
 }
 
@@ -1917,15 +1925,21 @@ footer {
 
         <p
             class="team-intro i18n"
-            data-en="These are school projects, each with different team members. They are larger games that need collaboration with others. For each project I explain my role, what I learned, and what was difficult."
-            data-ja="学校で制作したプロジェクトで、チームのメンバーは毎回違います。どれも、他の人との協力が必要な規模の大きなゲームです。それぞれについて、自分の役割、学んだこと、難しかったことをまとめています。"
-        >These are school projects, each with different team members. They are larger games that need collaboration with others. For each project I explain my role, what I learned, and what was difficult.</p>
+            data-en="These are school projects, each with different team members. They are larger games that need collaboration with others. For each project I explain my role, my skills, and what was difficult."
+            data-ja="学校で制作したプロジェクトで、チームのメンバーは毎回違います。どれも、他の人との協力が必要な規模の大きなゲームです。それぞれについて、自分の役割、スキル、難しかったことをまとめています。"
+        >These are school projects, each with different team members. They are larger games that need collaboration with others. For each project I explain my role, my skills, and what was difficult.</p>
 
         <div class="team-feature-list">
 
             <article class="team-feature">
 
                 <div class="team-head">
+
+                    <div
+                        class="team-feature-eyebrow i18n"
+                        data-en="Team of 5 · Unity · School award winner"
+                        data-ja="5人チーム · Unity · 学内アワード受賞"
+                    >Team of 5 · Unity · School award winner</div>
 
                     <h3
                         class="team-feature-title i18n"
@@ -1962,7 +1976,7 @@ footer {
                     </div>
 
                     <div class="team-card">
-                        <div class="team-card-label i18n" data-en="What I learned" data-ja="学んだこと">What I learned</div>
+                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
                         <div class="team-chips">
                             <span class="team-chip i18n" data-en="C# in Unity" data-ja="UnityのC#">C# in Unity</span>
                             <span class="team-chip i18n" data-en="Procedural track spawning" data-ja="線路のプロシージャル生成">Procedural track spawning</span>
@@ -1988,6 +2002,12 @@ footer {
             <article class="team-feature">
 
                 <div class="team-head">
+
+                    <div
+                        class="team-feature-eyebrow i18n"
+                        data-en="Team of 5 · Unity · Project lead"
+                        data-ja="5人チーム · Unity · プロジェクトリーダー"
+                    >Team of 5 · Unity · Project lead</div>
 
                     <h3
                         class="team-feature-title i18n"
@@ -2024,7 +2044,7 @@ footer {
                     </div>
 
                     <div class="team-card">
-                        <div class="team-card-label i18n" data-en="What I learned" data-ja="学んだこと">What I learned</div>
+                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
                         <div class="team-chips">
                             <span class="team-chip i18n" data-en="Leadership" data-ja="リーダーシップ">Leadership</span>
                             <span class="team-chip i18n" data-en="Team coordination" data-ja="チームのまとめ方">Team coordination</span>
@@ -2053,6 +2073,12 @@ footer {
             <article class="team-feature">
 
                 <div class="team-head">
+
+                    <div
+                        class="team-feature-eyebrow i18n"
+                        data-en="Team of 5 · Unity · My first game"
+                        data-ja="5人チーム · Unity · 初めて作ったゲーム"
+                    >Team of 5 · Unity · My first game</div>
 
                     <h3
                         class="team-feature-title i18n"
@@ -2096,7 +2122,7 @@ footer {
                     </div>
 
                     <div class="team-card">
-                        <div class="team-card-label i18n" data-en="What I learned" data-ja="学んだこと">What I learned</div>
+                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
                         <div class="team-chips">
                             <span class="team-chip i18n" data-en="Unity and C# basics" data-ja="UnityとC#の基礎">Unity and C# basics</span>
                             <span class="team-chip i18n" data-en="Pixel art" data-ja="ピクセルアート">Pixel art</span>
@@ -2123,6 +2149,12 @@ footer {
             <article class="team-feature">
 
                 <div class="team-head">
+
+                    <div
+                        class="team-feature-eyebrow i18n"
+                        data-en="Team of 5 · Unreal Engine"
+                        data-ja="5人チーム · Unreal Engine"
+                    >Team of 5 · Unreal Engine</div>
 
                     <h3
                         class="team-feature-title i18n"
@@ -2151,7 +2183,7 @@ footer {
                     </div>
 
                     <div class="team-card">
-                        <div class="team-card-label i18n" data-en="What I learned" data-ja="学んだこと">What I learned</div>
+                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
                         <div class="team-chips">
                             <span class="team-chip i18n" data-en="3D modeling" data-ja="3Dモデリング">3D modeling</span>
                             <span class="team-chip i18n" data-en="Materials in Unreal Engine" data-ja="Unreal Engineでのマテリアル制作">Materials in Unreal Engine</span>
@@ -2176,6 +2208,12 @@ footer {
             <article class="team-feature">
 
                 <div class="team-head">
+
+                    <div
+                        class="team-feature-eyebrow i18n"
+                        data-en="Team of 5 · Unity"
+                        data-ja="5人チーム · Unity"
+                    >Team of 5 · Unity</div>
 
                     <h3
                         class="team-feature-title i18n"
@@ -2204,7 +2242,7 @@ footer {
                     </div>
 
                     <div class="team-card">
-                        <div class="team-card-label i18n" data-en="What I learned" data-ja="学んだこと">What I learned</div>
+                        <div class="team-card-label i18n" data-en="Skills" data-ja="スキル">Skills</div>
                         <div class="team-chips">
                             <span class="team-chip i18n" data-en="C# in Unity" data-ja="UnityのC#">C# in Unity</span>
                             <span class="team-chip i18n" data-en="Gameplay design" data-ja="ゲームプレイの設計">Gameplay design</span>
@@ -3575,6 +3613,7 @@ document.querySelectorAll(".team-video").forEach((box) => {
     });
 
 });
+
 
 
 </script>
