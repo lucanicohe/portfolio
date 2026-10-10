@@ -21,12 +21,12 @@ html.lang-ja p{line-height:1.9}
 html.lang-ja h1,html.lang-ja h2,html.lang-ja .big{line-height:1.35}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:76px;background:rgba(245,245,242,.88);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:76px;background:rgba(245,245,242,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s}
 nav.scrolled{border-color:var(--line)}
 .nav-inner{width:min(100% - (var(--padding) * 2),var(--max));height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between}
 .logo{font-size:16px;font-weight:600;letter-spacing:-.035em;text-decoration:none}
 .nav-right{display:flex;align-items:center;gap:30px}
-.nav-links{display:flex;gap:38px}
+.nav-links{display:flex;gap:34px}
 .nav-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
 .nav-links a:hover,.nav-links a.current{color:var(--text)}
 .lang-toggle{height:36px;padding:0 18px;border:1px solid rgba(17,17,17,.18);border-radius:18px;background:transparent;color:var(--text);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:background .2s,color .2s}
@@ -55,14 +55,18 @@ p{margin:0 0 1.3em;max-width:620px;font-size:clamp(17px,1.7vw,21px);line-height:
 .pic img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:28px}
 .pic.wide img{aspect-ratio:3/2}
 
-/* GALLERY */
-.gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:70px}
-.gallery img{grid-column:span 3;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:22px;background:#deded9}
-.gallery img:nth-child(-n+3){grid-column:span 2}
+/* TIMELINE (resume style) */
+.timeline{margin-top:60px;border-top:1px solid var(--line)}
+.tl-row{display:grid;grid-template-columns:minmax(120px,220px) minmax(0,1fr);gap:30px;padding:28px 0;border-bottom:1px solid var(--line)}
+.tl-date{font-size:15px;color:var(--muted)}
+.tl-title{margin:0 0 6px;font-size:clamp(20px,2.2vw,28px);line-height:1.2;letter-spacing:-.03em;font-weight:600}
+.tl-text{margin:0;max-width:680px;font-size:16px}
+.intro-lead{margin:0}
 
 /* DARK */
 .dark{background:var(--text);color:#f5f5f2;border-top:0}
 .dark p{color:#a1a19c}
+.dark .eyebrow{color:#8a8a85}
 .big{max-width:15em;margin:0 0 .7em;font-size:clamp(2.6rem,6vw,5.5rem);font-weight:500;line-height:1;letter-spacing:-.06em}
 
 /* CARDS */
@@ -83,18 +87,27 @@ footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28p
 @media(max-width:900px){
  .split,.cards{grid-template-columns:1fr}
  .split.rev .pic{order:0}
- .gallery{grid-template-columns:1fr}
- .gallery img,.gallery img:nth-child(-n+3){grid-column:auto}
 }
 @media(max-width:600px){
  :root{--padding:22px}
  nav{height:64px}
  .nav-right{gap:14px}
  .nav-links{gap:14px}
- .nav-links a{font-size:12px}
- .nav-links a.hide-sm{display:none}
+ .nav-links a{font-size:13px}
  .lang-toggle{height:32px;padding:0 13px;font-size:12px}
+ .tl-row{grid-template-columns:1fr;gap:6px;padding:22px 0}
  .footer-inner{flex-direction:column;gap:8px}
+}
+@media(max-width:480px){
+ .logo{display:none}
+ .nav-inner{justify-content:flex-end}
+ .nav-links{gap:12px}
+ .nav-links a{font-size:12px}
+}
+@media(max-width:380px){
+ .nav-right{gap:10px}
+ .nav-links{gap:10px}
+ .nav-links a{font-size:11.5px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
@@ -106,9 +119,10 @@ footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28p
   <a class="logo i18n" href="index.html" data-en="Luca Helgert" data-ja="ルカ・ヘルゲルト">Luca Helgert</a>
   <div class="nav-right">
    <div class="nav-links">
-    <a class="i18n hide-sm" href="index.html" data-en="Top" data-ja="トップ">Top</a>
+    <a class="i18n" href="index.html" data-en="Top" data-ja="トップ">Top</a>
     <a class="i18n" href="index.html#work" data-en="Works" data-ja="作品">Works</a>
-    <a class="i18n current" href="about.html" data-en="More about me" data-ja="私について">More about me</a>
+    <a class="i18n current" href="about.html" data-en="About" data-ja="私について">About</a>
+    <a class="i18n" href="index.html#skills" data-en="Skills" data-ja="スキル">Skills</a>
     <a class="i18n" href="index.html#contact" data-en="Contact" data-ja="お問い合わせ">Contact</a>
    </div>
    <button type="button" id="langToggle" class="lang-toggle" aria-label="Switch language">日本語</button>
@@ -123,20 +137,42 @@ footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28p
  <a class="pill i18n" href="index.html#work" data-en="View my work" data-ja="作品を見る">View my work</a>
 </header>
 
+<!-- ORIGINS -->
 <section class="sec">
  <div class="wrap split">
   <div>
+   <div class="eyebrow i18n" data-en="Origins" data-ja="ルーツ">Origins</div>
    <h2 class="i18n" data-en="Leaving my town, for Japan." data-ja="町を出て、日本へ。">Leaving my town, for Japan.</h2>
    <p class="i18n" data-en="I grew up in a small town in Germany, where young people have few opportunities and many leave. I wanted to build a future rather than watch the town fade, and that pushed me to look further." data-ja="私はドイツの小さな町で育ちました。そこでは若者向けの機会が少なく、多くの人が町を出ていきます。町が少しずつなくなっていくように感じ、新しい未来を求めて外へ出たいと思うようになりました。">I grew up in a small town in Germany, where young people have few opportunities and many leave. I wanted to build a future rather than watch the town fade, and that pushed me to look further.</p>
    <p class="i18n" data-en="Growing up on anime, I fell in love with Japanese culture and history. Living in Japan and one day contributing something back has been a dream for a long time. Game development is where my technical skills and creativity meet, so that is the path I’m building." data-ja="子どもの頃からアニメを見て育ち、日本の文化や歴史に惹かれました。日本に住み、いつか日本に貢献することは昔からの夢です。ゲーム制作は技術とクリエイティブな力を組み合わせられる分野なので、この道を選びました。">Growing up on anime, I fell in love with Japanese culture and history. Living in Japan and one day contributing something back has been a dream for a long time. Game development is where my technical skills and creativity meet, so that is the path I’m building.</p>
+   <p class="i18n" data-en="In 2023 I made the move to Japan." data-ja="2023年、日本へ移り住みました。">In 2023 I made the move to Japan.</p>
   </div>
   <div class="pic"><img src="me.jpg" alt="Luca Helgert"></div>
  </div>
 </section>
 
+<!-- PATH SO FAR (resume timeline) -->
+<section class="sec">
+ <div class="wrap">
+  <div class="eyebrow i18n" data-en="Background" data-ja="経歴">Background</div>
+  <h2 class="i18n" data-en="The path so far." data-ja="これまでの歩み。">The path so far.</h2>
+  <p class="intro-lead i18n" data-en="Where I studied and worked, in order. The details are in the sections below." data-ja="学んできたこと、働いてきたことを順番にまとめました。詳しくは、この下のセクションで紹介しています。">Where I studied and worked, in order. The details are in the sections below.</p>
+  <div class="timeline">
+   <div class="tl-row"><div class="tl-date i18n" data-en="2025 – now" data-ja="2025年〜現在">2025 – now</div><div><h3 class="tl-title">TECH.C.</h3><p class="tl-text i18n" data-en="Game programming. Graduating in 2028." data-ja="ゲームプログラミング専攻。2028年卒業予定。">Game programming. Graduating in 2028.</p></div></div>
+   <div class="tl-row"><div class="tl-date i18n" data-en="2023 – 2025" data-ja="2023年〜2025年">2023 – 2025</div><div><h3 class="tl-title">Kai Language School</h3><p class="tl-text i18n" data-en="Studied Japanese and completed the course at Japanese Level N2." data-ja="日本語を学び、日本語能力N2レベルで修了。">Studied Japanese and completed the course at Japanese Level N2.</p></div></div>
+   <div class="tl-row"><div class="tl-date i18n" data-en="2023" data-ja="2023年">2023</div><div><h3 class="tl-title i18n" data-en="Moved to Japan" data-ja="来日">Moved to Japan</h3><p class="tl-text i18n" data-en="Left Germany to build my future in Japan." data-ja="ドイツを離れ、日本で未来を築くために移り住みました。">Left Germany to build my future in Japan.</p></div></div>
+   <div class="tl-row"><div class="tl-date i18n" data-en="2017 – 2023" data-ja="2017年〜2023年">2017 – 2023</div><div><h3 class="tl-title i18n" data-en="Freelance composer" data-ja="フリーランス作曲家">Freelance composer</h3><p class="tl-text i18n" data-en="Worked independently in Germany for about six years and grew my YouTube music channel to 15k subscribers." data-ja="ドイツで約6年間、独立して活動。YouTubeの音楽チャンネルの登録者数は1.5万人に達しました。">Worked independently in Germany for about six years and grew my YouTube music channel to 15k subscribers.</p></div></div>
+   <div class="tl-row"><div class="tl-date i18n" data-en="2017" data-ja="2017年">2017</div><div><h3 class="tl-title">OTH Regensburg</h3><p class="tl-text i18n" data-en="Began university studies at Ostbayerische Technische Hochschule Regensburg." data-ja="OTHレーゲンスブルク（Ostbayerische Technische Hochschule Regensburg）で大学での学びを始めました。">Began university studies at Ostbayerische Technische Hochschule Regensburg.</p></div></div>
+   <div class="tl-row"><div class="tl-date i18n" data-en="Until 2017" data-ja="〜2017年">Until 2017</div><div><h3 class="tl-title">Gustav-von-Schlör-Schule</h3><p class="tl-text i18n" data-en="Finished school with the Abitur, after Grundschule and Realschule in Germany." data-ja="ドイツの小学校（Grundschule）と実科学校（Realschule）を経て、アビトゥーアを取得して卒業。">Finished school with the Abitur, after Grundschule and Realschule in Germany.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- CRAFT -->
 <section class="sec">
  <div class="wrap split rev">
   <div>
+   <div class="eyebrow i18n" data-en="Craft" data-ja="ものづくり">Craft</div>
    <h2 class="i18n" data-en="Technique, and how it looks." data-ja="技術と、見た目と。">Technique, and how it looks.</h2>
    <p class="i18n" data-en="I’m not only a programmer. My brother is an artist, and since I was a child he has taught me 3D software, photography and editing. Because of him I care not just about making things move, but about making them look beautiful." data-ja="私はプログラマーだけではありません。兄はアーティストで、子どもの頃から3Dソフトや写真の撮り方、編集を教えてくれました。その影響で、物を動かすだけでなく、どうすればきれいに見えるかも大切にしています。">I’m not only a programmer. My brother is an artist, and since I was a child he has taught me 3D software, photography and editing. Because of him I care not just about making things move, but about making them look beautiful.</p>
    <p class="i18n" data-en="I work across systems, design and graphics, and I like owning every part of a game." data-ja="システム、デザイン、グラフィックまで、ゲームのあらゆる部分を自分の手で作ることを大切にしています。">I work across systems, design and graphics, and I like owning every part of a game.</p>
@@ -145,12 +181,13 @@ footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28p
  </div>
 </section>
 
-<!-- NEW: MUSIC / YOUTUBE -->
+<!-- MUSIC / YOUTUBE -->
 <section class="sec">
  <div class="wrap split">
   <div>
+   <div class="eyebrow i18n" data-en="Career · 2017 – 2023" data-ja="キャリア · 2017年〜2023年">Career · 2017 – 2023</div>
    <h2 class="i18n" data-en="Music came first." data-ja="最初に、音楽があった。">Music came first.</h2>
-   <p class="i18n" data-en="Before games, I worked as a freelance composer in Germany for more than 6 years. I shared my music on YouTube and grew the channel to 15k subscribers." data-ja="ゲームの前は、ドイツでフリーランスの作曲家として6年以上活動していました。YouTubeで音楽を発信し、チャンネル登録者は1万5千人に達しました。">Before games, I worked as a freelance composer in Germany for more than 6 years. I shared my music on YouTube and grew the channel to 15k subscribers.</p>
+   <p class="i18n" data-en="Before games, I worked as a freelance composer in Germany for more than 6 years, from 2017 to 2023. I shared my music on YouTube and grew the channel to 15k subscribers." data-ja="ゲームの前は、2017年から2023年までの6年以上、ドイツでフリーランスの作曲家として活動していました。YouTubeで音楽を発信し、チャンネル登録者は1万5千人に達しました。">Before games, I worked as a freelance composer in Germany for more than 6 years, from 2017 to 2023. I shared my music on YouTube and grew the channel to 15k subscribers.</p>
    <p class="i18n" data-en="That background in music and sound is still part of how I think about making games." data-ja="この音楽とサウンドの経験は、今もゲームづくりの考え方の一部になっています。">That background in music and sound is still part of how I think about making games.</p>
    <a class="pill i18n" href="https://www.youtube.com/@musicformed" target="_blank" rel="noopener" data-en="Listen on YouTube ↗" data-ja="YouTubeで聴く ↗">Listen on YouTube ↗</a>
   </div>
@@ -161,10 +198,26 @@ footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28p
  </div>
 </section>
 
+<!-- LANGUAGE SCHOOL -->
+<section class="sec">
+ <div class="wrap split rev">
+  <div>
+   <div class="eyebrow i18n" data-en="Language school · 2023 – 2025" data-ja="日本語学校 · 2023年〜2025年">Language school · 2023 – 2025</div>
+   <h2 class="i18n" data-en="Learning Japanese." data-ja="日本語を学ぶ。">Learning Japanese.</h2>
+   <p class="i18n" data-en="After moving to Japan in 2023, I enrolled at Kai Language School and studied Japanese for two years, finishing at Level N2 in 2025." data-ja="2023年に来日してKai日本語スクールに入学し、2年間日本語を学びました。2025年にN2レベルで修了しました。">After moving to Japan in 2023, I enrolled at Kai Language School and studied Japanese for two years, finishing at Level N2 in 2025.</p>
+   <p class="i18n" data-en="It opened the door to the next step: entering a Japanese technical college to study game programming." data-ja="それが次の一歩につながりました。日本の専門学校に入り、ゲームプログラミングを学ぶことです。">It opened the door to the next step: entering a Japanese technical college to study game programming.</p>
+  </div>
+  <div class="pic wide"><img src="language.jpg" alt="Kai Language School" loading="lazy"></div>
+ </div>
+</section>
+
+<!-- CURRENT SCHOOL / MAKE IT FINISH IT -->
 <section class="sec">
  <div class="wrap split">
   <div>
+  <div class="eyebrow i18n" data-en="Now · TECH.C." data-ja="現在 · TECH.C.">Now · TECH.C.</div>
   <h2 class="i18n" data-en="Make it. Finish it." data-ja="作って、完成させる。">Make it. Finish it.</h2>
+  <p class="i18n" data-en="Since 2025 I’ve been studying game programming at TECH.C., with graduation planned for 2028." data-ja="2025年からTECH.C.でゲームプログラミングを学んでいます。卒業は2028年の予定です。">Since 2025 I’ve been studying game programming at TECH.C., with graduation planned for 2028.</p>
   <p class="i18n" data-en="Ideas are easy. Building them, solving the problems and finishing them is the hard part. I make games to practice exactly that: taking an idea all the way to something people can actually play, and making it fun and memorable for others, not just for me." data-ja="アイデアを出すのは簡単ですが、実際に作り、問題を解決し、最後まで完成させるのは難しいことです。私は、アイデアを人が実際に遊べる形まで仕上げるために、そして自分だけでなく他の人にも楽しく記憶に残るものにするために、ゲームを作り続けています。">Ideas are easy. Building them, solving the problems and finishing them is the hard part. I make games to practice exactly that: taking an idea all the way to something people can actually play, and making it fun and memorable for others, not just for me.</p>
   <p class="i18n" data-en="Every project teaches me at least one new thing." data-ja="作品ごとに、新しいことを一つは学ぶようにしています。">Every project teaches me at least one new thing.</p>
   </div>
@@ -175,6 +228,7 @@ footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28p
 <section class="sec dark">
  <div class="wrap split rev">
   <div>
+  <div class="eyebrow i18n" data-en="Perspective" data-ja="考え方">Perspective</div>
   <h2 class="big i18n" data-en="Code alone is no longer a strength." data-ja="コードを書けるだけでは、強みにならない時代へ。">Code alone is no longer a strength.</h2>
   <p class="i18n" data-en="AI can now do much of what programmers used to do by hand, so I don’t want to rely on writing code alone. I invest in a wider range of skills, and in creativity: the ability to make things that work and look beautiful." data-ja="今ではAIがプログラマーの多くの作業をできるようになっています。そのため、コードを書けることだけに頼りたくありません。幅広い技術と、実際に動いて見た目も美しいものを作るクリエイティビティを大切にしています。">AI can now do much of what programmers used to do by hand, so I don’t want to rely on writing code alone. I invest in a wider range of skills, and in creativity: the ability to make things that work and look beautiful.</p>
   <p class="i18n" data-en="Without a creative direction, much of today’s AI-made design ends up looking alike. I want to make things with my own ideas and personality, things that feel like a person made them." data-ja="クリエイティブな方向性がなければ、AIによるデザインは似たものになりがちです。私は、自分の考えや個性があり、人が作ったと感じられるものを作りたいです。">Without a creative direction, much of today’s AI-made design ends up looking alike. I want to make things with my own ideas and personality, things that feel like a person made them.</p>
@@ -187,6 +241,7 @@ footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28p
  <div class="wrap">
   <div class="split">
    <div>
+  <div class="eyebrow i18n" data-en="Learning" data-ja="学び方">Learning</div>
   <h2 class="i18n" data-en="Three places to learn." data-ja="学びの3つの場所。">Three places to learn.</h2>
   <p class="i18n" data-en="Making things look good isn’t only about the right tools. It’s about judgment, and that’s what I’m training." data-ja="物をきれいに見せることは、正しいツールを使うだけではありません。自分で判断する力を、日々鍛えています。">Making things look good isn’t only about the right tools. It’s about judgment, and that’s what I’m training.</p>
    </div>
@@ -203,6 +258,7 @@ footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28p
 <section class="sec dark">
  <div class="wrap split rev">
   <div>
+  <div class="eyebrow i18n" data-en="Next" data-ja="これから">Next</div>
   <h2 class="big i18n" data-en="A Japanese game company first. Then my own." data-ja="将来は、日本のゲーム会社へ。そして、自分の会社へ。">A Japanese game company first. Then my own.</h2>
   <p class="i18n" data-en="I want to learn how professional teams make games, then start my own company and build popular games that many people play, while contributing something to Japan, where I have long wanted to live." data-ja="まず日本のゲーム会社で、プロのチームがどのようにゲームを作るのかを学びたいです。そして最終的には自分の会社を作り、多くの人に遊ばれるゲームを作りながら、昔から住みたかった日本に貢献したいです。">I want to learn how professional teams make games, then start my own company and build popular games that many people play, while contributing something to Japan, where I have long wanted to live.</p>
   <p class="i18n" data-en="I don’t think of myself as just a programmer. I’m a creator who uses technology as a tool, and I want to make things only I could make." data-ja="私は自分をただのプログラマーだとは思っていません。技術を道具として使うクリエイターとして、自分にしか作れないものを作りたいです。">I don’t think of myself as just a programmer. I’m a creator who uses technology as a tool, and I want to make things only I could make.</p>
