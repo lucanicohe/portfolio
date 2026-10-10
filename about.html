@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja" class="lang-ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,6 +72,11 @@ p{margin:0 0 1.3em;max-width:620px;font-size:clamp(17px,1.7vw,21px);line-height:
 .card h3{margin:0 0 12px;font-size:clamp(22px,2.2vw,28px);line-height:1.15;letter-spacing:-.03em;font-weight:600}
 .card p{margin:0;font-size:16px}
 
+/* MUSIC STATS */
+.stat-cards{display:grid;gap:18px}
+.stat{margin:0 0 14px;font-size:clamp(3.5rem,7vw,6rem);font-weight:500;line-height:1;letter-spacing:-.06em;color:var(--text)}
+.stat-card p{margin:0;font-size:16px}
+
 footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28px 0 35px}
 .footer-inner{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
 
@@ -140,6 +145,22 @@ footer{width:min(100% - (var(--padding) * 2),var(--max));margin:auto;padding:28p
  </div>
 </section>
 
+<!-- NEW: MUSIC / YOUTUBE -->
+<section class="sec">
+ <div class="wrap split">
+  <div>
+   <h2 class="i18n" data-en="Music came first." data-ja="最初に、音楽があった。">Music came first.</h2>
+   <p class="i18n" data-en="Before games, I worked as a freelance composer in Germany for more than 6 years. I shared my music on YouTube and grew the channel to 15k subscribers." data-ja="ゲームの前は、ドイツでフリーランスの作曲家として6年以上活動していました。YouTubeで音楽を発信し、チャンネル登録者は1万5千人に達しました。">Before games, I worked as a freelance composer in Germany for more than 6 years. I shared my music on YouTube and grew the channel to 15k subscribers.</p>
+   <p class="i18n" data-en="That background in music and sound is still part of how I think about making games." data-ja="この音楽とサウンドの経験は、今もゲームづくりの考え方の一部になっています。">That background in music and sound is still part of how I think about making games.</p>
+   <a class="pill i18n" href="https://www.youtube.com/@musicformed" target="_blank" rel="noopener" data-en="Listen on YouTube ↗" data-ja="YouTubeで聴く ↗">Listen on YouTube ↗</a>
+  </div>
+  <div class="stat-cards">
+   <div class="card stat-card"><div class="card-label i18n" data-en="Freelance composer" data-ja="フリーランス作曲家">Freelance composer</div><div class="stat i18n" data-en="6+ years" data-ja="6年以上">6+ years</div><p class="i18n" data-en="Working independently in Germany." data-ja="ドイツで独立して活動。">Working independently in Germany.</p></div>
+   <div class="card stat-card"><div class="card-label i18n" data-en="YouTube" data-ja="YouTube">YouTube</div><div class="stat i18n" data-en="15k" data-ja="1.5万人">15k</div><p class="i18n" data-en="Subscribers on my music channel." data-ja="音楽チャンネルの登録者数。">Subscribers on my music channel.</p></div>
+  </div>
+ </div>
+</section>
+
 <section class="sec">
  <div class="wrap split">
   <div>
@@ -203,7 +224,7 @@ const nav=document.getElementById("nav");
 window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",window.scrollY>20),{passive:true});
 const btn=document.getElementById("langToggle");
 const titles={en:"More about me — Luca Helgert",ja:"私について — ルカ・ヘルゲルト"};
-let lang="en";
+let lang="ja"; /* starts in Japanese */
 function apply(l){
  lang=l;
  document.documentElement.lang=l;
@@ -213,7 +234,7 @@ function apply(l){
  document.title=titles[l];
 }
 btn.addEventListener("click",()=>apply(lang==="en"?"ja":"en"));
-if(new URLSearchParams(location.search).get("lang")==="ja")apply("ja");
+apply(lang);
 </script>
 </body>
 </html>
